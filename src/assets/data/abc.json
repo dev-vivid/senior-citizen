@@ -1,0 +1,32 @@
+{
+  "properties": [
+      {
+          "city": "Adayar",
+          "state": "TN",
+          "long": 80.256493,
+          "lat": 13.001177
+      },
+      {
+          "city": "Thiruvanmiyur",
+          "state": "TN",
+          "long": 80.263381,
+          "lat": 12.982672
+      },
+      {
+          "city": "Velacherry",
+          "state": "TN",
+          "long": 80.221209,
+          "lat": 12.975971
+      },
+      {
+          "city": "Velacherry",
+          "long": 80.215001,
+          "lat": 12.972339
+      },
+      {
+        "city": "TARAMANI",
+        "long": 80.221870,
+        "lat": 12.982600
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+.layout-main {
+    padding-top: 2px;
+}
+.layout-content {
+    padding: 2px 30px;
+}
+.p-inputtext {
+    outline: 0;
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.p-button-custom {
+    text-transform: uppercase;
+    outline: 0;
+    background: #00d084; // #4AF50 - green color
+    width: 100%;
+    border: 1px solid #00d084;
+    border-radius: 50px;
+    padding: 12px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+.p-button-custom:hover {
+    background-color: #fff;
+    border: 1px solid #00d084;
+    color: #00d084;
+}
+.copyright {
+    color: rgba(41, 50, 65, 0.5);
+}
+.submit{
+    display: flex;
+    justify-content: center;
+}
+// new csss
+.bg-2 {
+    background-color: #f1f7fe;
+}
+.bg-4 {
+    // background-color: rgb(61,71,133);
+    background-color: #fff;
+}
+.orgText {
+    color: #000080;
+}
+.pText {
+    color: #E31E33;
+}

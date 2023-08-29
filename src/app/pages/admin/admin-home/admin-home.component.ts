@@ -1,0 +1,85 @@
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormService } from 'src/app/shared/services/form.service';
+import { SharedService } from 'src/app/shared/services/shared.service';
+import { DatePipe } from '@angular/common';
+
+@Component({
+  selector: 'app-admin-home',
+  templateUrl: './admin-home.component.html',
+  styleUrls: ['./admin-home.component.scss'],
+  encapsulation: ViewEncapsulation.None
+})
+export class AdminHomeComponent implements OnInit {
+  pipe = new DatePipe('en-US');
+  isAdmin: boolean = false;
+  userData: any;
+  dueModal: boolean;
+  lineStylesData: any;
+  data: any;
+  //chart
+  basicOptions: any;
+  feedback: any;
+  Datapie: any;
+  chartData: any;
+  dbCount: any
+
+  constructor(private router: Router, private formService: FormService, private sharedService: SharedService) { }
+
+  ngOnInit(): void {
+    this.userData = JSON.parse(sessionStorage.getItem('userInfo'));
+    this.getchart();
+    this.getAdminDashboard();
+    if (this.userData.data.roleId === 1) {
+      this.isAdmin = true;
+    } 
+
+  }
+
+  getAdminDashboard() {
+    this.formService.getAdminDashboard().subscribe((resp: any) => {
+      this.dbCount = resp.data;
+      const scCount = resp.data.seniorCitizen;
+      // seniorCitizen.usersCount
+      this.feedback = {
+        labels: ['Male','Female'],
+        datasets: [
+            {
+                data: [scCount.Male, scCount.Female],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB"
+                ]
+            }
+        ]
+      };
+    });
+  }
+  
+  getchart() {
+    this.formService.getChartData().subscribe((resp: any) => {
+      this.Datapie = resp.data[0];
+      this.chartData = {
+        labels: this.Datapie.labels,
+        datasets: [
+            {
+                label: 'Senior Citizen',
+                backgroundColor: '#2a9235',
+                data: this.Datapie.userMonthwise
+            },
+            {
+                label: 'Helpline Calls',
+                backgroundColor: '#FFC107',
+                data: this.Datapie.helplineMonthwise
+            }
+        ]
+      };
+    });
+  }
+
+
+}

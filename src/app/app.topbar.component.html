@@ -1,0 +1,119 @@
+<div class="layout-topbar">
+    <div class="layout-topbar-wrapper">
+        <div class="layout-topbar-left">
+            <a tabindex="0" class="menu-button" (click)="appMain.onMenuButtonClick($event)">
+                <i class="pi pi-bars"></i>
+            </a>
+            <a tabindex="0" id="logo-link" class="layout-topbar-logo" (click)="appMain.onMenuButtonClick($event)">
+                <!-- <img [src]="'assets/layout/images/logo-' + (app.topbarTheme === 'dark' ? 'freya-white' : 'freya') + '.svg'"
+                    alt="freya-layout" /> -->
+                    <!-- <img src="assets/images/logo-dark.png"
+                    alt="freya-layout" /> 
+                eBeat -->
+            </a>
+            <!-- <a tabindex="0" id="logo-link" class="layout-topbar-logo" (click)="appMain.onMenuButtonClick($event)">
+                <p>Field Policing Application</p> 
+            </a>  -->
+        </div>
+
+        <app-menu></app-menu>
+
+        <div class="layout-topbar-right">
+            <ul class="layout-topbar-actions">
+                <li>
+                    <h5 class="mb-0 capitalize text-overflow-ellipsis text-white">
+                        {{userName}}
+                    </h5>
+                </li>
+                <li #profile class="topbar-item user-profile"
+                    [ngClass]="{'active-topmenuitem fadeInDown': appMain.activeTopbarItem === profile}">
+                    <a href="#" (click)="appMain.onTopbarItemClick($event,profile)">
+                        <img src="assets/images/logo/logo2.jpg" class="avatar img-50 rounded-circle" alt="Admin" />
+                    </a>
+                    <ul class="fadeInDown">
+                        <li class="border-bottom-1 border-bluegray-200">
+                            <span class="capitalize">{{userName}}</span>
+                        </li>
+                        <li routerLink="/main/profile">
+                            <a>
+                                <span class="pi pi-user mr-3"></span>
+                                <span class="flex flex-column">
+                                    Profile
+                                </span>
+                            </a>
+                        </li>
+                        <li (click)="resetpassword()">
+                            <a>
+                                <span class="pi pi-cog mr-3"></span>
+                                <span class="flex flex-column">
+                                    Reset Password
+                                </span>
+                            </a>
+                        </li>
+                        <li (click)="logout()">
+                            <a>
+                                <span class="pi pi-power-off mr-3"></span>
+                                <span class="flex flex-column">
+                                    Logout
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- <a  tabindex="0" class="layout-rightpanel-button" (click)="appMain.onRightPanelClick($event)">
+                <i class="pi pi-sign-out"></i>
+            </a> -->
+        </div>
+    </div>
+</div>
+
+
+<p-dialog header="Reset Password" [(visible)]="ResetModal" modal="modal" showEffect="fade" [style]="{width: '30vw'}"
+    [breakpoints]="{'960px': '75vw'}">
+    <div>
+        <form [formGroup]="resetPasswordForm" (ngSubmit)="onResetSubmit()">
+            <div class="field col-12 md:col-12"  >
+                <span class="p-float-label">
+                    <input style="width: 100%;" pInputText id="inputtext" type="text"
+                        [ngClass]="(resetPasswordForm?.controls?.currentPassword?.touched && resetPasswordForm?.controls?.currentPassword?.invalid)?'ng-dirty ng-invalid ng-touched':''"
+                        formControlName="currentPassword" required>
+                    <label htmlFor="inputtext">Old Password</label>
+                </span>
+                <small class="p-error block"
+                    *ngIf="( resetPasswordForm?.controls?.currentPassword?.touched && resetPasswordForm?.controls?.currentPassword?.errors?.required) ">
+                    Old Password is required
+                </small>
+            </div>
+            <div class="field col-12 md:col-12"  >
+                <span class="p-float-label">
+                    <input style="width: 100%;" pInputText id="inputtext" type="text"
+                        [ngClass]="(resetPasswordForm?.controls?.newPassword?.touched && resetPasswordForm?.controls?.newPassword?.invalid)?'ng-dirty ng-invalid ng-touched':''"
+                        formControlName="newPassword" required>
+                    <label htmlFor="inputtext">New Password</label>
+                </span>
+                <small class="p-error block"
+                    *ngIf="( resetPasswordForm?.controls?.newPassword?.touched && resetPasswordForm?.controls?.newPassword?.errors?.required) ">
+                    New Password is required
+                </small>
+            </div>
+            <div class="field col-12 md:col-12"  >
+                <span class="p-float-label">
+                    <input style="width: 100%;" pInputText id="inputtext" type="text"
+                        [ngClass]="(resetPasswordForm?.controls?.confirmPassword?.touched && resetPasswordForm?.controls?.confirmPassword?.invalid)?'ng-dirty ng-invalid ng-touched':''"
+                        formControlName="confirmPassword" required>
+                    <label htmlFor="inputtext">Confirm Password</label>
+                </span>
+                <small class="p-error block"
+                    *ngIf="( resetPasswordForm?.controls?.confirmPassword?.touched && resetPasswordForm?.controls?.confirmPassword?.errors?.required) ">
+                    Confirm Password is required
+                </small>
+            </div>
+            <div class="field col-12">
+                <button pButton pRipple type="submit" label="Submit" class="mr-2 mb-2"></button>
+                <button pButton pRipple type="button" (click)="ResetModal=false" label="Close" class="mr-2 mb-2"></button>
+            </div>
+        </form>
+    </div>
+</p-dialog>

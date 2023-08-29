@@ -1,0 +1,93 @@
+<div class="grid">
+    <div class="col-12 pb-1">
+        <div class="p-2 flex justify-content-between align-items-center">
+            <div>
+                <!-- <h5 class="my-1 text-white">
+                    District
+                </h5> -->
+            </div>
+            <div>
+                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/medical-type"><span class="p-button-label">Go to List</span></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 md:col-6">
+        <div class="card" *ngIf="isLoader">
+            <app-loader></app-loader>
+        </div>
+        <div class="card border-0" *ngIf="isNotLoader">
+            <h5>Add Alternative Medical</h5>
+            <form [formGroup]="medicalForm">
+                <div class="no-css">
+                    <mat-form-field class="full-width-field">
+                        <mat-label>Medical Type</mat-label>
+                        <mat-select formControlName="medical_type_id" placeholder="Select Medical Type">
+                            <mat-option *ngFor="let medicalType of medicalTypeList"
+                                [value]="medicalType.id">
+                                {{medicalType.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="(medicalForm?.controls?.medical_type_id?.touched && medicalForm?.controls?.medical_type_id?.errors?.required)">Medical
+                            is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-field">
+                        <mat-label>Select District</mat-label>
+                        <mat-select formControlName="district_id" placeholder="Select District">
+                            <mat-option *ngFor="let dict of dictList"
+                                [value]="dict.id">
+                                {{dict.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="(medicalForm?.controls?.district_id?.touched && medicalForm?.controls?.district_id?.errors?.required)">Districts
+                            is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-field">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name">
+                        <mat-error *ngIf="(medicalForm?.controls?.name?.touched && medicalForm?.controls?.name?.errors?.required)">Name is required</mat-error>
+                    </mat-form-field>
+                    <div formArrayName="contact">
+                        <!-- <button type="button" (click)="addMore()" class="btn btn-primary">Add More</button> -->
+                        <div *ngFor="let contList of contactFormArr.controls; let i = index">
+                            <div class="grid" [formGroupName]="i">
+                                <div class="col-10 pb-0">
+                                    <mat-form-field class="full-width-field">
+                                        <mat-label>Contact No</mat-label>
+                                        <input matInput formControlName="contact">
+                                        <!-- <mat-error *ngIf="(officerForm?.controls?.contact?.touched && officerForm?.controls?.contact?.errors?.required)">Contact is required</mat-error> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-2 pb-0">
+                                    <div class="flex mt-2 md:mt-3">
+                                        <!-- <label style="margin-bottom: 24px;">Add More</label> -->
+                                        <span (click)="addContact()">
+                                          <i class='pi pi-plus-circle ai-color1 f21'></i>
+                                        </span> &nbsp;&nbsp;
+                                        <span *ngIf="i != 0" (click)="removeContact(i)">
+                                          <i class='pi pi-minus-circle ai-color4 f21'></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-form-field class="full-width-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                        <mat-error *ngIf="(medicalForm?.controls?.email?.touched && medicalForm?.controls?.email?.errors?.required)">Email is required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-field">
+                        <mat-label>Address</mat-label>
+                        <textarea matInput formControlName="address"></textarea>
+                        <mat-error *ngIf="(medicalForm?.controls?.address?.touched && medicalForm?.controls?.address?.errors?.required)">Address is required</mat-error>
+                    </mat-form-field>
+                    <mat-slide-toggle [checked]="Toggleactive">Active</mat-slide-toggle>
+                </div>
+                <div class="text-right">
+                    <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="saveMedicalDetails()"></button>
+                    <!-- <button (click)="reset()" type="button" class="btn btn-secondary btn-raised btn-round ml-12" >Reset</button> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

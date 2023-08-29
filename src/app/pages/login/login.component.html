@@ -1,0 +1,117 @@
+<div class="layout-main bg-img">
+    <div class="layout-content">
+        <div class="grid">
+            <div class="col-12 lg:col-4 md:col-8 p-0 mt-3">
+                <!-- <p-progressBar mode="indeterminate" [style]="{'height':'7px','border-radius':'0px'}" *ngIf="spinnerService.visibility | async" ></p-progressBar> -->
+                <div class="loginPage md:p-6 p-3">
+                    <div class="flex justify-content-center">
+                        <div class="border-circle w-7rem h-8rem pb-2 bg-4 flex align-items-center justify-content-center">
+                            <a [routerLink]="['/']" class="logo">
+                                <img src="assets/images/logo/logo.png" alt="SENIOR CITIZEN" height="140">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-xl font-bold mb-2 md:mb-3">
+                            <span class="cText">SENIOR CITIZEN ADMIN</span> 
+                        </div>
+                    </div>
+                    <div>
+                        <form [formGroup]="loginForm">
+                            <div class="field">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Username</mat-label>
+                                    <input matInput formControlName="username" placeholder="Username">
+                                    <mat-error *ngIf="(loginForm?.controls?.username?.touched && loginForm?.controls?.username?.errors?.required)">Username is required</mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="field">
+                                <mat-form-field class="full-width-field">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput type="password" placeholder="Password" formControlName="password" class="mb-1" [ngClass]="(loginForm?.controls?.password?.touched && loginForm?.controls?.password?.invalid)?'ng-dirty ng-invalid ng-touched':''" aria-describedby="password1-help">
+                                    <mat-error id="password1-help" class="block text-danger" *ngIf="(loginForm?.controls?.password?.touched && loginForm?.controls?.password?.errors?.required)">Password is required</mat-error>
+                                </mat-form-field>
+                                <p style="font-size: 12px;color: #e20000;">{{loginError}}</p>
+                            </div>
+                            <!-- <div class="field">
+                                <label for="username" class="block">Username</label>
+                                <input pInputText type="text" id="username" formControlName="username" class="p-inputtext p-component p-element w-full mb-1" 
+                                    [ngClass]="(loginForm?.controls?.username?.touched && loginForm?.controls?.username?.invalid)?'ng-dirty ng-invalid ng-touched':''" aria-describedby="username-help">
+                                <small id="username-help" class="block text-danger" *ngIf="(loginForm?.controls?.username?.touched && loginForm?.controls?.username?.errors?.required)">Username is required</small>
+                            </div> 
+                            <div class="field">
+                                <label for="password1" class="block">Password</label>
+                                <input pInputText type="password" id="password1" formControlName="password" class="p-inputtext p-component p-element w-full mb-1" 
+                                [ngClass]="(loginForm?.controls?.password?.touched && loginForm?.controls?.password?.invalid)?'ng-dirty ng-invalid ng-touched':''" aria-describedby="password1-help">
+                                <small id="password1-help" class="block text-danger" *ngIf="(loginForm?.controls?.password?.touched && loginForm?.controls?.password?.errors?.required)">Password is required</small>
+                            </div> -->
+                            <div class="grid align-items-center">
+                                <div class="col-12 md:col-6">
+                                    <mat-checkbox class="Remember">Remember me!</mat-checkbox>
+                                </div>
+                                <div class="col-12 md:col-6 md:text-right">
+                                    <a class="no-underline text-right cursor-pointer"
+                                    (click)="forgotPassword()">Forgot
+                                    password?</a>
+                                </div>
+                                <div class="col-12">
+                                    <button pbutton="" (click)="login()" pripple="" label="Sign In"
+                                        class="p-element w-full p-button p-component p-button-custom">
+                                        <span class="p-button-icon p-button-icon-left"
+                                            aria-hidden="true"></span>
+                                        <span class="p-button-label">Login to account</span><span class="p-ink"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- <div class="grid">
+                                <div class="col-12 md:col-6 flex align-items-center">
+                                    <p-checkbox id="rememberme1" styleclass="mr-2" class="p-element">
+                                        <div class="mr-2 p-checkbox p-component">
+                                            <div class="p-hidden-accessible">
+                                                <input type="checkbox" [value]="check" aria-checked="false">
+                                            </div>
+                                            <div class="p-checkbox-box">
+                                                <span class="p-checkbox-icon"></span>
+                                            </div>
+                                        </div>
+                                    </p-checkbox>
+                                    <label for="rememberme1" class="pl-2">Remember me</label>
+                                </div>
+                                <div class="col-12 md:col-6">
+                                    <button pbutton="" (click)="login()" pripple="" label="Sign In"
+                                        class="p-element w-full p-button p-component p-button-custom">
+                                        <span class="p-button-icon p-button-icon-left"
+                                            aria-hidden="true"></span>
+                                        <span class="p-button-label">Sign In</span><span class="p-ink"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-1 text-right">
+                                <a class="font-medium no-underline text-blue-500 text-right cursor-pointer"
+                                    (click)="forgotPassword()">Forgot
+                                    password?</a>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 lg:col-6 md:col-4">
+                <!-- <img src="assets/images/seniorCitizen.png" class=""> -->
+            </div>
+        </div>
+    </div>
+</div>
+    
+<p-dialog header="Forgot Password" [(visible)]="display" modal="modal"
+showEffect="fade" [style]="{width: '40vw'}"
+[breakpoints]="{'960px': '90vw'}">
+    <div>
+        <label for="email1" class="block text-900 font-medium mb-2">Email</label>
+        <input id="email1" type="text" pInputText [formControl]="emailId"
+            class="p-inputtext p-component p-element w-full mb-3">
+    </div>
+    <span class="submit">
+        <button pButton pRipple label="Submit" class="mr-2 mb-2"(click)="submitFP()"></button>                                            
+        <button pButton pRipple label="Cancel" class="mr-2 mb-2"(click)="cancel()"></button> 
+    </span>
+</p-dialog>

@@ -1,0 +1,134 @@
+<div class="dashboardAdmin">
+    <div class="grid match-height mb-3">
+        <div class="col-12 md:col-4">
+            <div class="card bg-gradient-1">
+                <div class="card-container indigo-container overflow-hidden">
+                    <div class="flex justify-content-between">
+                        <div class="flex-1 md:flex-none">
+                            <h5 class="square-after text-01 f16 ffamily2">Old Age Homes</h5>
+                            <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.oahCount}}</p>
+                        </div>
+                        <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
+                            <i class="pi pi-wallet text-2xl color-011"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 md:col-4">
+            <div class="card bg-gradient-2">
+                <div class="card-container indigo-container overflow-hidden">
+                    <div class="flex justify-content-between">
+                        <div class="flex-1 md:flex-none">
+                            <h5 class="square-after text-01 f16 ffamily2">Hospitals</h5>
+                            <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.hopitalCount}}</p>
+                        </div>
+                        <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
+                            <i class="pi pi-briefcase text-2xl color-011"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 md:col-4">
+            <div class="card bg-gradient-3">
+                <div class="card-container indigo-container overflow-hidden">
+                    <div class="flex justify-content-between">
+                        <div class="flex-1 md:flex-none">
+                            <h5 class="square-after text-01 f16 ffamily2">Senior Citizens</h5>
+                            <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.seniorCitizen.usersCount}}</p>
+                        </div>
+                        <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
+                            <i class="pi pi-clone text-2xl color-011"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 md:col-4">
+            <div class="card bg-gradient-4">
+                <div class="card-container indigo-container overflow-hidden">
+                    <div class="flex justify-content-between">
+                        <div class="flex-1 md:flex-none">
+                            <h5 class="square-after text-01 f14 ffamily2">Mobile-app Installed</h5>
+                            <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.mobappCount}}</p>
+                        </div>
+                        <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
+                            <i class="pi pi-clone text-2xl color-011"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 md:col-4">
+            <div class="card bg-gradient-5">
+                <div class="card-container indigo-container overflow-hidden">
+                    <div class="flex justify-content-between">
+                        <div class="flex-1 md:flex-none">
+                            <h5 class="square-after text-01 f14 ffamily2">Total Helpline calls</h5>
+                            <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.helplineCount}}</p>
+                        </div>
+                        <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
+                            <i class="pi pi-wallet text-2xl color-011"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 md:col-4">
+            <div class="card bg-gradient-6">
+                <div class="card-container indigo-container overflow-hidden">
+                    <div class="flex justify-content-between">
+                        <div class="flex-1 md:flex-none">
+                            <h5 class="square-after text-01 f14 ffamily2">No.of download Schemes</h5>
+                            <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.schemeDownload}}</p>
+                        </div>
+                        <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
+                            <i class="pi pi-wallet text-2xl color-011"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid match-height mb-2">
+        <div class="col-12 md:col-8">
+            <div class="card">
+                <p-chart type="bar" [data]="chartData" [options]="basicOptions"></p-chart>
+            </div>
+        </div>
+        <div class="col-12 md:col-4">
+            <div class="card">
+                <div class="title">Senior Citizen</div>
+                <div class="card-container indigo-container overflow-hidden">
+                    <p-chart type="doughnut" [data]="feedback" [style]="{'width': '40%'}"></p-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Due popup -->
+<p-dialog header="Dues" [(visible)]="dueModal" [modal]="true" [style]="{width: '40vw'}"
+    [breakpoints]="{'960px': '95vw'}" [draggable]="false" [resizable]="false">
+    <div class="grid bg-white">
+        <div class="col-6 md:col-6" routerLink="/main/broadcast-message">
+            <div class="card white border-highlight">
+                <div class="text-center">
+                    <p class="mb-0 text-md font-semibold">
+                     LT
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 md:col-6" routerLink="/main/broadcast-message-view">
+            <div class="card white border-highlight">
+                <div class="text-center">
+                    <p class="mb-0 text-md font-semibold">
+                      HT
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-dialog>

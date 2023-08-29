@@ -1,0 +1,97 @@
+<div class="grid">
+    <div class="col-12 pb-1">
+        <div class="p-2 flex justify-content-between align-items-center">
+            <div>
+                <!-- <h5 class="my-1 text-white">
+                    Hospital
+                </h5> -->
+            </div>
+            <div>
+                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/hospital"><span class="p-button-label">Go to List</span></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 md:col-6">
+        <div class="card" *ngIf="isLoader">
+            <app-loader></app-loader>
+        </div>
+        <div class="card border-0" *ngIf="isNotLoader">
+            <form [formGroup]="hospitalForm">
+                <h5>ADD HOSPITAL</h5>
+                <div class="grid mt-0">
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>District</mat-label>
+                            <mat-select formControlName="district_id" placeholder="Select District">
+                                <mat-option *ngFor="let dict of dictList"
+                                    [value]="dict.id">
+                                    {{dict.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(hospitalForm?.controls?.district_id?.touched && hospitalForm?.controls?.district_id?.errors?.required)">District
+                                is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Hospital Name</mat-label>
+                            <input matInput formControlName="name">
+                            <mat-error *ngIf="(hospitalForm?.controls?.name?.touched && hospitalForm?.controls?.name?.errors?.required)">Hospital name is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0" formArrayName="contact">
+                        <div *ngFor="let contList of contactFormArr.controls; let i = index">
+                            <div class="grid" [formGroupName]="i">
+                                <div class="col-10 pb-0">
+                                    <mat-form-field class="full-width-field">
+                                        <mat-label>Contact No</mat-label>
+                                        <input matInput formControlName="contact">
+                                        <mat-error *ngIf="(hospitalForm?.controls?.contact?.touched && hospitalForm?.controls?.contact?.errors?.required)">Contact is required</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-2 pb-0">
+                                    <div class="flex mt-2 md:mt-3">
+                                        <span (click)="addContact()">
+                                          <i class='pi pi-plus-circle ai-color1 f21'></i>
+                                        </span> &nbsp;&nbsp;
+                                        <span *ngIf="i != 0" (click)="removeContact(i)">
+                                          <i class='pi pi-minus-circle ai-color4 f21'></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Contact No</mat-label>
+                            <input matInput formControlName="contact">
+                            <mat-error *ngIf="(hospitalForm?.controls?.contact?.touched && hospitalForm?.controls?.contact?.errors?.required)">Contact is required</mat-error>
+                        </mat-form-field>
+                    </div> -->
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email">
+                            <mat-error *ngIf="(hospitalForm?.controls?.email?.touched && hospitalForm?.controls?.email?.errors?.required)">Email is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Address</mat-label>
+                            <textarea matInput formControlName="address"></textarea>
+                            <mat-error *ngIf="(hospitalForm?.controls?.address?.touched && hospitalForm?.controls?.address?.errors?.required)">Address is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-slide-toggle [checked]="Toggleactive">Active</mat-slide-toggle>
+                    </div>
+                </div>
+                <div class="field text-right">
+                    <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="saveDetails()"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

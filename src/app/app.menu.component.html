@@ -1,0 +1,20 @@
+<div class="menu-wrapper" [ngClass]="{'layout-sidebar-active': appMain.sidebarActive}"
+     (click)="appMain.onSidebarClick($event)" (mouseover)="appMain.onSidebarMouseOver($event)" (mouseleave)="appMain.onSidebarMouseLeave($event)">
+    <div class="sidebar-logo justify-content-start pl-4 pt-1">
+        <a>
+            <img src="assets/images/logo/logo.png" alt="flogo" class="border-rounded">
+        </a>
+        <div class="pl-3">
+            <h6 class="mb-0 font-bold text-white">SENIOR CITIZEN</h6>
+            <p class="mb-0 text-xs text-white mt-1">{{myDate | date: 'MMM d, y'}}</p>
+        </div>
+        <!-- <a href="#" class="sidebar-pin" (click)="appMain.onToggleMenu($event)">
+            <span class="pin"></span>
+        </a> -->
+    </div>
+    <div class="layout-menu-container mx-2 mt-4">
+        <ul class="layout-menu">
+            <li app-menuitem *ngFor="let item of model; let i = index;" [item]="item" [index]="i" [root]="true"></li>
+        </ul>
+    </div>
+</div>

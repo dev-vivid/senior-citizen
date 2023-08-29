@@ -1,0 +1,34 @@
+<div class="grid">
+    <div class="col-12 pb-1">
+        <div class="flex justify-content-between">
+            <div class="px-2 md:px-4 bg-white flex justify-content-between align-items-center">
+                <h5 class="my-0 color-devil">
+                    Medical Information
+                </h5>
+                <div class="md:ml-3">
+                    <button pbutton="" type="button" label="View" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/medical-add"><span class="p-button-label">ADD</span></button>
+                </div>
+            </div>
+            <div class="flex px-2">
+                <form [formGroup]="searchForm">
+                    <mat-form-field class="mr-3" appearance="standard">
+                        <mat-label class="text-blue-700 font-bold">Medical Type</mat-label>
+                        <mat-select formControlName="medical_type_id" placeholder="Select Medical Type">
+                            <mat-option *ngFor="let medicalType of medicalTypeList"
+                                [value]="medicalType.id">
+                                {{medicalType.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <i class="pi pi-search f20 text-orange" (click)="searchDetails()"></i>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 text-center" *ngIf="isLoader">
+        <app-loader></app-loader>
+    </div>
+    <div class="col-12 pt-0" *ngIf="isNotLoader">
+        <app-dynamic-table [dynamaicTableData]="dynamaicTableData" (delete)="deleteRecord($event)" (edit)="editRecord($event)"></app-dynamic-table>
+    </div>
+</div>

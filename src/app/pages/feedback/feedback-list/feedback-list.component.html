@@ -1,0 +1,20 @@
+<div class="grid">
+    <div class="col-12 pb-1">
+        <div class="p-2 flex justify-content-between align-items-center">
+            <div>
+                <h5 class="my-1 color-devil">
+                    Feedback Information
+                </h5>
+            </div>
+            <div>
+                <!-- <button pbutton="" type="button" label="View" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/"><span class="p-button-label">ADD</span></button> -->
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isLoader">
+        <app-loader></app-loader>
+    </div>
+    <div class="col-12 pt-0" *ngIf="isNotLoader">
+        <app-dynamic-report-table [dynamaicTableData]="dynamaicTableData"></app-dynamic-report-table>
+    </div>
+</div>

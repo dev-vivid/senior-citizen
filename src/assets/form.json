@@ -1,0 +1,1636 @@
+{
+  "beat":{
+    "formHeader":"Beat Creation",
+    "controls": [
+      {
+        "name": "typeOfBeat",
+        "label": "Type Of Beat",
+        "value": "",
+        "active":true,
+        "displayOrder":1,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"general",
+            "displayName":"General Beat"
+        },
+        {
+            "id":2,
+            "key":"route",
+            "displayName":"Route Beat"
+        },
+        {
+            "id":3,
+            "key":"zone",
+            "displayName":"Zone Beat"
+        },
+        {
+          "id":4,
+          "key":"picketing",
+          "displayName":"Picketing Beat"
+      },
+      {
+        "id":5,
+        "key":"bandobust ",
+        "displayName":"Check Post Beat"
+    },
+    {
+      "id":6,
+      "key":"traffic",
+      "displayName":"Traffic Beat"
+  }],
+        "validators": {  "required": true}
+      },
+
+      {
+        "name": "officers",
+        "label": "Officers",
+        "value": "",
+        "active":true,
+        "displayOrder":1,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"saravanan",
+            "displayName":"Saravanan"
+        },
+        {
+            "id":2,
+            "key":"ram",
+            "displayName":"Ram"
+        },
+        {
+            "id":3,
+            "key":"selvam",
+            "displayName":"Selvam"
+        },
+        {
+          "id":4,
+          "key":"balaji",
+          "displayName":"Balaji"
+      },
+      {
+        "id":5,
+        "key":"arjun ",
+        "displayName":"arjun"
+    },
+    {
+      "id":6,
+      "key":"asif",
+      "displayName":"Asif"
+  }],
+        "validators": {  "required": true}
+      },
+   
+         
+        {
+        "name": "startDate",
+        "label": "Start Date",
+        "value": "",
+        "active":true,
+        "displayOrder":1,
+        "type": "date",
+        "validators": {
+          "required": true
+        }
+      },
+      
+      {
+        "name": "endDate",
+        "label": "End date",
+        "value": "",
+        "active":true,
+        "displayOrder":1,
+        "type": "date",
+        "validators": {
+          "required": true
+        }
+      },
+      {
+        "name": "startLocation",
+        "label": "Start Location",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "endLocation",
+        "label": "End Location",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "notes",
+        "label": "Notes",
+        "value": "",
+        "active":true,
+        "displayOrder":2,
+        "type": "textarea",
+        "validators": {"required": false,
+          "maxLength": 1000 }
+      }, 
+      {
+        "name": "document",
+        "label": "Attach Documents",
+        "value": [],
+        "active":true,
+        "displayOrder":10,
+        "type": "file",
+        "validators": {}
+      }
+    ]
+  },
+  "user":{
+    "formHeader":"User Form",
+    "controls": [
+      {
+        "name": "firstName",
+        "label": "First Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 50 
+        }
+      },
+      {
+        "name": "lastName",
+        "label": "Last Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 50 
+        }
+      },
+      {
+        "name": "middleName",
+        "label": "Middle Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":4,
+        "validators": {
+          "required": false,
+          "maxLength": 50 
+        }
+      },
+      {
+        "name": "gpfCpsNo",
+        "label": "GPF/CPS No",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":5,
+        "validators": {
+          "required": true,
+          "maxLength": 50 
+        }
+      },
+      {
+        "name": "rank",
+        "label": "Rank",
+        "value": "",
+        "active":true,
+        "displayOrder":12,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"inspector",
+            "displayName":"Inspector"
+        }
+       ],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "phone",
+        "label": "Phone Number",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":7,
+        "validators": {
+          "required": true,
+          "maxLength": 15 
+        }
+      },
+      {
+        "name": "email",
+        "label": "Email",
+        "value": "",
+        "type": "email",
+        "active":true,
+        "displayOrder":8,
+        "validators": {
+          "required": true,
+          "maxLength": 150 
+        }
+      },
+      {
+        "name": "address",
+        "label": "Address",
+        "value": "",
+        "active":true,
+        "displayOrder":9,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 1000 
+        }
+      }, 
+      {
+        "name": "district",
+        "label": "District",
+        "value": "",
+        "active":true,
+        "displayOrder":10,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"chennai",
+            "displayName":"Chennai"
+        }
+       ],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "policeStation",
+        "label": "Police Station",
+        "value": "",
+        "active":true,
+        "displayOrder":11,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"c1-Flower",
+            "displayName":"C1-Flower Bazzar PS"
+        }
+       ],
+        "validators": {  "required": true}
+      },
+      
+      {
+        "name": "role",
+        "label": "Role",
+        "value": "",
+        "active":true,
+        "displayOrder":12,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"stationHeadOfficer",
+            "displayName":"Station Head Officer"
+        }
+       ],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":13,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      },
+      {
+        "name": "document",
+        "label": "Upload Photo",
+        "value": [],
+        "active":true,
+        "displayOrder":17,
+        "type": "file",
+        "validators": {}
+      }
+    ]
+  },
+  "role":{
+    "formHeader":"Role Form",
+    "controls": [
+      {
+        "name": "rolename",
+        "label": "Role Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      }, {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      }, {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":5,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "rank":{
+    "formHeader":"Rank Form",
+    "controls": [
+      {
+        "name": "rankname",
+        "label": "rank Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      }, {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      }, {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":5,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "zone":{
+    "formHeader":"Zone Form",
+    "controls": [
+      {
+        "name": "zonename",
+        "label": "Zone Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      }, {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":5,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "range":{
+    "formHeader":"Range Form",
+    "controls": [
+      {
+        "name": "rangename",
+        "label": "Range Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "zoneid",
+        "label": "Zone ID",
+        "value": "",
+        "active":true,
+        "displayOrder":3,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"zoneID",
+            "displayName":"Zone ID"
+        }],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":4,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":5,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      },
+      {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":6,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "district":{
+    "formHeader":"District Form",
+    "controls": [
+      {
+        "name": "districtname",
+        "label": "District Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "zoneid",
+        "label": "Zone ID",
+        "value": "",
+        "active":true,
+        "displayOrder":3,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"zoneID",
+            "displayName":"Zone ID"
+        }],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "rangeid",
+        "label": "Range ID",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"rangeID",
+            "displayName":"Range ID"
+        }],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":5,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":6,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      },
+      {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":7,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "subdivision":{
+    "formHeader":"Subdivision Form",
+    "controls": [
+      {
+        "name": "subdivisionname",
+        "label": "Subdivision Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "zoneid",
+        "label": "Zone ID",
+        "value": "",
+        "active":true,
+        "displayOrder":3,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"zoneID",
+            "displayName":"Zone ID"
+        }],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "rangeid",
+        "label": "Range ID",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"rangeID",
+            "displayName":"Range ID"
+        }],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "districtid",
+        "label": "District ID",
+        "value": "",
+        "active":true,
+        "displayOrder":5,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"districtID",
+            "displayName":"District ID"
+        }],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":6,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":7,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      },
+      {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":8,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "policestation":{
+    "formHeader":"Police Station Form",
+    "controls": [
+      {
+        "name": "policestationname",
+        "label": "Police Station Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "zoneid",
+        "label": "Zone ID",
+        "value": "",
+        "active":true,
+        "displayOrder":3,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"zoneID",
+            "displayName":"Zone ID"
+        }],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "rangeid",
+        "label": "Range ID",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"rangeID",
+            "displayName":"Range ID"
+        }],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "districtid",
+        "label": "District ID",
+        "value": "",
+        "active":true,
+        "displayOrder":5,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"districtID",
+            "displayName":"District ID"
+        }],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "subdivisionid",
+        "label": "Subdivision ID",
+        "value": "",
+        "active":true,
+        "displayOrder":6,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"subdivisionID",
+            "displayName":"Subdivision ID"
+        }],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":7,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":8,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      },
+      {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":9,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "documentsubmission":{
+    "formHeader":"Document-submission Form",
+    "controls": [
+      {
+        "name": "documentsubmissionname",
+        "label": "Document Submission Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      }, {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      }, {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":5,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "incidentreport":{
+    "formHeader":"Incident-report Form",
+    "controls": [
+      {
+        "name": "incidentreportname",
+        "label": "Incident Report Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      }, {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      }, {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":5,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "warranttype":{
+    "formHeader":"Warrant Type Form",
+    "controls": [
+      {
+        "name": "warranttypename",
+        "label": "Warrant Type Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      }, {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      }, {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":5,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "premises":{
+    "formHeader":"Premises Form",
+    "controls": [
+      {
+        "name": "premisesname",
+        "label": "Premises Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      }, {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      }, {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":5,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "premisescheck":{
+    "formHeader":"Premises Check Form",
+    "controls": [
+      {
+        "name": "premisescheckname",
+        "label": "Premises Check Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      }, {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      }, {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":5,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "policeverification":{
+    "formHeader":"Police Verification Form",
+    "controls": [
+      {
+        "name": "policeverificationname",
+        "label": "Police Verification Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      }, {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      }, {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":5,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "tappal":{
+    "formHeader":"Tappal Service Form",
+    "controls": [
+      {
+        "name": "tappalservicename",
+        "label": "Tappal Service Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "maxLength": 100 
+        }
+      },
+      {
+        "name": "code",
+        "label": "Code",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":3,
+        "validators": {
+          "required": true,
+          "maxLength": 3 
+        }
+      }, {
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "active":true,
+        "displayOrder":4,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 250 
+        }
+      }, {
+        "name": "active",
+        "label": "active",
+        "value": "false",
+        "displayOrder":5,
+        "active":true,
+        "type": "checkbox",
+        "validators": {}
+      }
+    ]
+  },
+  "personCheck":{
+    "formHeader":"Person Check",
+    "controls": [
+      {
+        "name": "idType",
+        "label": "ID Type",
+        "value": "",
+        "active":true,
+        "displayOrder":1,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"aadhar",
+            "displayName":"Aadhar"
+        },
+        {
+            "id":2,
+            "key":"dl",
+            "displayName":"Driving License"
+        },
+        {
+            "id":3,
+            "key":"rationCard",
+            "displayName":"Ration Card"
+        },
+        {
+          "id":4,
+          "key":"voterId",
+          "displayName":"Voter ID"
+      },
+      {
+        "id":5,
+        "key":"passport ",
+        "displayName":"Passport"
+    },
+    {
+      "id":6,
+      "key":"pan",
+      "displayName":"PAN Card"
+  }],
+        "validators": {  "required": true}
+      },
+
+      {
+        "name": "idNo",
+        "label": "ID No",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },
+      {
+        "name": "name",
+        "label": "Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },
+      {
+        "name": "fname",
+        "label": "Father Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },
+
+      {
+        "name": "age",
+        "label": "Age",
+        "value": "",
+        "active":true,
+        "displayOrder":2,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"a1",
+            "displayName":"18-25"
+        },
+        {
+            "id":2,
+            "key":"a2",
+            "displayName":"25-30"
+        },
+        {
+            "id":3,
+            "key":"a3",
+            "displayName":"30-40"
+        }
+       ],
+        "validators": {  "required": true}
+      },
+   
+      {
+        "name": "sex",
+        "label": "Sex",
+        "value": "",
+        "active":true,
+        "displayOrder":2,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"male",
+            "displayName":"Male"
+        },
+        {
+            "id":2,
+            "key":"female",
+            "displayName":"Female"
+        },
+        {
+            "id":3,
+            "key":"tg",
+            "displayName":"Trans-Gender"
+        }
+       ],
+        "validators": {  "required": true}
+      },
+         
+      
+      {
+        "name": "notes",
+        "label": "Notes",
+        "value": "",
+        "active":true,
+        "displayOrder":2,
+        "type": "textarea",
+        "validators": {}
+      }
+    ]
+   
+  },
+  "vehicleCheck":{
+    "formHeader":"Vehicle Check",
+    "controls": [
+     
+      {
+        "name": "regNo",
+        "label": "Registeration No",
+        "value": "TN01AB1234",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 6 
+        }
+      }
+     
+    ]
+   
+  },
+  "policeVerification":{
+    "formHeader":"Police Verification",
+    "controls": [
+      
+
+      {
+        "name": "pvn",
+        "label": "Police Verifiication Number",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },
+      {
+        "name": "name",
+        "label": "Name Of the Application",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },
+      {
+        "name": "pname",
+        "label": "Parent / Guardian Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },
+
+      {
+        "name": "age",
+        "label": "Age",
+        "value": "",
+        "active":true,
+        "displayOrder":2,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"a1",
+            "displayName":"18-25"
+        },
+        {
+            "id":2,
+            "key":"a2",
+            "displayName":"25-30"
+        },
+        {
+            "id":3,
+            "key":"a3",
+            "displayName":"30-40"
+        }
+       ],
+        "validators": {  "required": true}
+      },
+   
+      {
+        "name": "address",
+        "label": "Address",
+        "value": "",
+        "active":true,
+        "displayOrder":9,
+        "type": "textarea",
+        "validators": {
+          "required": true,
+          "maxLength": 1000 
+        }
+      }, 
+      {
+        "name": "district",
+        "label": "District",
+        "value": "",
+        "active":true,
+        "displayOrder":10,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"chennai",
+            "displayName":"Chennai"
+        }
+       ],
+        "validators": {  "required": true}
+      },
+         
+      {
+        "name": "reason",
+        "label": "Pupose / Reason of Visit",
+        "value": "",
+        "active":true,
+        "displayOrder":2,
+        "type": "textarea",
+        "validators": {"required": true}
+      }, 
+      {
+        "name": "remarks",
+        "label": "Remarks",
+        "value": "",
+        "active":true,
+        "displayOrder":2,
+        "type": "textarea",
+        "validators": {}
+      }, 
+      {
+        "name": "document",
+        "label": "Attach Documents",
+        "value": [],
+        "active":true,
+        "displayOrder":10,
+        "type": "file",
+        "validators": {}
+      }
+    ]
+   
+  },
+  "tappalDuty":{
+    "formHeader":"Tapal Duty",
+    "controls": [
+      
+
+      {
+        "name": "tapalNo",
+        "label": "Tapal Number",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },
+      {
+        "name": "tapalType",
+        "label": "Tapal Type",
+        "value": "",
+        "active":true,
+        "displayOrder":2,
+        "type": "dropdown",
+        "valueOptions":[{
+            "id":1,
+            "key":"court",
+            "displayName":"Court Tapal"
+        }
+       
+       ],
+        "validators": {  "required": true}
+      },
+      {
+        "name": "deliveryLocation",
+        "label": "Delivery Location",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":2,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },  
+     
+      {
+        "name": "comments",
+        "label": "Comments",
+        "value": "",
+        "active":true,
+        "displayOrder":2,
+        "type": "textarea",
+        "validators": {}
+      }, 
+      {
+        "name": "document",
+        "label": "Attach Documents",
+        "value": [],
+        "active":true,
+        "displayOrder":10,
+        "type": "file",
+        "validators": {}
+      }
+    ]
+   
+  },
+  "personcheck":{
+    "formHeader":"Person Check",
+    "controls": [
+      {
+        "name": "pname",
+        "label": "Person Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 6 
+        }
+      },
+      {
+        "name": "checkingNo",
+        "label": "Checking Number",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },
+      {
+        "name": "place",
+        "label": "Place",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      }
+    ]
+  },
+  "vehiclecheck":{
+    "formHeader":"Vehicle Check",
+    "controls": [
+      {
+        "name": "pname",
+        "label": "Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 6 
+        }
+      },
+      {
+        "name": "checkingNo",
+        "label": "Vehicle Number",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },
+      {
+        "name": "place",
+        "label": "Place",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      }
+    ]
+  },
+  "personvehiclecheck":{
+    "formHeader":"Person & Vehicle Check",
+    "controls": [
+      {
+        "name": "pname",
+        "label": "Person Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 6 
+        }
+      },
+      {
+        "name": "pname",
+        "label": "Vehicle Name",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 6 
+        }
+      },
+      {
+        "name": "checkingNo",
+        "label": "Checking Number",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      },
+      {
+        "name": "place",
+        "label": "Place",
+        "value": "",
+        "type": "text",
+        "active":true,
+        "displayOrder":1,
+        "validators": {
+          "required": true,
+          "minLength": 10 
+        }
+      }
+    ]
+  }
+  }

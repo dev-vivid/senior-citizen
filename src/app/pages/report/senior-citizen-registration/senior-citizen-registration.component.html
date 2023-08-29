@@ -1,0 +1,30 @@
+<div class="grid">
+    <div class="col-12 md:col-5" *ngIf="searchForm">
+        <div class="card border-0">
+            <h5>Reports</h5>
+            <p class="text-400">Between Dates Report of Senior Citizen Registration</p>
+            <form [formGroup]="searchReportForm">
+                <div class="p-fluid grid formgrid">
+                    <div class="field col-12 md:col-10">
+                        <label for="from">From Date</label>
+                        <p-calendar [showIcon]="true" inputId="from" formControlName="fromDate" dateFormat="dd-mm-yy"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-10">
+                        <label for="to">To Date</label>
+                        <p-calendar [showIcon]="true" inputId="to" formControlName="toDate" dateFormat="dd-mm-yy"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="saveDetails()"></button>
+                        <!-- <button (click)="reset()" type="button" class="btn btn-secondary btn-raised btn-round ml-12" >Reset</button> -->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-12 md:col-7" *ngIf="isNotLoader">
+        <app-dynamic-report-table [dynamaicTableData]="dynamaicTableData"></app-dynamic-report-table>
+    </div>
+    <div class="col-12" *ngIf="ksLoader">
+        <app-loader></app-loader>
+    </div>
+</div>

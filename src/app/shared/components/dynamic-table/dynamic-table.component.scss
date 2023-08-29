@@ -1,0 +1,16 @@
+.p-datatable .p-datatable-thead > tr > th {
+    text-align: left;
+    padding: 0.5rem 0.5rem;
+    // border: 1px solid rgba(70, 77, 242, 0.2);
+    border-width: 0 0 1px 0;
+    font-weight: 600;
+    // background: var(--primary-lighter-color);
+    // background: var(--primary-color) !important;
+    // color: var(--primary-color-text) !important; 
+}
+.badge-green {
+    padding: 1px 3px;
+    background-color: var(--green-500) !important;
+    color: #fff;
+    border-radius: 5px;
+}

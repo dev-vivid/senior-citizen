@@ -1,0 +1,113 @@
+<div class="grid">
+    <div class="col-12 pb-1">
+        <div class="p-2 flex justify-content-between align-items-center">
+            <div>
+                <!-- <h5 class="my-1 text-white">
+                    Officer
+                </h5> -->
+            </div>
+            <div>
+                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/officer"><span class="p-button-label">Go to List</span></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 md:col-6">
+        <div class="card" *ngIf="isLoader">
+            <app-loader></app-loader>
+        </div>
+        <div class="card border-0" *ngIf="isNotLoader">
+            <h5>ADD OFFICER</h5>
+            <form [formGroup]="officerForm">
+                <div class="grid mt-0">
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Officer Type</mat-label>
+                            <mat-select formControlName="officer_id" placeholder="Select Officer Type">
+                                <mat-option *ngFor="let offType of offTypeList"
+                                    [value]="offType.id">
+                                    {{offType.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(officerForm?.controls?.officer_id?.touched && officerForm?.controls?.officer_id?.errors?.required)">Officer
+                                is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>District</mat-label>
+                            <mat-select formControlName="district_id" placeholder="Select District">
+                                <mat-option *ngFor="let dict of dictList"
+                                    [value]="dict.id">
+                                    {{dict.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(officerForm?.controls?.district_id?.touched && officerForm?.controls?.district_id?.errors?.required)">District
+                                is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Officer Name</mat-label>
+                            <input matInput formControlName="name">
+                            <mat-error *ngIf="(officerForm?.controls?.name?.touched && officerForm?.controls?.name?.errors?.required)">Officer is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0" formArrayName="contact">
+                        <!-- <button type="button" (click)="addMore()" class="btn btn-primary">Add More</button> -->
+                        <div *ngFor="let contList of contactFormArr.controls; let i = index">
+                            <div class="grid" [formGroupName]="i">
+                                <div class="col-10 pb-0">
+                                    <mat-form-field class="full-width-field">
+                                        <mat-label>Contact No</mat-label>
+                                        <input matInput formControlName="contact">
+                                        <!-- <mat-error *ngIf="(officerForm?.controls?.contact?.touched && officerForm?.controls?.contact?.errors?.required)">Contact is required</mat-error> -->
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-2 pb-0">
+                                    <div class="flex mt-2 md:mt-3">
+                                        <!-- <label style="margin-bottom: 24px;">Add More</label> -->
+                                        <span (click)="addContact()">
+                                          <i class='pi pi-plus-circle ai-color1 f21'></i>
+                                        </span> &nbsp;&nbsp;
+                                        <span *ngIf="i != 0" (click)="removeContact(i)">
+                                          <i class='pi pi-minus-circle ai-color4 f21'></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Fax</mat-label>
+                            <input matInput formControlName="fax">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email">
+                            <mat-error *ngIf="(officerForm?.controls?.email?.touched && officerForm?.controls?.email?.errors?.required)">Email is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Address</mat-label>
+                            <textarea matInput formControlName="address"></textarea>
+                            <mat-error *ngIf="(officerForm?.controls?.address?.touched && officerForm?.controls?.address?.errors?.required)">Address is required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-slide-toggle [checked]="Toggleactive">Active</mat-slide-toggle>
+                    </div>
+                </div>
+                <div class="col-12 text-right">
+                    <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="saveDetails()"></button>
+                    <!-- <button (click)="reset()" type="button" class="btn btn-secondary btn-raised btn-round ml-12" >Reset</button> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
