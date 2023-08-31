@@ -6,6 +6,7 @@ import { AppErrorComponent } from './pages/app.error.component';
 import { AppAccessdeniedComponent } from './pages/app.accessdenied.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthenticationGuard } from './authentication.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
     { path: '', redirectTo:"login", pathMatch:'full' },
@@ -36,7 +37,11 @@ const routes: Routes = [
             {
                 path: 'report', loadChildren: () => import('./pages/report/report.module').then(m => m.ReportModule),
                 canActivate: [AuthenticationGuard]
-            }
+            },
+            {
+                path: 'profile',
+                component: ProfileComponent
+            },
         ]
     },
     { path: 'error', component: AppErrorComponent },
