@@ -12,7 +12,7 @@ export class DynamicTableComponent implements OnInit,OnChanges {
   cols: any[];
   tableData:any[]=[];
   loading: boolean;
-  searchHeader: any[] = ['firstName','gpfCpsNo'];
+  searchHeader: any[] = ['firstName','gpfCpsNo','name','scheme_name','government'];
   @Input() dynamaicTableData = {
     cols:[],
     values:[]

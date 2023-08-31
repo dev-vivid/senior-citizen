@@ -1,0 +1,28 @@
+
+<main class="row-container">
+<div class="card">
+<img src="../../../assets/images/logo/User-Profile-PNG-Image.png" alt="User image" class="card__image" />
+<div class="card__text">
+  <h2>{{userData.data.username}}</h2>
+  <p></p>
+</div>
+<ul class="card__info">
+  <li>
+    <span class="card__info__stats">{{userData.data.firstName}}</span>
+    <span>FirstName</span>
+  </li>
+  <li>
+    <span class="card__info__stats">{{userData.data.lastName}}</span>
+    <span>LastName</span>
+  </li>
+  <li>
+    <span class="card__info__stats">{{userData.data.roleTypeName}}</span>
+    <span>UserProfile</span>
+  </li>
+</ul>
+<div class="card__action">
+    <button pbutton=""style="width:90%;" type="button" label="View" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main"><span class="p-button-label">Go Back</span></button>
+</div>
+</div>
+</main>
+

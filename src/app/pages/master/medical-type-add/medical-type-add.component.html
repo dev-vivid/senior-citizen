@@ -19,6 +19,15 @@
             <h5>ADD ALTERNATVIE MEDICAL TYPE</h5>
             <form [formGroup]="medicalTypeForm">
                 <div class="grid mt-0">
+
+                    <!-- <div class="col-12 md:col-12 pb-0" style="justify-content: flex-end;" >
+                        <div *ngIf="selectedFile" class="image-preview" >
+                            <img  [src]="selectedFilePreview" alt="Selected Image" class="preview-image">
+                          </div>
+                          <div class="mt-2">
+                        <input type="file"  formControlName="image" (change)="onFileSelected($event)" accept="image/*" class="file-input">
+                          </div>    
+                      </div> -->
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
                             <mat-label>Name</mat-label>

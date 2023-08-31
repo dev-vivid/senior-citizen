@@ -27,6 +27,7 @@ import { MessageService, SharedModule } from 'primeng/api';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MaterialModule } from './shared/modules/material/material.module';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
     imports: [
@@ -58,7 +59,8 @@ import { MaterialModule } from './shared/modules/material/material.module';
         AppNotfoundComponent,
         AppErrorComponent,
         AppAccessdeniedComponent,
-        LoginComponent
+        LoginComponent,
+        ProfileComponent
     ],
     providers: [
         { provide: LOCALE_ID, useValue: "en-IN" },

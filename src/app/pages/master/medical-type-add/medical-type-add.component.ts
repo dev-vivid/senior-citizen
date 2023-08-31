@@ -18,6 +18,8 @@ export class MedicalTypeAddComponent implements OnInit {
   isLoader: boolean;
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
+   selectedFile: File | null = null;
+  selectedFilePreview: string | ArrayBuffer | null = null;
 
   constructor(private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
 
@@ -27,6 +29,24 @@ export class MedicalTypeAddComponent implements OnInit {
     if(this.editMasterId > 0){
       this.editMasterForm();
     }
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
+    this.previewSelectedImage();
+  }
+
+  previewSelectedImage() {
+    if (!this.selectedFile) {
+      this.selectedFilePreview = null;
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.selectedFilePreview = e.target.result;
+    };
+    reader.readAsDataURL(this.selectedFile);
   }
 
   initManufacturerForm(){

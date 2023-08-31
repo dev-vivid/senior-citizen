@@ -10,7 +10,7 @@ import { Table } from 'primeng/table';
 export class DynamicReportTableComponent implements OnInit {
   cols: any[];
   tableData:any[]=[];
-  searchHeader: any[] = ['uid','uname'];
+  searchHeader: any[] = ['uid','uname','government'];
   loading: boolean;
   @Input() dynamaicTableData = {
     cols:[],

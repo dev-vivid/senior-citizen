@@ -14,13 +14,13 @@
                     <mat-form-field class="mr-3" appearance="standard">
                         <mat-label class="text-blue-700 font-bold">Medical Type</mat-label>
                         <mat-select formControlName="medical_type_id" placeholder="Select Medical Type">
-                            <mat-option *ngFor="let medicalType of medicalTypeList"
+                            <mat-option *ngFor="let medicalType of medicalTypeList" (click)="searchDetails()"
                                 [value]="medicalType.id">
                                 {{medicalType.name}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <i class="pi pi-search f20 text-orange" (click)="searchDetails()"></i>
+                    <!-- <i class="pi pi-search f20 text-orange" ></i> -->
                 </form>
             </div>
         </div>

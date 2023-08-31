@@ -14,13 +14,13 @@
                     <mat-form-field class="mr-3" appearance="standard">
                         <mat-label class="text-blue-700 font-bold">Old-age Type</mat-label>
                         <mat-select formControlName="oah_type" placeholder="Select old age type">
-                            <mat-option *ngFor="let oType of oahType"
+                            <mat-option *ngFor="let oType of oahType" (click)="searchDetails()"
                                 [value]="oType.id">
                                 {{oType.name}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <i class="pi pi-search f20 text-orange" (click)="searchDetails()"></i>
+                    <i class="pi pi-search f20 text-orange" ></i>
                 </form>
             </div>
         </div>

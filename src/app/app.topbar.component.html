@@ -1,9 +1,12 @@
 <div class="layout-topbar">
     <div class="layout-topbar-wrapper">
         <div class="layout-topbar-left">
-            <a tabindex="0" class="menu-button" (click)="appMain.onMenuButtonClick($event)">
-                <i class="pi pi-bars"></i>
-            </a>
+            <a tabindex="0" class="menu-button"
+            onmouseover="this.querySelector('i').style.color = 'black';"
+            onmouseout="this.querySelector('i').style.color = 'white';"
+            (click)="appMain.onMenuButtonClick($event)">
+             <i style="color:white" class="pi pi-bars"></i>
+         </a>
             <a tabindex="0" id="logo-link" class="layout-topbar-logo" (click)="appMain.onMenuButtonClick($event)">
                 <!-- <img [src]="'assets/layout/images/logo-' + (app.topbarTheme === 'dark' ? 'freya-white' : 'freya') + '.svg'"
                     alt="freya-layout" /> -->

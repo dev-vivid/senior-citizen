@@ -23,7 +23,7 @@ export class HospitalAddComponent implements OnInit {
       district_id: ['', Validators.required],
       name: ['', Validators.required],
       contact: this.fb.array([]),
-      email: ['', Validators.required],
+      email: [''],
       address: ['', Validators.required]
     });
   }

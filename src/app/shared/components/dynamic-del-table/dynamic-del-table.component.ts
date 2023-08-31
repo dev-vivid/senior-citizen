@@ -10,7 +10,7 @@ export class DynamicDelTableComponent implements OnInit {
   cols: any[];
   tableData:any[]=[];
   loading: boolean;
-  searchHeader: any[] = ['firstName','gpfCpsNo'];
+  searchHeader: any[] = ['firstName','gpfCpsNo','government','scheme_name'];
   @Input() dynamaicTableData = {
     cols:[],
     values:[]

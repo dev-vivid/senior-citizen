@@ -14,13 +14,13 @@
                     <mat-form-field class="mr-3" appearance="standard">
                         <mat-label class="text-blue-700 font-bold">Officer Type</mat-label>
                         <mat-select formControlName="officer_id" placeholder="Select Officer Type">
-                            <mat-option *ngFor="let offType of offTypeList"
+                            <mat-option *ngFor="let offType of offTypeList" (click)="searchDetails()"
                                 [value]="offType.id">
                                 {{offType.name}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <i class="pi pi-search f20 text-orange" (click)="searchDetails()"></i>
+                    <!-- <i class="pi pi-search f20 text-orange" ></i> -->
                 </form>
             </div>
         </div>
