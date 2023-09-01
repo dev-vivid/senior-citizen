@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: 'app-feedback-list',
@@ -14,7 +15,7 @@ export class FeedbackListComponent implements OnInit {
   isLoader: boolean;
   isNotLoader: boolean;
 
-  constructor(private formService: FormService, private router: Router) { }
+  constructor(private formService: FormService, private router: Router,private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.getList();
@@ -23,11 +24,21 @@ export class FeedbackListComponent implements OnInit {
   getList() {
     this.isLoader = true;
     this.formService.getfeedbackList().subscribe((resp: any) => {
+      if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         console.log("Data-", this.dynamaicTableData)
         this.isNotLoader = true;
         this.isLoader = false;
-    });
+      }
+       else {
+          this.sharedService.showError('Error');
+        }
+      },
+      (error) => {
+        this.sharedService.showError('Error');
+      }
+    )
+  };
   }
 
-}
+

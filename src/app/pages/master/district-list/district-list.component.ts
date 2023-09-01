@@ -24,11 +24,19 @@ export class DistrictListComponent implements OnInit {
   getList() {
     // this.isLoader = true;
     this.formService.getDistrict().subscribe((resp: any) => {
+      if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         // this.isNotLoader = true;
         // this.isLoader = false;
-    });
+    }else {
+      this.sharedService.showError('Error');
+    }
+  },
+  (error) => {
+    this.sharedService.showError('Error');
   }
+)
+};
 
   deleteRecord(dictId:number){
     const dataKey = { districtId: dictId };

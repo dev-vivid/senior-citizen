@@ -37,49 +37,68 @@ export class AdminHomeComponent implements OnInit {
   }
 
   getAdminDashboard() {
-    this.formService.getAdminDashboard().subscribe((resp: any) => {
-      this.dbCount = resp.data;
-      const scCount = resp.data.seniorCitizen;
-      // seniorCitizen.usersCount
-      this.feedback = {
-        labels: ['Male','Female'],
-        datasets: [
-            {
+    this.formService.getAdminDashboard().subscribe(
+      (resp: any) => {
+        if (resp.status = 200) {
+          this.dbCount = resp.data;
+          const scCount = resp.data.seniorCitizen;
+          this.feedback = {
+            labels: ['Male', 'Female'],
+            datasets: [
+              {
                 data: [scCount.Male, scCount.Female],
                 backgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
+                  "#FF6384",
+                  "#36A2EB",
                 ],
                 hoverBackgroundColor: [
-                    "#FF6384",
-                    "#36A2EB"
-                ]
-            }
-        ]
-      };
-    });
+                  "#FF6384",
+                  "#36A2EB",
+                ],
+              },
+            ],
+          };
+        } else {
+          this.sharedService.showError('Error');
+        }
+      },
+      (error) => {
+        this.sharedService.showError('Error');
+      }
+    );
   }
   
+  
   getchart() {
-    this.formService.getChartData().subscribe((resp: any) => {
-      this.Datapie = resp.data[0];
-      this.chartData = {
-        labels: this.Datapie.labels,
-        datasets: [
-            {
+    this.formService.getChartData().subscribe(
+      (resp: any) => {
+        if (resp.status = 200) {
+          this.Datapie = resp.data[0];
+          this.chartData = {
+            labels: this.Datapie.labels,
+            datasets: [
+              {
                 label: 'Senior Citizen',
                 backgroundColor: '#2a9235',
-                data: this.Datapie.userMonthwise
-            },
-            {
+                data: this.Datapie.userMonthwise,
+              },
+              {
                 label: 'Helpline Calls',
                 backgroundColor: '#FFC107',
-                data: this.Datapie.helplineMonthwise
-            }
-        ]
-      };
-    });
+                data: this.Datapie.helplineMonthwise,
+              },
+            ],
+          };
+        } else {
+          this.sharedService.showError('Error');
+        }
+      },
+      (error) => {
+        this.sharedService.showError('Error');
+      }
+    );
   }
+  
 
 
 }

@@ -25,10 +25,18 @@ export class HospitalListComponent implements OnInit {
   getList() {
     // this.isLoader = true;
     this.formService.getHospitalList().subscribe((resp: any) => {
+      if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         // this.isNotLoader = true;
         // this.isLoader = false;
-    });
+    }else {
+      this.sharedService.showError('Error');
+    }
+  },
+  (error) => {
+    this.sharedService.showError('Error');
+  }
+)
   }
 
   deleteRecord(hospId:number){

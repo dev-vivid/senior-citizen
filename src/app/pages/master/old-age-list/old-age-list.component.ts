@@ -46,10 +46,18 @@ export class OldAgeListComponent implements OnInit {
       "oahId": ''
     }
     this.formService.getOldAgeList(reqData).subscribe((resp: any) => {
+      if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         // this.isNotLoader = true;
         // this.isLoader = false;
-    });
+    }else {
+      this.sharedService.showError('Error');
+    }
+  },
+  (error) => {
+    this.sharedService.showError('Error');
+  }
+)
   }
   //Search_list
   searchDetails() {

@@ -25,11 +25,19 @@ export class MedicalTypeListComponent implements OnInit {
   getList() {
     // this.isLoader = true;
     this.formService.getAlrMedicalType().subscribe((resp: any) => {
+      if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         // console.log("get data", this.dynamaicTableData)
         // this.isNotLoader = true;
         // this.isLoader = false;
-    });
+    }else {
+      this.sharedService.showError('Error');
+    }
+  },
+  (error) => {
+    this.sharedService.showError('Error');
+  }
+)
   }
 
   deleteRecord(mtypeId:number){

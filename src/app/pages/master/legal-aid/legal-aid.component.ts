@@ -25,11 +25,19 @@ export class LegalAidComponent implements OnInit {
   getList() {
     // this.isLoader = true;
     this.formService.getLegalAidList().subscribe((resp: any) => {
+      if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         // this.isNotLoader = true;
         // this.isLoader = false;
-    });
+    }else {
+      this.sharedService.showError('Error');
+    }
+  },
+  (error) => {
+    this.sharedService.showError('Error');
   }
+)
+}
 
   deleteRecord(legalId:number){
     const dataKey = { LegalAidId: legalId };

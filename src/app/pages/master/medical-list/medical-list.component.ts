@@ -45,11 +45,19 @@ export class MedicalListComponent implements OnInit {
       "medicalId": ''
     }
     this.formService.getAlrMedicalList(reqData).subscribe((resp: any) => {
+      if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         // console.log("get data", this.dynamaicTableData)
         // this.isNotLoader = true;
         // this.isLoader = false;
-    });
+    }else {
+      this.sharedService.showError('Error');
+    }
+  },
+  (error) => {
+    this.sharedService.showError('Error');
+  }
+)
   }
   //Search load list
   searchDetails() {
