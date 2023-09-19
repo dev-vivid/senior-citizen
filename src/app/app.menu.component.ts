@@ -36,7 +36,8 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Old age type', routerLink: ['/main/master/oldage-type'] },
                     { label: 'Old age', routerLink: ['/main/master/oldage'] },
                     { label: 'People pharmacy', routerLink: ['/main/master/people-pharmacy'] },
-                    { label: 'Legal aid', routerLink: ['/main/master/legal-aid'] }
+                    { label: 'Legal aid', routerLink: ['/main/master/legal-aid'] },
+                    { label: 'Grievance', routerLink: ['/main/master/grievance'] }
                 ]
             },
             { label: 'Schemes', icon: 'pi pi-envelope', access: '1', routerLink: ['/main/scheme'] },

@@ -20,6 +20,7 @@ import { PeoplePharmacyAddComponent } from './people-pharmacy-add/people-pharmac
 import { PeoplePharmacyComponent } from './people-pharmacy/people-pharmacy.component';
 import { LegalAidAddComponent } from './legal-aid-add/legal-aid-add.component';
 import { LegalAidComponent } from './legal-aid/legal-aid.component';
+import { GrievanceListComponent } from './grievance-list/grievance-list.component';
 
 const routes: Routes = [
   {
@@ -141,7 +142,11 @@ const routes: Routes = [
   {
     path: 'legal-aid',
     component: LegalAidComponent
-  }
+  },
+  {
+    path: 'grievance',
+    component: GrievanceListComponent
+  },
 ];
 
 @NgModule({

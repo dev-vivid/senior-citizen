@@ -140,8 +140,11 @@ export class FormService {
   getOldAgeList(data: any) {
     return this.http.post(`${this.apiUrl}Admin/getOldAgeList`, data); //oahId
   }
-  getAlrMedicalList(data: any) {
+    getAlrMedicalList(data: any) {
     return this.http.post(`${this.apiUrl}Admin/getAlrMedicalList`, data); //medicalId
+  }
+  getGrivanceList(data: any) {
+    return this.http.post(`${this.apiUrl}Admin/getGrievanceList`, data); //medicalId
   }
   getPeoplePharmacyList() {
     return this.http.get(`${this.apiUrl}Admin/getPeoplePharmacyList`);
@@ -234,6 +237,9 @@ export class FormService {
   }
   getAlrMedicalTypeList() {
     return this.http.get(`${this.apiUrl}Admin/getAlrMedicalTypeList`);
+  }
+  getGrivenceTypeList() {
+    return this.http.get(`${this.apiUrl}Admin/getGrievanceTypeList`);
   }
 
 }

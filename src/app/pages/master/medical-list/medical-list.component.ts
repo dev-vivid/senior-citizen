@@ -32,6 +32,7 @@ export class MedicalListComponent implements OnInit {
     this.formService.getAlrMedicalTypeList().subscribe((resp: any) => {
       this.medicalTypeList = resp.data;
       this.medicalTypeList.unshift({id: '', name: 'All'})
+      console.log(resp.data)    
     });
   }
   initManufacturerForm(){
@@ -44,6 +45,7 @@ export class MedicalListComponent implements OnInit {
     const reqData = {
       "medicalId": ''
     }
+
     this.formService.getAlrMedicalList(reqData).subscribe((resp: any) => {
       if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
@@ -63,6 +65,7 @@ export class MedicalListComponent implements OnInit {
   searchDetails() {
     this.isLoader = true;
     this.isNotLoader = false;
+    console.log('MedicalId',this.searchForm.value.medical_type_id)
     const reqData = {
       "medicalId": this.searchForm.value.medical_type_id
     }

@@ -197,6 +197,9 @@ info:enabled:focus, .p-buttonset.p-button-info > .p-button:enabled:focus, .p-spl
 .text-02 {
     color: #F8EDE3;
 }
+.text-03 {
+  color: white !important;
+}
 .text-blue {
     color: #06568e;
 }
@@ -212,6 +215,7 @@ info:enabled:focus, .p-buttonset.p-button-info > .p-button:enabled:focus, .p-spl
 .text-light {
   color: #887c7a;
 }
+
 .sidebar-logo {
     // -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
     // -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
@@ -383,36 +387,40 @@ info:enabled:focus, .p-buttonset.p-button-info > .p-button:enabled:focus, .p-spl
 
 //shadow
 .bg-gradient-1 {
-    background-image: linear-gradient(to right, #6B5B95, #4B4068);
+    // background-image: linear-gradient(to right, #6B5B95, #4B4068);
+    background-image: linear-gradient(to right, #F88C69, #CFA79A);
 }
 .bg-gradient-2 {
-    background-image: linear-gradient(to right, #8B5F3D, #bd8c68);
+    background-image: linear-gradient(to right, #787DF3, #787DF3);
 }
 .bg-gradient-3 {
-    background-image: linear-gradient(to right, #8B0000, #c2402a);
+    background-image: linear-gradient(to right, #9700DC, #BE9ACF);
 }
 .bg-gradient-4 {
-    background-image: linear-gradient(to right, #7B4F8E, #563763);
+  background-image: linear-gradient(to right, #C81616, #FCADAD);
 }
 .bg-gradient-5 {
-    background-image: linear-gradient(to right, #272343, #788e98);
+    background-image: linear-gradient(to right, #0CA3EE, #BFC9CE);
 }
 .bg-gradient-6 {
-    background-image: linear-gradient(to right, #5DA399, #40867d);
+    background-image: linear-gradient(to right, #91A607, #E5EFA5);
 }
 .bg-gradient-7 {
-    background-image: linear-gradient(to right, #FF5733, #ff8a5f);
+  background-image: linear-gradient(to right, #E2DA0D, #E5E3C7);
 }
 .bg-gradient-8 {
-    background-image: linear-gradient(to right, #FF00FF, #B300B2);
+  background-image: linear-gradient(to right, #d9069d, #F49DDB);
 }
 .bg-gradient-9 {
-    background-image: linear-gradient(to right, #C74331, #8B2F22);
+    background-image: linear-gradient(to right, #08CF70, #B0F9D6);
 }
 
 //color
 .color-011 {
     color: #cccccc;
+}
+.color-012 {
+  color: white;
 }
 .ai-color1 {
     color: #2a9235;

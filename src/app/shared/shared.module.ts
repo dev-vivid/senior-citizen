@@ -11,8 +11,9 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { MaterialModule } from './modules/material/material.module';
 import { ToastrModule } from 'ngx-toastr';
 import { DynamicDelTableComponent } from './components/dynamic-del-table/dynamic-del-table.component';
+import { DynamicTableEditComponent } from './components/dynamic-table-edit/dynamic-table-edit.component';
 @NgModule({
-  declarations: [ DynamicTableComponent, FooterComponent, DynamicReportTableComponent, DynamicCsvComponent, LoaderComponent, DynamicDelTableComponent],
+  declarations: [ DynamicTableComponent, FooterComponent, DynamicReportTableComponent, DynamicCsvComponent, LoaderComponent, DynamicDelTableComponent, DynamicTableEditComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,7 +26,7 @@ import { DynamicDelTableComponent } from './components/dynamic-del-table/dynamic
     }),
   ], 
   providers:[AuthguardServiceService],
-  exports: [DynamicTableComponent,FooterComponent,DynamicReportTableComponent,DynamicCsvComponent,LoaderComponent,DynamicDelTableComponent]
+  exports: [DynamicTableComponent,DynamicTableEditComponent,FooterComponent,DynamicReportTableComponent,DynamicCsvComponent,LoaderComponent,DynamicDelTableComponent]
 })
 export class SharedModule { }
  
