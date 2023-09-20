@@ -10,7 +10,8 @@ import { SharedService } from 'src/app/shared/services/shared.service';
 })
 export class GrievanceListComponent implements OnInit {
   searchForm!:UntypedFormGroup;
-
+  searchHeader: any[] = ['name'];
+  loading: boolean;
   dynamaicTableData: any;
   grivenceTypeList:any
   isLoader: boolean;
@@ -27,7 +28,7 @@ export class GrievanceListComponent implements OnInit {
 
   getGrivenceTypeList() {
     this.formService.getGrivenceTypeList().subscribe((resp: any) => {
-      console.log(resp.data)
+      
       this.grivenceTypeList = resp.data;
       this.grivenceTypeList.unshift({id: '', name: 'All'})
     });
@@ -46,7 +47,7 @@ export class GrievanceListComponent implements OnInit {
     this.formService.getGrivanceList(reqData).subscribe((resp: any) => {
       if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
-        // console.log("get data", this.dynamaicTableData)
+        console.log("get data", this.dynamaicTableData)
         // this.isNotLoader = true;
         // this.isLoader = false;
     }else {
@@ -61,13 +62,13 @@ export class GrievanceListComponent implements OnInit {
   searchDetails() {
     this.isLoader = true;
     this.isNotLoader = false;
-    console.log('MedicalId',this.searchForm.value.grivenceId_type_Id)
     const reqData = {
       "grievanceStatus": this.searchForm.value.grivenceId_type_Id
     }
     this.formService.getGrivanceList(reqData).subscribe((resp: any) => {
         setTimeout(() => {
           this.dynamaicTableData = resp.data;
+          console.log(this.dynamaicTableData)
           this.isNotLoader = true;
           this.isLoader = false;
         }, 600);

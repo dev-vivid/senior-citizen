@@ -9,7 +9,7 @@
             <div>
                 <form [formGroup]="searchForm">
                     <mat-form-field class="mr-3" appearance="standard">
-                        <mat-label class="text-blue-700 font-bold">Grieva Type</mat-label>
+                        <mat-label class="text-blue-700 font-bold">Grievance Type</mat-label>
                         <mat-select formControlName="grivenceId_type_Id" placeholder="Select Medical Type">
                             <mat-option *ngFor="let grivenceType of grivenceTypeList" (click)="searchDetails()"
                              [value]="grivenceType.id">
@@ -28,4 +28,20 @@
     <div class="col-12 pt-0">
         <app-dynamic-table-edit [dynamaicTableData]="dynamaicTableData"></app-dynamic-table-edit>
     </div>
+
+    <!-- <p-table [value]="dynamaicTableData?.values" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col of dynamaicTableData?.cols">{{ col.header }}</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+            <tr>
+                <td *ngFor="let col of dynamaicTableData?.cols">{{ rowData[col.field] }}</td>
+            </tr>
+        </ng-template>
+    </p-table> -->
+    
+
+    
 </div>
