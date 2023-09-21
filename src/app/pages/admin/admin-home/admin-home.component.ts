@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { DatePipe } from '@angular/common';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -24,7 +25,8 @@ export class AdminHomeComponent implements OnInit {
   chartData: any;
   dbCount: any
 
-  constructor(private router: Router, private formService: FormService, private sharedService: SharedService) { }
+  constructor(private router: Router, private formService: FormService, private sharedService: SharedService,
+    private translationService: TranslationService) { }
 
   ngOnInit(): void {
     this.userData = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -34,6 +36,9 @@ export class AdminHomeComponent implements OnInit {
       this.isAdmin = true;
     } 
 
+  }
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
   }
 
   getAdminDashboard() {

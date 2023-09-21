@@ -28,6 +28,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { TranslationService } from './shared/services/translation.service';
+import { TranslationPipe } from './shared/services/translation.pipe';
 
 @NgModule({
     imports: [
@@ -60,7 +62,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
         AppErrorComponent,
         AppAccessdeniedComponent,
         LoginComponent,
-        ProfileComponent
+        ProfileComponent,
+        TranslationPipe
     ],
     providers: [
         { provide: LOCALE_ID, useValue: "en-IN" },

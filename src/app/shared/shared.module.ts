@@ -12,6 +12,7 @@ import { MaterialModule } from './modules/material/material.module';
 import { ToastrModule } from 'ngx-toastr';
 import { DynamicDelTableComponent } from './components/dynamic-del-table/dynamic-del-table.component';
 import { DynamicTableEditComponent } from './components/dynamic-table-edit/dynamic-table-edit.component';
+import { TranslationService } from './services/translation.service';
 @NgModule({
   declarations: [ DynamicTableComponent, FooterComponent, DynamicReportTableComponent, DynamicCsvComponent, LoaderComponent, DynamicDelTableComponent, DynamicTableEditComponent],
   imports: [
@@ -25,7 +26,7 @@ import { DynamicTableEditComponent } from './components/dynamic-table-edit/dynam
       timeOut: 1000,
     }),
   ], 
-  providers:[AuthguardServiceService],
+  providers:[AuthguardServiceService,TranslationService],
   exports: [DynamicTableComponent,DynamicTableEditComponent,FooterComponent,DynamicReportTableComponent,DynamicCsvComponent,LoaderComponent,DynamicDelTableComponent]
 })
 export class SharedModule { }

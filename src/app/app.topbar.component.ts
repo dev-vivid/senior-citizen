@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from './utilities/passwordvalidation';
 import { AuthService } from './shared/services/auth.service';
 import { SharedService } from './shared/services/shared.service';
+import { TranslationService } from './shared/services/translation.service';
 
 @Component({
     selector: 'app-topbar',
@@ -28,10 +29,22 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
     isAdmin: any;
     isUser: any;
     userId: any;
-    constructor(public app: AppComponent, private formBuilder: FormBuilder,
-         public appMain: AppMainComponent, private router: Router, private authService: AuthService, private sharedService: SharedService) {
-    }
-
+    currentLanguage: string;
+    constructor(public app: AppComponent, private formBuilder: FormBuilder,private translationService: TranslationService,
+         public appMain: AppMainComponent, private router: Router, private authService: AuthService, private sharedService: SharedService) 
+         {   this.translationService.currentLanguage$.subscribe(
+            language => this.currentLanguage = language
+          );
+          this.translationService.setLanguage('en');
+        }
+        toggleLanguage(): void {
+            const newLanguage = this.currentLanguage === 'en' ? 'ta' : 'en'; 
+            this.translationService.setLanguage(newLanguage);
+          }
+        
+          getTranslation(key: string): string {
+            return this.translationService.getTranslation(key);
+          }
     ngOnInit(): void {
         this.userData = JSON.parse(sessionStorage.getItem('userInfo'));
         if (this.userData.data.roleId === 1) {

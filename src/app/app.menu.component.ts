@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppMainComponent } from './app.main.component';
+import { TranslationService } from './shared/services/translation.service';
 
 @Component({
     selector: 'app-menu',
@@ -12,11 +13,15 @@ export class AppMenuComponent implements OnInit {
     myDate = new Date();
     userName: any;
     roleName: any;
-    constructor(public appMain: AppMainComponent) {}
+    constructor(public appMain: AppMainComponent,private translationService: TranslationService,) {
+    }
+    getTranslation(key: string): string {
+        return this.translationService.getTranslation(key);
+      }
 
     ngOnInit() {
         this.model = [
-            { label: 'Dashboard', icon: 'pi pi-desktop', access: '1,2', routerLink: ['/main'] },
+            { label: this.translationService.getTranslation('dashboard'), icon: 'pi pi-desktop', access: '1,2', routerLink: ['/main'] },
             // {
             //     label: 'User Config', icon: 'pi pi-th-large', access: '1', routerLink: ['/main/user'],
             //     items: [

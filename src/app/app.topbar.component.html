@@ -31,7 +31,7 @@
                 <li #profile class="topbar-item user-profile"
                     [ngClass]="{'active-topmenuitem fadeInDown': appMain.activeTopbarItem === profile}">
                     <a href="#" (click)="appMain.onTopbarItemClick($event,profile)">
-                        <img src="assets/images/logo/logo2.jpg" class="avatar img-50 rounded-circle" alt="Admin" />
+                        <img src="../assets/images/main icon logo.jpeg" class="avatar img-50 rounded-circle" alt="Admin" />
                     </a>
                     <ul class="fadeInDown">
                         <li class="border-bottom-1 border-bluegray-200">
@@ -41,7 +41,15 @@
                             <a>
                                 <span class="pi pi-user mr-3"></span>
                                 <span class="flex flex-column">
-                                    Profile
+                                    {{ getTranslation('profile') | translate }}
+                                </span>
+                            </a>
+                        </li>
+                        <li (click)="toggleLanguage()">
+                            <a>
+                                <span class="pi pi-user mr-3"></span>
+                                <span class="flex flex-column">
+                                    {{ getTranslation('language') | translate }}
                                 </span>
                             </a>
                         </li>
@@ -49,7 +57,7 @@
                             <a>
                                 <span class="pi pi-cog mr-3"></span>
                                 <span class="flex flex-column">
-                                    Reset Password
+                                    {{ getTranslation('resetpassword') | translate }}
                                 </span>
                             </a>
                         </li>
@@ -57,14 +65,16 @@
                             <a>
                                 <span class="pi pi-power-off mr-3"></span>
                                 <span class="flex flex-column">
-                                    Logout
+                                    {{ getTranslation('logout') | translate }}
                                 </span>
                             </a>
                         </li>
                     </ul>
                 </li>
             </ul>
-
+<!--             
+            <button (click)="changeLanguage('en')">English</button>
+            <button (click)="changeLanguage('ta')">Tamil</button> -->
             <!-- <a  tabindex="0" class="layout-rightpanel-button" (click)="appMain.onRightPanelClick($event)">
                 <i class="pi pi-sign-out"></i>
             </a> -->

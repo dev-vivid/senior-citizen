@@ -2,10 +2,10 @@
      (click)="appMain.onSidebarClick($event)" (mouseover)="appMain.onSidebarMouseOver($event)" (mouseleave)="appMain.onSidebarMouseLeave($event)">
     <div class="sidebar-logo justify-content-start pl-4 pt-1">
         <a>
-            <img src="assets/images/logo/logo.png" alt="flogo" class="border-rounded">
+            <img src="../assets/images/main icon logo.jpeg" alt="flogo" class="border-rounded">
         </a>
         <div class="pl-3">
-            <h6 class="mb-0 font-bold text-white">SENIOR CITIZEN</h6>
+            <h6 class="mb-0 font-bold text-white"> {{ getTranslation('seniorcitizen') | translate }}</h6>
             <p class="mb-0 text-xs text-white mt-1">{{myDate | date: 'MMM d, y'}}</p>
         </div>
         <!-- <a href="#" class="sidebar-pin" (click)="appMain.onToggleMenu($event)">
