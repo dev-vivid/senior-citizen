@@ -15,6 +15,6 @@
         <app-loader></app-loader>
     </div>
     <div class="col-12 pt-0" *ngIf="isNotLoader">
-        <app-dynamic-del-table [dynamaicTableData]="dynamaicTableData" (delete)="deleteRecord($event)"></app-dynamic-del-table>
+        <app-dynamic-table [dynamaicTableData]="dynamaicTableData" (edit)="editRecord($event)" (delete)="deleteRecord($event)"></app-dynamic-table>
     </div>
 </div>

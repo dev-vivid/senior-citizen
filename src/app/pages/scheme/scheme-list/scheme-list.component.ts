@@ -59,8 +59,8 @@ export class SchemeListComponent implements OnInit {
     });
   }
 
-  editRecord(editId:number) {
-    this.router.navigateByUrl(`main/scheme/add/${editId}`);
+  editRecord(schemeId:number) {
+    this.router.navigateByUrl(`main/scheme/add/${schemeId}`);
   }
 
 }
