@@ -72,7 +72,27 @@
     "oldPasssword":"பழைய கடவுச்சொல்",
     "newPassword":"புதிய கடவுச்சொல்",
     "confirmPassword":"கடவுச்சொல்லை உறுதிப்படுத்து",
-    "goBack":"திரும்பி செல்"
+    "goBack":"திரும்பி செல்",
+    "districtrequired":"மாவட்டம் தேவை",
+    "districtNamerequired":"மாவட்டத்தின் பெயர் தேவை",
+    "hospitalNamerequired":"மருத்துவமனையின் பெயர் தேவை",
+    "contactNorequired":"தொடர்பு எண் தேவை",
+    "emailrequired":"தொடர்பு எண் தேவை",
+    "addressrequired":"முகவரி தேவை",
+    "namerequired":"பெயர் தேவை",
+    "medicalrequired":"மருத்துவ வகை தேவை",
+    "medicalTyperequired":"மருத்துவ வகை தேவை",
+    "officerTyperequired":"அதிகாரி வகை தேவை",
+    "officerrequired":"அதிகாரி தேவை",
+    "officerNamerequired":"அதிகாரி பெயர் தேவை",
+    "oldAgeTyperequired":"பழைய வயது வகை தேவை",
+    "SchemeNamerequired":"திட்டத்தின் பெயர் தேவை",
+    "SchemeObjectiverequired":"திட்டத்தின் நோக்கம் தேவை",
+    "SchemeEligibilityrequired":"திட்டத் தகுதி தேவை"
+
+
+
+
 
 
   }

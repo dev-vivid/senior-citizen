@@ -27,7 +27,7 @@ export class OfficerAddComponent implements OnInit {
       district_id: ['', Validators.required],
       name: ['', Validators.required],
       contact: this.fb.array([]),
-      fax: ['', Validators.required],
+      fax: [''],
       email: ['', Validators.required],
       address: ['', Validators.required],
     });

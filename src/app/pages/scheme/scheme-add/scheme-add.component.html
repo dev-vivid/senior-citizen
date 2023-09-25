@@ -29,17 +29,17 @@
                     <mat-form-field class="full-width-field">
                         <mat-label>{{ getTranslation('schemeName') | translate }}</mat-label>
                         <input matInput formControlName="scheme_name">
-                        <mat-error *ngIf="(schemeForm?.controls?.scheme_name?.touched && schemeForm?.controls?.scheme_name?.errors?.required)">Scheme name is required</mat-error>
+                        <mat-error *ngIf="(schemeForm?.controls?.scheme_name?.touched && schemeForm?.controls?.scheme_name?.errors?.required)">{{ getTranslation('SchemeNamerequired') | translate }}</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
                         <mat-label>{{ getTranslation('schemeObjective') | translate }}</mat-label>
                         <textarea matInput formControlName="scheme_objective"></textarea>
-                        <mat-error *ngIf="(schemeForm?.controls?.scheme_objective?.touched && schemeForm?.controls?.scheme_objective?.errors?.required)">Scheme objective is required</mat-error>
+                        <mat-error *ngIf="(schemeForm?.controls?.scheme_objective?.touched && schemeForm?.controls?.scheme_objective?.errors?.required)">{{ getTranslation('SchemeObjectiverequired') | translate }}</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
                         <mat-label>{{ getTranslation('schemeEligibility') | translate }}</mat-label>
                         <textarea matInput formControlName="scheme_eligibility"></textarea>
-                        <mat-error *ngIf="(schemeForm?.controls?.scheme_eligibility?.touched && schemeForm?.controls?.scheme_eligibility?.errors?.required)">Scheme eligibility is required</mat-error>
+                        <mat-error *ngIf="(schemeForm?.controls?.scheme_eligibility?.touched && schemeForm?.controls?.scheme_eligibility?.errors?.required)">{{ getTranslation('SchemeEligibilityrequired') | translate }}</mat-error>
                     </mat-form-field>
                     <div class="no-css">
                         <div class="grid">

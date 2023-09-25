@@ -29,8 +29,7 @@
                                 </mat-option>
                             </mat-select>
                             <mat-error
-                                *ngIf="(oldageForm?.controls?.oah_type?.touched && oldageForm?.controls?.oah_type?.errors?.required)">Old age type
-                                is required</mat-error>
+                                *ngIf="(oldageForm?.controls?.oah_type?.touched && oldageForm?.controls?.oah_type?.errors?.required)">{{ getTranslation('officerTyperequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12 md:col-12 pb-0">
@@ -43,15 +42,14 @@
                                 </mat-option>
                             </mat-select>
                             <mat-error
-                                *ngIf="(oldageForm?.controls?.district_id?.touched && oldageForm?.controls?.district_id?.errors?.required)">District
-                                is required</mat-error>
+                                *ngIf="(oldageForm?.controls?.district_id?.touched && oldageForm?.controls?.district_id?.errors?.required)">{{ getTranslation('districtrequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('name') | translate }}</mat-label>
                             <input matInput formControlName="name">
-                            <mat-error *ngIf="(oldageForm?.controls?.name?.touched && oldageForm?.controls?.name?.errors?.required)">Name is required</mat-error>
+                            <mat-error *ngIf="(oldageForm?.controls?.name?.touched && oldageForm?.controls?.name?.errors?.required)">{{ getTranslation('namerequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
                     <!-- <div class="col-12 md:col-12 pb-0">
@@ -68,7 +66,7 @@
                                     <mat-form-field class="full-width-field">
                                         <mat-label>{{ getTranslation('contactNo') | translate }}</mat-label>
                                         <input matInput formControlName="contact">
-                                        <mat-error *ngIf="(oldageForm?.controls?.contact?.touched && oldageForm?.controls?.contact?.errors?.required)">Contact is required</mat-error>
+                                        <mat-error *ngIf="(oldageForm?.controls?.contact?.touched && oldageForm?.controls?.contact?.errors?.required)">{{ getTranslation('contactNorequired') | translate }}</mat-error>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-2 pb-0">
@@ -88,14 +86,14 @@
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('email') | translate }}</mat-label>
                             <input matInput formControlName="email">
-                            <mat-error *ngIf="(oldageForm?.controls?.email?.touched && oldageForm?.controls?.email?.errors?.required)">Email is required</mat-error>
+                            <mat-error *ngIf="(oldageForm?.controls?.email?.touched && oldageForm?.controls?.email?.errors?.required)">{{ getTranslation('emailrequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12 pb-0">
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('address') | translate }}</mat-label>
                             <textarea matInput formControlName="address"></textarea>
-                            <mat-error *ngIf="(oldageForm?.controls?.address?.touched && oldageForm?.controls?.address?.errors?.required)">Address is required</mat-error>
+                            <mat-error *ngIf="(oldageForm?.controls?.address?.touched && oldageForm?.controls?.address?.errors?.required)">{{ getTranslation('addressrequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12">

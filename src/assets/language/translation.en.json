@@ -72,7 +72,25 @@
   "oldPasssword":"Old Password",
   "newPassword":"New Password",
   "confirmPassword":"Confirm Password",
-  "goBack":"Back"
+  "goBack":"Back",
+  "districtrequired":"District is required",
+  "districtNamerequired":"DistrictName is required",
+  "hospitalNamerequired":"HospitalName is required",
+  "contactNorequired":"Contact No is required",
+  "emailrequired":"Email is required",
+  "addressrequired":"Address is required",
+  "namerequired":"Name is required",
+  "medicalrequired":"Medical Type is required",
+  "medicalTyperequired":"Medical Type is required",
+  "officerTyperequired":"Officer Type is required",
+  "officerrequired":"Officer is required",
+  "officerNamerequired":"Officer Name is required",
+  "oldAgeTyperequired":"Old Age Type is required",
+  "SchemeNamerequired":"Scheme name is required",
+  "SchemeObjectiverequired":"Scheme objective is required",
+  "SchemeEligibilityrequired":"Scheme eligibility is required"
+
+
 
 
 

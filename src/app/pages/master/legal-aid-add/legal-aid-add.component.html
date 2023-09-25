@@ -28,15 +28,14 @@
                                 </mat-option>
                             </mat-select>
                             <mat-error
-                                *ngIf="(legalAidForm?.controls?.district_id?.touched && legalAidForm?.controls?.district_id?.errors?.required)">District
-                                is required</mat-error>
+                                *ngIf="(legalAidForm?.controls?.district_id?.touched && legalAidForm?.controls?.district_id?.errors?.required)">{{ getTranslation('districtrequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('name') | translate }}</mat-label>
                             <input matInput formControlName="name">
-                            <mat-error *ngIf="(legalAidForm?.controls?.name?.touched && legalAidForm?.controls?.name?.errors?.required)">Name is required</mat-error>
+                            <mat-error *ngIf="(legalAidForm?.controls?.name?.touched && legalAidForm?.controls?.name?.errors?.required)">{{ getTranslation('namerequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
                     <!-- <div class="col-12 md:col-12 pb-0">
@@ -53,7 +52,7 @@
                                     <mat-form-field class="full-width-field">
                                         <mat-label>{{ getTranslation('contactNo') | translate }}</mat-label>
                                         <input matInput formControlName="contact">
-                                        <mat-error *ngIf="(legalAidForm?.controls?.contact?.touched && legalAidForm?.controls?.contact?.errors?.required)">Contact is required</mat-error>
+                                        <mat-error *ngIf="(legalAidForm?.controls?.contact?.touched && legalAidForm?.controls?.contact?.errors?.required)">{{ getTranslation('contactNorequired') | translate }}</mat-error>
                                     </mat-form-field>
                                 </div>
                                 <div class="col-2 pb-0">
@@ -71,16 +70,16 @@
                     </div>
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
-                            <mat-label>{{ getTranslation('eail') | translate }}</mat-label>
+                            <mat-label>{{ getTranslation('email') | translate }}</mat-label>
                             <input matInput formControlName="email">
-                            <mat-error *ngIf="(legalAidForm?.controls?.email?.touched && legalAidForm?.controls?.email?.errors?.required)">Email is required</mat-error>
+                            <mat-error *ngIf="(legalAidForm?.controls?.email?.touched && legalAidForm?.controls?.email?.errors?.required)">{{ getTranslation('emailrequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12 pb-0">
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('address') | translate }}</mat-label>
                             <textarea matInput formControlName="address"></textarea>
-                            <mat-error *ngIf="(legalAidForm?.controls?.address?.touched && legalAidForm?.controls?.address?.errors?.required)">Address is required</mat-error>
+                            <mat-error *ngIf="(legalAidForm?.controls?.address?.touched && legalAidForm?.controls?.address?.errors?.required)">{{ getTranslation('addressrequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12">

@@ -23,7 +23,7 @@
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('districtName') | translate }}</mat-label>
                             <input matInput formControlName="name" placeholder="District">
-                            <mat-error *ngIf="(districtForm?.controls?.name?.touched && districtForm?.controls?.name?.errors?.required)">District is required</mat-error>
+                            <mat-error *ngIf="(districtForm?.controls?.name?.touched && districtForm?.controls?.name?.errors?.required)">{{ getTranslation('districtrequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12">

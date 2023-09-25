@@ -27,8 +27,7 @@
                                 {{medicalType.name}}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="(medicalForm?.controls?.medical_type_id?.touched && medicalForm?.controls?.medical_type_id?.errors?.required)">Medical
-                            is required</mat-error>
+                        <mat-error *ngIf="(medicalForm?.controls?.medical_type_id?.touched && medicalForm?.controls?.medical_type_id?.errors?.required)">{{ getTranslation('medicalTyperequired') | translate }}</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
                         <mat-label>{{ getTranslation('selectDistrict') | translate }}</mat-label>
@@ -38,13 +37,12 @@
                                 {{dict.name}}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="(medicalForm?.controls?.district_id?.touched && medicalForm?.controls?.district_id?.errors?.required)">Districts
-                            is required</mat-error>
+                        <mat-error *ngIf="(medicalForm?.controls?.district_id?.touched && medicalForm?.controls?.district_id?.errors?.required)">{{ getTranslation('districtrequired') | translate }}</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
                         <mat-label>{{ getTranslation('name') | translate }}</mat-label>
                         <input matInput formControlName="name">
-                        <mat-error *ngIf="(medicalForm?.controls?.name?.touched && medicalForm?.controls?.name?.errors?.required)">Name is required</mat-error>
+                        <mat-error *ngIf="(medicalForm?.controls?.name?.touched && medicalForm?.controls?.name?.errors?.required)">{{ getTranslation('namerequired') | translate }}</mat-error>
                     </mat-form-field>
                     <div formArrayName="contact">
                         <!-- <button type="button" (click)="addMore()" class="btn btn-primary">Add More</button> -->
@@ -74,12 +72,12 @@
                     <mat-form-field class="full-width-field">
                         <mat-label>{{ getTranslation('email') | translate }}</mat-label>
                         <input matInput formControlName="email">
-                        <mat-error *ngIf="(medicalForm?.controls?.email?.touched && medicalForm?.controls?.email?.errors?.required)">Email is required</mat-error>
+                        <mat-error *ngIf="(medicalForm?.controls?.email?.touched && medicalForm?.controls?.email?.errors?.required)">{{ getTranslation('emailrequired') | translate }}</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
                         <mat-label>{{ getTranslation('address') | translate }}</mat-label>
                         <textarea matInput formControlName="address"></textarea>
-                        <mat-error *ngIf="(medicalForm?.controls?.address?.touched && medicalForm?.controls?.address?.errors?.required)">Address is required</mat-error>
+                        <mat-error *ngIf="(medicalForm?.controls?.address?.touched && medicalForm?.controls?.address?.errors?.required)">{{ getTranslation('addressrequired') | translate }}</mat-error>
                     </mat-form-field>
                     <mat-slide-toggle [checked]="Toggleactive">{{ getTranslation('active') | translate }}</mat-slide-toggle>
                 </div>
