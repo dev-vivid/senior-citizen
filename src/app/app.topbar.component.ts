@@ -9,6 +9,7 @@ import { PasswordValidation } from './utilities/passwordvalidation';
 import { AuthService } from './shared/services/auth.service';
 import { SharedService } from './shared/services/shared.service';
 import { TranslationService } from './shared/services/translation.service';
+import { LanguageService } from './shared/services/language.service';
 
 @Component({
     selector: 'app-topbar',
@@ -31,17 +32,18 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
     userId: any;
     currentLanguage: string;
     constructor(public app: AppComponent, private formBuilder: FormBuilder,private translationService: TranslationService,
+        private languageService: LanguageService,
          public appMain: AppMainComponent, private router: Router, private authService: AuthService, private sharedService: SharedService) 
-         {   this.translationService.currentLanguage$.subscribe(
-            language => this.currentLanguage = language
-          );
-          this.translationService.setLanguage('en');
+         { 
+            this.languageService.currentLanguage$.subscribe(language => {
+                this.currentLanguage = language;
+              });
         }
-        toggleLanguage(): void {
-            const newLanguage = this.currentLanguage === 'en' ? 'ta' : 'en'; 
-            this.translationService.setLanguage(newLanguage);
-          }
-        
+      
+  toggleLanguage(): void {
+    const newLanguage = this.currentLanguage === 'en' ? 'ta' : 'en';
+    this.languageService.setLanguage(newLanguage);
+  }
           getTranslation(key: string): string {
             return this.translationService.getTranslation(key);
           }

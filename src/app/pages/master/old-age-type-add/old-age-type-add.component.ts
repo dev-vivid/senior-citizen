@@ -3,6 +3,7 @@ import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } fro
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class OldAgeTypeAddComponent implements OnInit {
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
 
-  constructor(private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
+  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.editMasterId = this.activatedRoute.snapshot.params['editId'];
@@ -27,6 +28,10 @@ export class OldAgeTypeAddComponent implements OnInit {
       this.editMasterForm();
     }
     this.initManufacturerForm();
+  }
+  
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
   }
 
   initManufacturerForm(){

@@ -83,7 +83,7 @@
 </div>
 
 
-<p-dialog header="Reset Password" [(visible)]="ResetModal" modal="modal" showEffect="fade" [style]="{width: '30vw'}"
+<p-dialog header="{{ getTranslation('resetpassword') | translate }}" [(visible)]="ResetModal" modal="modal" showEffect="fade" [style]="{width: '30vw'}"
     [breakpoints]="{'960px': '75vw'}">
     <div>
         <form [formGroup]="resetPasswordForm" (ngSubmit)="onResetSubmit()">
@@ -92,7 +92,7 @@
                     <input style="width: 100%;" pInputText id="inputtext" type="text"
                         [ngClass]="(resetPasswordForm?.controls?.currentPassword?.touched && resetPasswordForm?.controls?.currentPassword?.invalid)?'ng-dirty ng-invalid ng-touched':''"
                         formControlName="currentPassword" required>
-                    <label htmlFor="inputtext">Old Password</label>
+                    <label htmlFor="inputtext">{{ getTranslation('oldPasssword') | translate }}</label>
                 </span>
                 <small class="p-error block"
                     *ngIf="( resetPasswordForm?.controls?.currentPassword?.touched && resetPasswordForm?.controls?.currentPassword?.errors?.required) ">
@@ -104,7 +104,7 @@
                     <input style="width: 100%;" pInputText id="inputtext" type="text"
                         [ngClass]="(resetPasswordForm?.controls?.newPassword?.touched && resetPasswordForm?.controls?.newPassword?.invalid)?'ng-dirty ng-invalid ng-touched':''"
                         formControlName="newPassword" required>
-                    <label htmlFor="inputtext">New Password</label>
+                    <label htmlFor="inputtext">{{ getTranslation('newPassword') | translate }}</label>
                 </span>
                 <small class="p-error block"
                     *ngIf="( resetPasswordForm?.controls?.newPassword?.touched && resetPasswordForm?.controls?.newPassword?.errors?.required) ">
@@ -116,7 +116,7 @@
                     <input style="width: 100%;" pInputText id="inputtext" type="text"
                         [ngClass]="(resetPasswordForm?.controls?.confirmPassword?.touched && resetPasswordForm?.controls?.confirmPassword?.invalid)?'ng-dirty ng-invalid ng-touched':''"
                         formControlName="confirmPassword" required>
-                    <label htmlFor="inputtext">Confirm Password</label>
+                    <label htmlFor="inputtext">{{ getTranslation('confirmPassword') | translate }}</label>
                 </span>
                 <small class="p-error block"
                     *ngIf="( resetPasswordForm?.controls?.confirmPassword?.touched && resetPasswordForm?.controls?.confirmPassword?.errors?.required) ">
@@ -124,8 +124,8 @@
                 </small>
             </div>
             <div class="field col-12">
-                <button pButton pRipple type="submit" label="Submit" class="mr-2 mb-2"></button>
-                <button pButton pRipple type="button" (click)="ResetModal=false" label="Close" class="mr-2 mb-2"></button>
+                <button pButton pRipple type="submit"  class="mr-2 mb-2">{{ getTranslation('submit') | translate }}</button>
+                <button pButton pRipple type="button" (click)="ResetModal=false"  class="mr-2 mb-2">{{ getTranslation('goBack') | translate }}</button>
             </div>
         </form>
     </div>

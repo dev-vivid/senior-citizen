@@ -4,6 +4,8 @@ import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { DatePipe } from '@angular/common';
 import { TranslationService } from 'src/app/shared/services/translation.service';
+import { TranslationPipe } from 'src/app/shared/services/translation.pipe';
+import { LanguageService } from 'src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -24,9 +26,11 @@ export class AdminHomeComponent implements OnInit {
   Datapie: any;
   chartData: any;
   dbCount: any
+  currentLanguage: string;
 
   constructor(private router: Router, private formService: FormService, private sharedService: SharedService,
-    private translationService: TranslationService) { }
+    public translationService: TranslationService,private languageService: LanguageService) {
+    }
 
   ngOnInit(): void {
     this.userData = JSON.parse(sessionStorage.getItem('userInfo'));

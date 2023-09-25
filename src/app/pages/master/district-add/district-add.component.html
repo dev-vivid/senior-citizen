@@ -7,7 +7,7 @@
                 </h5> -->
             </div>
             <div>
-                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/district"><span class="p-button-label">Go to List</span></button>
+                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/district"><span class="p-button-label">{{ getTranslation('goToList') | translate }}</span></button>
             </div>
         </div>
     </div>
@@ -16,22 +16,22 @@
             <app-loader></app-loader>
         </div>
         <div class="card border-0" *ngIf="isNotLoader">
-            <h5>ADD DISTRICT</h5>
+            <h5>{{ getTranslation('addDistrict') | translate }}</h5>
             <form [formGroup]="districtForm">
                 <div class="grid mt-0">
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
-                            <mat-label>District Name</mat-label>
+                            <mat-label>{{ getTranslation('districtName') | translate }}</mat-label>
                             <input matInput formControlName="name" placeholder="District">
                             <mat-error *ngIf="(districtForm?.controls?.name?.touched && districtForm?.controls?.name?.errors?.required)">District is required</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12">
-                        <mat-slide-toggle [checked]="Toggleactive">Active</mat-slide-toggle>
+                        <mat-slide-toggle [checked]="Toggleactive">{{ getTranslation('active') | translate }}</mat-slide-toggle>
                     </div>
                 </div>
                 <div class="col-12 text-right">
-                    <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="saveDistrictDetails()"></button>
+                    <button pButton pRipple type="button" class="p-button-rounded" (click)="saveDistrictDetails()">{{ getTranslation('submit') | translate }}</button>
                     <!-- <button (click)="reset()" type="button" class="btn btn-secondary btn-raised btn-round ml-12" >Reset</button> -->
                 </div>
             </form>

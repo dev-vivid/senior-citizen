@@ -7,7 +7,7 @@
                 </h5> -->
             </div>
             <div>
-                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/hospital"><span class="p-button-label">Go to List</span></button>
+                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/hospital"><span class="p-button-label">{{ getTranslation('goToList') | translate }}</span></button>
             </div>
         </div>
     </div>
@@ -17,11 +17,11 @@
         </div>
         <div class="card border-0" *ngIf="isNotLoader">
             <form [formGroup]="hospitalForm">
-                <h5>ADD HOSPITAL</h5>
+                <h5>{{ getTranslation('addHospital') | translate }}</h5>
                 <div class="grid mt-0">
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
-                            <mat-label>District</mat-label>
+                            <mat-label>{{ getTranslation('districtName') | translate }}</mat-label>
                             <mat-select formControlName="district_id" placeholder="Select District">
                                 <mat-option *ngFor="let dict of dictList"
                                     [value]="dict.id">
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
-                            <mat-label>Hospital Name</mat-label>
+                            <mat-label>{{ getTranslation('hospitalName') | translate }}</mat-label>
                             <input matInput formControlName="name">
                             <mat-error *ngIf="(hospitalForm?.controls?.name?.touched && hospitalForm?.controls?.name?.errors?.required)">Hospital name is required</mat-error>
                         </mat-form-field>
@@ -45,7 +45,7 @@
                             <div class="grid" [formGroupName]="i">
                                 <div class="col-10 pb-0">
                                     <mat-form-field class="full-width-field">
-                                        <mat-label>Contact No</mat-label>
+                                        <mat-label>{{ getTranslation('contactNo') | translate }}</mat-label>
                                         <input matInput formControlName="contact">
                                         <mat-error *ngIf="(hospitalForm?.controls?.contact?.touched && hospitalForm?.controls?.contact?.errors?.required)">Contact is required</mat-error>
                                     </mat-form-field>
@@ -72,24 +72,26 @@
                     </div> -->
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
-                            <mat-label>Email</mat-label>
+                            <mat-label>{{ getTranslation('email') | translate }}
+                            </mat-label>
                             <input matInput formControlName="email">
                             <mat-error *ngIf="(hospitalForm?.controls?.email?.touched && hospitalForm?.controls?.email?.errors?.required)">Email is required</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12 pb-0">
                         <mat-form-field class="full-width-field">
-                            <mat-label>Address</mat-label>
+                            <mat-label>{{ getTranslation('address') | translate }} </mat-label>
                             <textarea matInput formControlName="address"></textarea>
                             <mat-error *ngIf="(hospitalForm?.controls?.address?.touched && hospitalForm?.controls?.address?.errors?.required)">Address is required</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-12">
-                        <mat-slide-toggle [checked]="Toggleactive">Active</mat-slide-toggle>
+                        <mat-slide-toggle [checked]="Toggleactive">{{ getTranslation('active') | translate }}
+                        </mat-slide-toggle>
                     </div>
                 </div>
                 <div class="field text-right">
-                    <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="saveDetails()"></button>
+                    <button pButton pRipple type="button"  class="p-button-rounded" (click)="saveDetails()">{{ getTranslation('submit') | translate }}</button>
                 </div>
             </form>
         </div>

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-senior-citizen-registration',
@@ -18,11 +19,14 @@ export class SeniorCitizenRegistrationComponent implements OnInit {
   searchForm: boolean = true;
   isNotLoader:boolean = false;
 
-  constructor(private fb: NonNullableFormBuilder, private formService: FormService, private sharedService: SharedService) { }
+  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.initManufacturerForm();
   }
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
+  } 
 
   initManufacturerForm(){
     this.searchReportForm = this.fb.group({

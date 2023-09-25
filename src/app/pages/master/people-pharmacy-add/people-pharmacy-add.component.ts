@@ -3,6 +3,7 @@ import { FormBuilder, FormArray, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-people-pharmacy-add',
@@ -20,7 +21,7 @@ export class PeoplePharmacyAddComponent implements OnInit {
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
 
-  constructor(private fb: FormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
+  constructor(public translationService: TranslationService,private fb: FormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
     this.ppharmacyForm = this.fb.group({
       district_id:  ['', Validators.required],
       name:  ['', Validators.required],
@@ -39,6 +40,10 @@ export class PeoplePharmacyAddComponent implements OnInit {
     }
     this.getDistrictList();
   }
+  
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
+  } 
 
   // Add more
   get contactFormArr(): FormArray {

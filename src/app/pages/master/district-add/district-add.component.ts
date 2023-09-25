@@ -3,6 +3,7 @@ import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } fro
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-district-add',
@@ -19,7 +20,8 @@ export class DistrictAddComponent implements OnInit {
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
 
-  constructor(private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
+  constructor(private fb: NonNullableFormBuilder,public translationService: TranslationService,
+     private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.editMasterId = this.activatedRoute.snapshot.params['editId'];
@@ -27,6 +29,10 @@ export class DistrictAddComponent implements OnInit {
     if(this.editMasterId > 0){
       this.editMasterForm();
     }
+  }
+
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
   }
 
   initManufacturerForm(){

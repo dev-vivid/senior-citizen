@@ -4,6 +4,7 @@ import { FormService } from 'src/app/shared/services/form.service';
 import { ConfirmationService } from 'primeng/api';
 import { APIResponse } from 'src/app/shared/models/api-response';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-medical-type-list',
@@ -16,12 +17,16 @@ export class MedicalTypeListComponent implements OnInit {
   // isLoader: boolean;
   // isNotLoader: boolean;
 
-  constructor(private formService: FormService, private router: Router, private activatedRoute: ActivatedRoute, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
+  constructor(public translationService: TranslationService,private formService: FormService, private router: Router, private activatedRoute: ActivatedRoute, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.getList();
   }
 
+  
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
+  }
   getList() {
     // this.isLoader = true;
     this.formService.getAlrMedicalType().subscribe((resp: any) => {

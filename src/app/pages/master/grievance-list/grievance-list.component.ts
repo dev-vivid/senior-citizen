@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-grievance-list',
@@ -18,13 +19,19 @@ export class GrievanceListComponent implements OnInit {
   isNotLoader: boolean = true;
   grivenceType:''
 
-  constructor(private formService: FormService, private fb: NonNullableFormBuilder, private sharedService: SharedService) { }
+  constructor(private formService: FormService, private fb: NonNullableFormBuilder, private sharedService: SharedService,
+    public translationService: TranslationService
+    ) { }
 
   ngOnInit(): void {
     this.getGrivenceTypeList();
     this.getList();
     this.initManufacturerForm()
   }
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
+  }
+
 
   getGrivenceTypeList() {
     this.formService.getGrivenceTypeList().subscribe((resp: any) => {

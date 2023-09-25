@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-feedback-list',
@@ -15,11 +16,15 @@ export class FeedbackListComponent implements OnInit {
   isLoader: boolean;
   isNotLoader: boolean;
 
-  constructor(private formService: FormService, private router: Router,private sharedService: SharedService) { }
+  constructor(public translationService: TranslationService,private formService: FormService, private router: Router,private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.getList();
   }
+
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
+  } 
 
   getList() {
     this.isLoader = true;

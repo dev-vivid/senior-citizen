@@ -7,7 +7,7 @@
                 </h5> -->
             </div>
             <div>
-                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/scheme"><span class="p-button-label">Go to List</span></button>
+                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/scheme"><span class="p-button-label">{{ getTranslation('goToList') | translate }}</span></button>
             </div>
         </div>
     </div>
@@ -16,38 +16,38 @@
             <app-loader></app-loader>
         </div>
         <div class="card border-0" *ngIf="isNotLoader">
-            <h5>ADD SCHEME</h5>
+            <h5>{{ getTranslation('addScheme') | translate }}</h5>
             <form [formGroup]="schemeForm">
                 <div class="no-css">
                     <div class="no-css pb-4 mt-2">
-                        <mat-label class="block pb-2 text-light">Government </mat-label>
+                        <mat-label class="block pb-2 text-light">{{ getTranslation('government') | translate }} </mat-label>
                         <mat-radio-group formControlName="government">
-                            <mat-radio-button value="STATE" class="mr-3" >State Govt</mat-radio-button>
-                            <mat-radio-button value="CENTRAL">Central Govt</mat-radio-button>
+                            <mat-radio-button value="STATE" class="mr-3" >{{ getTranslation('stateGovernment') | translate }}</mat-radio-button>
+                            <mat-radio-button value="CENTRAL">{{ getTranslation('centralGovernment') | translate }}</mat-radio-button>
                         </mat-radio-group>
                     </div>
                     <mat-form-field class="full-width-field">
-                        <mat-label>Name of the Scheme</mat-label>
+                        <mat-label>{{ getTranslation('schemeName') | translate }}</mat-label>
                         <input matInput formControlName="scheme_name">
                         <mat-error *ngIf="(schemeForm?.controls?.scheme_name?.touched && schemeForm?.controls?.scheme_name?.errors?.required)">Scheme name is required</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
-                        <mat-label>Scheme Objective</mat-label>
+                        <mat-label>{{ getTranslation('schemeObjective') | translate }}</mat-label>
                         <textarea matInput formControlName="scheme_objective"></textarea>
                         <mat-error *ngIf="(schemeForm?.controls?.scheme_objective?.touched && schemeForm?.controls?.scheme_objective?.errors?.required)">Scheme objective is required</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
-                        <mat-label>Scheme Eligibility</mat-label>
+                        <mat-label>{{ getTranslation('schemeEligibility') | translate }}</mat-label>
                         <textarea matInput formControlName="scheme_eligibility"></textarea>
                         <mat-error *ngIf="(schemeForm?.controls?.scheme_eligibility?.touched && schemeForm?.controls?.scheme_eligibility?.errors?.required)">Scheme eligibility is required</mat-error>
                     </mat-form-field>
                     <div class="no-css">
                         <div class="grid">
                             <div class="col-12 md:col-8">
-                                <mat-label class="text-sm font-family04">Upload Document</mat-label>
+                                <mat-label class="text-sm font-family04">{{ getTranslation('uploadDocument') | translate }}</mat-label>
                                 <div>
                                     <label for="file-input" class="drop-container" (change)="onFileChange($event)">
-                                        <span class="drop-title">Drop files here</span>
+                                        <span class="drop-title">{{ getTranslation('dropfile') | translate }}</span>
                                         or
                                         <input type="file" id="file-input" formControlName="fileUpload">
                                     </label>
@@ -64,11 +64,11 @@
                         </div>
                     </div>
                     <div class="no-css">
-                        <mat-slide-toggle [checked]="Toggleactive">Active</mat-slide-toggle>
+                        <mat-slide-toggle [checked]="Toggleactive">{{ getTranslation('active') | translate }}</mat-slide-toggle>
                     </div>
                 </div>
                 <div class="col-12 text-right">
-                    <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="saveSchemeDetails()"></button>
+                    <button pButton pRipple type="button" class="p-button-rounded" (click)="saveSchemeDetails()">{{ getTranslation('submit') | translate }}</button>
                     <!-- <button (click)="reset()" type="button" class="btn btn-secondary btn-raised btn-round ml-12" >Reset</button> -->
                 </div>
             </form>

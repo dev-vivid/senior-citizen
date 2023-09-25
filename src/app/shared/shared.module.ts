@@ -13,21 +13,24 @@ import { ToastrModule } from 'ngx-toastr';
 import { DynamicDelTableComponent } from './components/dynamic-del-table/dynamic-del-table.component';
 import { DynamicTableEditComponent } from './components/dynamic-table-edit/dynamic-table-edit.component';
 import { TranslationService } from './services/translation.service';
+import { TranslationPipe } from './services/translation.pipe';
+
 @NgModule({
-  declarations: [ DynamicTableComponent, FooterComponent, DynamicReportTableComponent, DynamicCsvComponent, LoaderComponent, DynamicDelTableComponent, DynamicTableEditComponent],
+  declarations: [  TranslationPipe, DynamicTableComponent, FooterComponent, DynamicReportTableComponent, DynamicCsvComponent, LoaderComponent, DynamicDelTableComponent, DynamicTableEditComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,  
     PrimeModule,
     MaterialModule,
+  
     ToastrModule.forRoot({
       closeButton: true,
       timeOut: 1000,
     }),
   ], 
   providers:[AuthguardServiceService,TranslationService],
-  exports: [DynamicTableComponent,DynamicTableEditComponent,FooterComponent,DynamicReportTableComponent,DynamicCsvComponent,LoaderComponent,DynamicDelTableComponent]
+  exports: [ TranslationPipe,DynamicTableComponent,DynamicTableEditComponent,FooterComponent,DynamicReportTableComponent,DynamicCsvComponent,LoaderComponent,DynamicDelTableComponent]
 })
 export class SharedModule { }
  

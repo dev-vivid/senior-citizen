@@ -3,6 +3,7 @@ import { FormArray, FormControl, NonNullableFormBuilder, UntypedFormGroup, Valid
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-medical-add',
@@ -21,7 +22,7 @@ export class MedicalAddComponent implements OnInit {
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
 
-  constructor(private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
+  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
     this.medicalForm = this.fb.group({
       medical_type_id: ['', Validators.required],
       district_id: ['', Validators.required],
@@ -42,6 +43,10 @@ export class MedicalAddComponent implements OnInit {
     }else{
       this.addContact();
     }
+  }
+
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
   }
   // dd
   getDistrictList() {

@@ -6,7 +6,8 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { PrimeModule } from 'src/app/shared/modules/prime/prime.module'; 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslationService } from 'src/app/shared/services/translation.service';
+
+
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { TranslationService } from 'src/app/shared/services/translation.service'
     PrimeModule,
     ReactiveFormsModule
   ],
-  providers: [TranslationService], 
+  providers: [], 
 })
 export class AdminModule { }

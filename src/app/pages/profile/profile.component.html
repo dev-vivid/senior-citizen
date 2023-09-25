@@ -9,19 +9,19 @@
 <ul class="card__info">
   <li>
     <span class="card__info__stats">{{userData.data.firstName}}</span>
-    <span>FirstName</span>
+    <span>{{ getTranslation('firstname') | translate }}</span>
   </li>
   <li>
     <span class="card__info__stats">{{userData.data.lastName}}</span>
-    <span>LastName</span>
+    <span>{{ getTranslation('lastname') | translate }}</span>
   </li>
   <li>
     <span class="card__info__stats">{{userData.data.roleTypeName}}</span>
-    <span>UserProfile</span>
+    <span>{{ getTranslation('userprofile') | translate }}</span>
   </li>
 </ul>
 <div class="card__action">
-    <button pbutton=""style="width:90%;" type="button" label="View" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main"><span class="p-button-label">Go Back</span></button>
+    <button pbutton=""style="width:90%;" type="button" label="View" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main"><span class="p-button-label">{{ getTranslation('Back') | translate }}</span></button>
 </div>
 </div>
 </main>

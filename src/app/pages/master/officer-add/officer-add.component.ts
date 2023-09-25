@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-officer-add',
@@ -20,7 +21,7 @@ export class OfficerAddComponent implements OnInit {
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
 
-  constructor(private fb: FormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
+  constructor(public translationService: TranslationService,private fb: FormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
     this.officerForm = this.fb.group({
       officer_id: ['', Validators.required],
       district_id: ['', Validators.required],
@@ -43,6 +44,11 @@ export class OfficerAddComponent implements OnInit {
     this.getofficerTypeList();
   }
 
+  
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
+  }
+  
   editMasterForm() {
     const dataKey = { officerId: this.editMasterId };
     this.formService.officerEdit(dataKey).subscribe((resp: any) => {

@@ -3,6 +3,7 @@ import { FormBuilder, FormArray, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-legal-aid-add',
@@ -20,7 +21,8 @@ export class LegalAidAddComponent implements OnInit {
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
 
-  constructor(private fb: FormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private formService: FormService, private router: Router,public translationService: TranslationService,
+     private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
     this.legalAidForm = this.fb.group({
       district_id:  ['', Validators.required],
       name:  ['', Validators.required],
@@ -38,6 +40,10 @@ export class LegalAidAddComponent implements OnInit {
       this.addContact();
     }
     this.getDistrictList();
+  }
+
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
   }
 
   // Add more

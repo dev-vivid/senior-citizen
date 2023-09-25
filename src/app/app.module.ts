@@ -14,7 +14,7 @@ import { AppRightpanelComponent } from './app.rightpanel.component';
 import { AppMenuComponent } from './app.menu.component';
 import { AppMenuitemComponent } from './app.menuitem.component';
 import { AppTopBarComponent } from './app.topbar.component';
-import { AppFooterComponent } from './app.footer.component';
+// import { AppFooterComponent } from './app.footer.component';
 import { AppNotfoundComponent } from './pages/app.notfound.component';
 import { AppErrorComponent } from './pages/app.error.component';
 import { AppAccessdeniedComponent } from './pages/app.accessdenied.component';
@@ -23,13 +23,12 @@ import { MenuService } from './app.menu.service';
 import { PrimeModule } from './shared/modules/prime/prime.module';
 import { AuthenticationInterceptor } from './shared/authentication.interceptor';
 import { LoginComponent } from './pages/login/login.component';
-import { MessageService, SharedModule } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { TranslationService } from './shared/services/translation.service';
-import { TranslationPipe } from './shared/services/translation.pipe';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
     imports: [
@@ -57,13 +56,12 @@ import { TranslationPipe } from './shared/services/translation.pipe';
         AppMenuitemComponent,
         AppConfigComponent,
         AppTopBarComponent,
-        AppFooterComponent,
+        // AppFooterComponent,
         AppNotfoundComponent,
         AppErrorComponent,
         AppAccessdeniedComponent,
         LoginComponent,
         ProfileComponent,
-        TranslationPipe
     ],
     providers: [
         { provide: LOCALE_ID, useValue: "en-IN" },

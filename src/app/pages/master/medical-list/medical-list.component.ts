@@ -5,6 +5,7 @@ import { ConfirmationService } from 'primeng/api';
 import { APIResponse } from 'src/app/shared/models/api-response';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-medical-list',
@@ -20,12 +21,16 @@ export class MedicalListComponent implements OnInit {
   isNotLoader: boolean = true;
 
 
-  constructor(private formService: FormService, private router: Router, private fb: NonNullableFormBuilder, private activatedRoute: ActivatedRoute, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
+  constructor(public translationService: TranslationService,private formService: FormService, private router: Router, 
+    private fb: NonNullableFormBuilder, private activatedRoute: ActivatedRoute, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.getList();
     this.getAlrMedicalTypeList();
     this.initManufacturerForm();
+  }
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
   }
 
   getAlrMedicalTypeList() {

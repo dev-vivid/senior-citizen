@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-hospital-add',
@@ -18,7 +19,8 @@ export class HospitalAddComponent implements OnInit {
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
 
-  constructor(private fb: FormBuilder, private formService: FormService, private sharedService: SharedService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private fb: FormBuilder, private formService: FormService, public translationService: TranslationService,
+     private sharedService: SharedService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.hospitalForm = this.fb.group({
       district_id: ['', Validators.required],
       name: ['', Validators.required],
@@ -36,6 +38,9 @@ export class HospitalAddComponent implements OnInit {
       this.addContact();
     }
     this.getDistrictList();
+  }
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
   }
 
   // Add more

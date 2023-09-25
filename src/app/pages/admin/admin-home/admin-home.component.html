@@ -5,7 +5,7 @@
                 <div class="card-container indigo-container overflow-hidden">
                     <div class="flex justify-content-between">
                         <div class="flex-1 md:flex-none">
-                            <h5 class="square-after text-03 f16 ffamily2">Old Age Homes</h5>
+                            <h5 class="square-after text-03 f16 ffamily2">{{ getTranslation('oldageHomes') | translate }}</h5>
                             <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.oahCount}}</p>
                         </div>
                         <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
@@ -20,7 +20,7 @@
                 <div class="card-container indigo-container overflow-hidden">
                     <div class="flex justify-content-between">
                         <div class="flex-1 md:flex-none">
-                            <h5 class="square-after text-03 f16 ffamily2">Hospitals</h5>
+                            <h5 class="square-after text-03 f16 ffamily2">{{ getTranslation('hospital') | translate }}</h5>
                             <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.hopitalCount}}</p>
                         </div>
                         <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
@@ -36,7 +36,7 @@
                 <div class="card-container indigo-container overflow-hidden">
                     <div class="flex justify-content-between">
                         <div class="flex-1 md:flex-none">
-                            <h5 class="square-after text-03 f16 ffamily2">Senior Citizens</h5>
+                            <h5 class="square-after text-03 f16 ffamily2">{{ getTranslation('seniorcitizen') | translate }}</h5>
                             <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.seniorCitizen.usersCount}}</p>
                         </div>
                         <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
@@ -51,7 +51,7 @@
                 <div class="card-container indigo-container overflow-hidden">
                     <div class="flex justify-content-between">
                         <div class="flex-1 md:flex-none">
-                            <h5 class="square-after text-03 f14 ffamily2">Mobile-app Installed</h5>
+                            <h5 class="square-after text-03 f14 ffamily2">{{ getTranslation('MobileappInstalled') | translate }}</h5>
                             <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.mobappCount}}</p>
                         </div>
                         <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
@@ -66,7 +66,7 @@
                 <div class="card-container indigo-container overflow-hidden">
                     <div class="flex justify-content-between">
                         <div class="flex-1 md:flex-none">
-                            <h5 class="square-after text-03 f14 ffamily2">Total Helpline calls</h5>
+                            <h5 class="square-after text-03 f14 ffamily2">{{ getTranslation('totalhelpline') | translate }}</h5>
                             <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.helplineCount}}</p>
                         </div>
                         <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
@@ -81,7 +81,7 @@
                 <div class="card-container indigo-container overflow-hidden">
                     <div class="flex justify-content-between">
                         <div class="flex-1 md:flex-none">
-                            <h5 class="square-after text-03 f14 ffamily2">No.of download Schemes</h5>
+                            <h5 class="square-after text-03 f14 ffamily2">{{ getTranslation('noofdownload') | translate }}</h5>
                             <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.schemeDownload}}</p>
                         </div>
                         <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
@@ -96,7 +96,7 @@
                 <div class="card-container indigo-container overflow-hidden">
                     <div class="flex justify-content-between">
                         <div class="flex-1 md:flex-none">
-                            <h5 class="square-after text-03 f16 ffamily2">Pending Grievance</h5>
+                            <h5 class="square-after text-03 f16 ffamily2">{{ getTranslation('pendinggreviance') | translate }}</h5>
                             <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.pendingGrievance}}</p>
                         </div>
                         <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
@@ -111,7 +111,7 @@
                 <div class="card-container indigo-container overflow-hidden">
                     <div class="flex justify-content-between">
                         <div class="flex-1 md:flex-none">
-                            <h5 class="square-after text-03 f16 ffamily2">Inprocess Grievance</h5>
+                            <h5 class="square-after text-03 f16 ffamily2">{{ getTranslation('inprocessgrievance') | translate }}</h5>
                             <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.inprocessGrievance}}</p>
                         </div>
                         <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
@@ -127,7 +127,7 @@
                 <div class="card-container indigo-container overflow-hidden">
                     <div class="flex justify-content-between">
                         <div class="flex-1 md:flex-none">
-                            <h5 class="square-after text-03 f16 ffamily2">Completed Grievance</h5>
+                            <h5 class="square-after text-03 f16 ffamily2">{{ getTranslation('completedgrievance') | translate }}</h5>
                             <p class="my-2 text-3xl fw-600 text-02">{{dbCount?.completedGrievance}}</p>
                         </div>
                         <div class="flex-1 md:flex-none flex align-items-center justify-content-center">
@@ -146,7 +146,7 @@
         </div>
         <div class="col-12 md:col-4">
             <div class="card">
-                <div class="title">Senior Citizen</div>
+                <div class="title">{{ getTranslation('seniorcitizen') | translate }}</div>
                 <div class="card-container indigo-container overflow-hidden">
                     <p-chart type="doughnut" [data]="feedback" [style]="{'width': '40%'}"></p-chart>
                 </div>

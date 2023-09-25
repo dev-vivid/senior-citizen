@@ -5,6 +5,7 @@ import { ConfirmationService } from 'primeng/api';
 import { APIResponse } from 'src/app/shared/models/api-response';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { TranslationService } from 'src/app/shared/services/translation.service';
 
 @Component({
   selector: 'app-old-age-list',
@@ -19,12 +20,16 @@ export class OldAgeListComponent implements OnInit {
   isLoader: boolean;
   isNotLoader: boolean= true;
 
-  constructor(private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private activatedRoute: ActivatedRoute, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
+  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private activatedRoute: ActivatedRoute, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.getList();
     this.getoahTypeList();
     this.initManufacturerForm();
+  }
+  
+  getTranslation(key: string): string {
+    return this.translationService.getTranslation(key);
   }
 
   initManufacturerForm(){

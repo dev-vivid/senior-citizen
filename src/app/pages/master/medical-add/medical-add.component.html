@@ -7,7 +7,7 @@
                 </h5> -->
             </div>
             <div>
-                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/medical-type"><span class="p-button-label">Go to List</span></button>
+                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/medical"><span class="p-button-label">{{ getTranslation('goToList') | translate }}</span></button>
             </div>
         </div>
     </div>
@@ -16,11 +16,11 @@
             <app-loader></app-loader>
         </div>
         <div class="card border-0" *ngIf="isNotLoader">
-            <h5>Add Alternative Medical</h5>
+            <h5>{{ getTranslation('addAlternativeMedical') | translate }}</h5>
             <form [formGroup]="medicalForm">
                 <div class="no-css">
                     <mat-form-field class="full-width-field">
-                        <mat-label>Medical Type</mat-label>
+                        <mat-label>{{ getTranslation('medicalType') | translate }}</mat-label>
                         <mat-select formControlName="medical_type_id" placeholder="Select Medical Type">
                             <mat-option *ngFor="let medicalType of medicalTypeList"
                                 [value]="medicalType.id">
@@ -31,7 +31,7 @@
                             is required</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
-                        <mat-label>Select District</mat-label>
+                        <mat-label>{{ getTranslation('selectDistrict') | translate }}</mat-label>
                         <mat-select formControlName="district_id" placeholder="Select District">
                             <mat-option *ngFor="let dict of dictList"
                                 [value]="dict.id">
@@ -42,7 +42,7 @@
                             is required</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
-                        <mat-label>Name</mat-label>
+                        <mat-label>{{ getTranslation('name') | translate }}</mat-label>
                         <input matInput formControlName="name">
                         <mat-error *ngIf="(medicalForm?.controls?.name?.touched && medicalForm?.controls?.name?.errors?.required)">Name is required</mat-error>
                     </mat-form-field>
@@ -52,7 +52,7 @@
                             <div class="grid" [formGroupName]="i">
                                 <div class="col-10 pb-0">
                                     <mat-form-field class="full-width-field">
-                                        <mat-label>Contact No</mat-label>
+                                        <mat-label>{{ getTranslation('contactNo') | translate }}</mat-label>
                                         <input matInput formControlName="contact">
                                         <!-- <mat-error *ngIf="(officerForm?.controls?.contact?.touched && officerForm?.controls?.contact?.errors?.required)">Contact is required</mat-error> -->
                                     </mat-form-field>
@@ -72,19 +72,19 @@
                         </div>
                     </div>
                     <mat-form-field class="full-width-field">
-                        <mat-label>Email</mat-label>
+                        <mat-label>{{ getTranslation('email') | translate }}</mat-label>
                         <input matInput formControlName="email">
                         <mat-error *ngIf="(medicalForm?.controls?.email?.touched && medicalForm?.controls?.email?.errors?.required)">Email is required</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
-                        <mat-label>Address</mat-label>
+                        <mat-label>{{ getTranslation('address') | translate }}</mat-label>
                         <textarea matInput formControlName="address"></textarea>
                         <mat-error *ngIf="(medicalForm?.controls?.address?.touched && medicalForm?.controls?.address?.errors?.required)">Address is required</mat-error>
                     </mat-form-field>
-                    <mat-slide-toggle [checked]="Toggleactive">Active</mat-slide-toggle>
+                    <mat-slide-toggle [checked]="Toggleactive">{{ getTranslation('active') | translate }}</mat-slide-toggle>
                 </div>
                 <div class="text-right">
-                    <button pButton pRipple type="button" label="Submit" class="p-button-rounded" (click)="saveMedicalDetails()"></button>
+                    <button pButton pRipple type="button" class="p-button-rounded" (click)="saveMedicalDetails()">{{ getTranslation('submit') | translate }}</button>
                     <!-- <button (click)="reset()" type="button" class="btn btn-secondary btn-raised btn-round ml-12" >Reset</button> -->
                 </div>
             </form>
