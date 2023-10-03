@@ -51,8 +51,11 @@ export class AdminHomeComponent implements OnInit {
         if (resp.status = 200) {
           this.dbCount = resp.data;
           const scCount = resp.data.seniorCitizen;
+          const maleLabel = `Male ${scCount.Male}`;
+          const femaleLabel = `Female ${scCount.Female}`;
+          console.log(resp.data)
           this.feedback = {
-            labels: ['Male', 'Female'],
+            labels: [maleLabel, femaleLabel],
             datasets: [
               {
                 data: [scCount.Male, scCount.Female],
