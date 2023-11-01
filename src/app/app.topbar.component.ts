@@ -10,6 +10,7 @@ import { AuthService } from './shared/services/auth.service';
 import { SharedService } from './shared/services/shared.service';
 import { TranslationService } from './shared/services/translation.service';
 import { LanguageService } from './shared/services/language.service';
+import { FormService } from './shared/services/form.service';
 
 @Component({
     selector: 'app-topbar',
@@ -32,17 +33,24 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
     userId: any;
     currentLanguage: string;
     constructor(public app: AppComponent, private formBuilder: FormBuilder,private translationService: TranslationService,
-        private languageService: LanguageService,
+        private languageService: LanguageService, private formService: FormService,
          public appMain: AppMainComponent, private router: Router, private authService: AuthService, private sharedService: SharedService) 
          { 
             this.languageService.currentLanguage$.subscribe(language => {
                 this.currentLanguage = language;
               });
+              
         }
       
   toggleLanguage(): void {
     const newLanguage = this.currentLanguage === 'en' ? 'ta' : 'en';
     this.languageService.setLanguage(newLanguage);
+    let value ={
+        lang:this.currentLanguage
+    }
+    this.formService.getLanguage(value).subscribe((data: any) => {
+
+    });
   }
           getTranslation(key: string): string {
             return this.translationService.getTranslation(key);
@@ -61,6 +69,9 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
         this.roleName = this.userData.data.role;
         this.userId = this.userData.data.userId;
         this.initResetPwdForm();
+        this.formService.getLanguage(this.currentLanguage).subscribe((data: any) => {
+
+        });
     }
     initResetPwdForm() {
         this.resetPasswordForm = this.formBuilder.group(
@@ -77,6 +88,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
     logout() {
         this.router.navigate(['/']);
         sessionStorage.removeItem('userInfo');
+        location.reload();
     }
     ngOnDestroy() {
         if (this.subscription) {

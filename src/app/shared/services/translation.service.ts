@@ -8,13 +8,14 @@ import { LanguageService } from './language.service';
   providedIn: 'root'
 })
 export class TranslationService {
-  private translations: any = {};
+  private translationsSubject = new BehaviorSubject<any>({});
+  translations$ = this.translationsSubject.asObservable();
 
   constructor(private http: HttpClient, private languageService: LanguageService) {
     this.languageService.currentLanguage$.subscribe(language => {
       this.loadTranslations(language).subscribe(
         translations => {
-          this.translations = translations;
+          this.translationsSubject.next(translations); // Update translations when the language changes
         },
         error => console.error('Error loading translations:', error)
       );
@@ -28,6 +29,8 @@ export class TranslationService {
   }
 
   getTranslation(key: string): string {
-    return this.translations[key] || key;
+    // Use the latest translations from the observable
+    const translations = this.translationsSubject.getValue();
+    return translations[key] || key;
   }
 }

@@ -143,6 +143,9 @@ export class FormService {
     getAlrMedicalList(data: any) {
     return this.http.post(`${this.apiUrl}Admin/getAlrMedicalList`, data); //medicalId
   }
+  getLanguage(data: any) {
+    return this.http.post(`${this.apiUrl}Admin/ChangeLanguage`, data); 
+  }
   getGrivanceList(data: any) {
     return this.http.post(`${this.apiUrl}Admin/getGrievanceList`, data); //medicalId
   }

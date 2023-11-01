@@ -6,6 +6,7 @@
     "dashboard":"டாஷ்போர்டு",
     "seniorcitizen":"மூத்த குடிமகன்",
     "oldageHomes":"முதியோர் இல்லங்கள்",
+    "oldAge":"முதுமை",
     "firstname":"முதல் பெயர்",
     "lastname":"கடைசி பெயர்",
     "userprofile":"பயனர் சுயவிவரம்",
@@ -26,9 +27,11 @@
     "hospitalName":"மருத்துவமனை பெயர்",
     "contactNo":"தொடர்பு எண்",
     "email":"மின்னஞ்சல்",
+    "medical":"மருத்துவம்",
     "address":"முகவரி",
     "medicalType":"மருத்துவ வகை",
     "addAlternativeMedicalType":"மாற்று மருத்துவ வகையைச் சேர்க்கவும்",
+    "officer":"அதிகாரி",
     "medicalInformation":"மருத்துவ தகவல்",
     "addAlternativeMedical":"மாற்று மருத்துவத்தைச் சேர்க்கவும்",
     "officerTypes":"அதிகாரிகளின் வகைகள்",
@@ -88,12 +91,11 @@
     "oldAgeTyperequired":"பழைய வயது வகை தேவை",
     "SchemeNamerequired":"திட்டத்தின் பெயர் தேவை",
     "SchemeObjectiverequired":"திட்டத்தின் நோக்கம் தேவை",
-    "SchemeEligibilityrequired":"திட்டத் தகுதி தேவை"
-
-
-
-
-
+    "SchemeEligibilityrequired":"திட்டத் தகுதி தேவை",
+    "service":"சேவை",
+    "schemes":"திட்டங்கள்",
+    "feedback":"பின்னூட்டம்",
+    "totalAppInstall":"மொத்த ஆப்ஸ் நிறுவல்"
 
   }
   

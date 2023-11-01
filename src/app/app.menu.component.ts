@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppMainComponent } from './app.main.component';
 import { TranslationService } from './shared/services/translation.service';
+import { LanguageService } from './shared/services/language.service';
 
 @Component({
     selector: 'app-menu',
@@ -13,15 +14,23 @@ export class AppMenuComponent implements OnInit {
     myDate = new Date();
     userName: any;
     roleName: any;
-    constructor(public appMain: AppMainComponent,private translationService: TranslationService,) {
+    dashboardLabel: string;
+    translatedLabels:any
+    constructor(public appMain: AppMainComponent,private translationService: TranslationService,private languageService: LanguageService,
+        ) {
+       
     }
     getTranslation(key: string): string {
         return this.translationService.getTranslation(key);
       }
 
     ngOnInit() {
+        this.translationService.translations$.subscribe(translations => {
+            this.translatedLabels = this.getTranslatedLabels(translations);
+            this.updateMenuLabels();
+        });
         this.model = [
-            { label: this.translationService.getTranslation('dashboard'), icon: 'pi pi-desktop', access: '1,2', routerLink: ['/main'] },
+            {label: this.dashboardLabel, icon: 'pi pi-desktop', access: '1,2', routerLink: ['/main'] },
             // {
             //     label: 'User Config', icon: 'pi pi-th-large', access: '1', routerLink: ['/main/user'],
             //     items: [
@@ -64,5 +73,58 @@ export class AppMenuComponent implements OnInit {
         } else if(this.userData.data.roleId === 2) {
             this.model = this.model.filter(f => f.access.includes('2'))
         }
+    }
+    private getTranslatedLabels(translations: any): { [key: string]: string } {
+        return {
+            dashboard: translations['dashboard'],
+            service: translations['service'],
+            district: translations['district'],
+            hospital: translations['hospital'],
+            medicalType: translations['medicalType'],
+            medical: translations['medical'],
+            officerType: translations['officerType'],
+            officer: translations['officer'],
+            oldAgeType: translations['oldAgeType'],
+            oldAge: translations['oldAge'],
+            peoplePharmacy: translations['peoplePharmacy'],
+            legalAid: translations['legalAid'],
+            grievance: translations['grievance'],
+            schemes: translations['schemes'],
+            feedBack: translations['feedback'],
+            report: translations['reports'],
+            seniorCitizen: translations['seniorcitizen'],
+            totalAppInstall: translations['totalAppInstall']
+        };
+    }
+
+    private updateMenuLabels() {
+        this.model = [
+            { label:  this.translatedLabels.dashboard, icon: 'pi pi-desktop', access: '1,2', routerLink: ['/main'] },
+            {
+                label: this.translatedLabels.service, icon: 'pi pi-microsoft', access: '1', routerLink: ['/main/master'],
+                items: [
+                    { label:this.translatedLabels.district, routerLink: ['/main/master/district'] }, 
+                    { label: this.translatedLabels.hospital, routerLink: ['/main/master/hospital'] },
+                    { label: this.translatedLabels.medicalType, routerLink: ['/main/master/medical-type'] },
+                    { label: this.translatedLabels.medical, routerLink: ['/main/master/medical'] },
+                    { label: this.translatedLabels.officerType, routerLink: ['/main/master/officer-type'] },
+                    { label: this.translatedLabels.officer, routerLink: ['/main/master/officer'] },
+                    { label: this.translatedLabels.oldAgeType, routerLink: ['/main/master/oldage-type'] },
+                    { label: this.translatedLabels.oldAge, routerLink: ['/main/master/oldage'] },
+                    { label: this.translatedLabels.peoplePharmacy, routerLink: ['/main/master/people-pharmacy'] },
+                    { label: this.translatedLabels.legalAid, routerLink: ['/main/master/legal-aid'] },
+                    { label: this.translatedLabels.grievance, routerLink: ['/main/master/grievance'] }
+                ]
+            },
+            { label: this.translatedLabels.schemes, icon: 'pi pi-envelope', access: '1', routerLink: ['/main/scheme'] },
+            { label: this.translatedLabels.feedBack, icon: 'pi pi-check-square', access: '1', routerLink: ['/main/feedback'] },
+            {
+                label: this.translatedLabels.report, icon: 'pi pi-qrcode', access: '1', routerLink: ['/main/report'],
+                items: [
+                    { label: this.translatedLabels.seniorCitizen,  routerLink: ['/main/report/scDetails'] },
+                    { label: this.translatedLabels.totalAppInstall,  routerLink: ['/main/report/mobileAppInstalled'] },
+                ]
+            }
+        ];
     }
 }

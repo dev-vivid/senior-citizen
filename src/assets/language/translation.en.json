@@ -6,6 +6,7 @@
   "dashboard":"Dashboard",
   "seniorcitizen":"Senior Citizen",
   "oldageHomes": "Old Age Homes",
+  "oldAge":"Old Age",
   "firstname":"First Name",
   "lastname":"Lastname",
   "userprofile":"User Profile",
@@ -27,17 +28,19 @@
   "contactNo":"contact no",
   "email":"email",
   "address":"address",
+  "medical":"Medical",
   "medicalType":"Medical Type",
   "addAlternativeMedicalType":"ADD ALTERNATIVE MEDICAL TYPE",
   "medicalInformation":"Medical Information",
   "addAlternativeMedical":"Add Alternative Medical",
+  "officer":"Officer",
   "officerTypes":"Officer Types ",
   "addOfficerType":"ADD OFFICER TYPE",
   "officerInformation":"Officer Information",
   "addOfficer":"ADD OFFICER",
-  "officerType":"officer type",
-  "officerName":"officer Name",
-  "fax":"fax",
+  "officerType":"Officer Type",
+  "officerName":"Officer Name",
+  "fax":"Fax",
   "oldAgeType":"Old Age Type",
   "addOldAgeType":"ADD OLD AGE TYPE",
   "peoplePharmacy":"People pharmacy",
@@ -88,7 +91,11 @@
   "oldAgeTyperequired":"Old Age Type is required",
   "SchemeNamerequired":"Scheme name is required",
   "SchemeObjectiverequired":"Scheme objective is required",
-  "SchemeEligibilityrequired":"Scheme eligibility is required"
+  "SchemeEligibilityrequired":"Scheme eligibility is required",
+  "service":"Service",
+  "schemes":"Schemes",
+  "feedback":"Feedback",
+  "totalAppInstall":"Total App Install"
 
 
 
