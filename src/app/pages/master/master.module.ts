@@ -26,6 +26,7 @@ import { LegalAidComponent } from './legal-aid/legal-aid.component';
 import { PeoplePharmacyAddComponent } from './people-pharmacy-add/people-pharmacy-add.component';
 import { LegalAidAddComponent } from './legal-aid-add/legal-aid-add.component';
 import { GrievanceListComponent } from './grievance-list/grievance-list.component';
+import { GrivanceFormComponent } from './grivance-form/grivance-form.component';
 @NgModule({
   declarations: [
     DistrictListComponent,
@@ -48,7 +49,8 @@ import { GrievanceListComponent } from './grievance-list/grievance-list.componen
     LegalAidComponent,
     PeoplePharmacyAddComponent,
     LegalAidAddComponent,
-    GrievanceListComponent
+    GrievanceListComponent,
+    GrivanceFormComponent
   ],
   imports: [
     CommonModule,

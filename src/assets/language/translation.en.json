@@ -10,7 +10,7 @@
   "firstname":"First Name",
   "lastname":"Lastname",
   "userprofile":"User Profile",
-  "hospital":"Hostipal",
+  "hospital":"Hospital",
   "MobileappInstalled":"Mobile-app Installed",
   "totalhelpline":"Total Helpline calls",
   "noofdownload":"No of Download",
@@ -96,12 +96,13 @@
   "schemes":"Schemes",
   "feedback":"Feedback",
   "totalAppInstall":"Total App Install",
-  "mobileNumber":"Mobile Number"
+  "mobileNumber":"Mobile Number",
+  "password":"Password",
+  "age":"Age",
+  "issue":"Issue",
+  "issueType":"Issue Type",
+  "grievanceType":"Grievance Type"
 
 
-
-
-
-  
     
 }

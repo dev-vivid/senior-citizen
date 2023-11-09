@@ -229,6 +229,9 @@ export class FormService {
   getusersReport(data: any) {
     return this.http.post(`${this.apiUrl}Admin/getusersReport`, data)
   }
+  getGrivenanceIndividual(data: any) {
+    return this.http.post(`${this.apiUrl}Admin/getGrievance`, data)
+  }
 
    
   // get dropdown

@@ -9,10 +9,11 @@
             <div>
                 <form [formGroup]="searchForm">
                     <mat-form-field class="mr-3" appearance="standard">
-                        <mat-label class="text-blue-700 font-bold">Grievance Type</mat-label>
+                        <mat-label class="text-blue-700 font-bold">{{ getTranslation('grievanceType') | translate }}
+                        </mat-label>
                         <mat-select formControlName="grivenceId_type_Id" placeholder="Select Medical Type">
                             <mat-option *ngFor="let grivenceType of grivenceTypeList" (click)="searchDetails()"
-                             [value]="grivenceType.id">
+                                [value]="grivenceType.id">
                                 {{grivenceType.name}}
                             </mat-option>
                         </mat-select>
@@ -25,23 +26,25 @@
     <!-- <div *ngIf="isLoader">
         <app-loader></app-loader>
     </div> -->
-    <div class="col-12 pt-0">
+    <!-- <div class="col-12 pt-0">
         <app-dynamic-report-table [dynamaicTableData]="dynamaicTableData"></app-dynamic-report-table>
+    </div> -->
+    <div style="width: 100%;">
+        <p-table [value]="dynamaicTableData?.values" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr >
+                    <th style="background-color: #334155;color:white;" *ngFor="let col of dynamaicTableData?.cols">{{ col.header }}</th>
+                    <th style="background-color: #334155;color:white;" >Action</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData>
+                <tr (click)="viewGrivenance(rowData)">
+                    <td *ngFor="let col of dynamaicTableData?.cols">{{ rowData[col.field] }}</td>
+                    <td><i class="pi pi-arrow-right"></i></td>
+                </tr>
+            </ng-template>
+        </p-table>
     </div>
 
-    <!-- <p-table [value]="dynamaicTableData?.values" responsiveLayout="scroll">
-        <ng-template pTemplate="header">
-            <tr>
-                <th *ngFor="let col of dynamaicTableData?.cols">{{ col.header }}</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData>
-            <tr>
-                <td *ngFor="let col of dynamaicTableData?.cols">{{ rowData[col.field] }}</td>
-            </tr>
-        </ng-template>
-    </p-table> -->
-    
 
-    
 </div>

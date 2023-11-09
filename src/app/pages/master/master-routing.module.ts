@@ -21,6 +21,7 @@ import { PeoplePharmacyComponent } from './people-pharmacy/people-pharmacy.compo
 import { LegalAidAddComponent } from './legal-aid-add/legal-aid-add.component';
 import { LegalAidComponent } from './legal-aid/legal-aid.component';
 import { GrievanceListComponent } from './grievance-list/grievance-list.component';
+import { GrivanceFormComponent } from './grivance-form/grivance-form.component';
 
 const routes: Routes = [
   {
@@ -146,6 +147,14 @@ const routes: Routes = [
   {
     path: 'grievance',
     component: GrievanceListComponent
+  },
+  {
+    path: 'grievance-form',
+    component: GrivanceFormComponent
+  },
+  {
+    path: 'grievance-form/:griveanceId',
+    component: GrivanceFormComponent
   },
 ];
 

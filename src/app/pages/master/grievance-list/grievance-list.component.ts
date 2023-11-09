@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
@@ -19,7 +20,7 @@ export class GrievanceListComponent implements OnInit {
   isNotLoader: boolean = true;
   grivenceType:''
 
-  constructor(private formService: FormService, private fb: NonNullableFormBuilder, private sharedService: SharedService,
+  constructor( private router: Router,private formService: FormService, private fb: NonNullableFormBuilder, private sharedService: SharedService,
     public translationService: TranslationService
     ) { }
 
@@ -35,7 +36,6 @@ export class GrievanceListComponent implements OnInit {
 
   getGrivenceTypeList() {
     this.formService.getGrivenceTypeList().subscribe((resp: any) => {
-      
       this.grivenceTypeList = resp.data;
       this.grivenceTypeList.unshift({id: '', name: 'All'})
     });
@@ -44,6 +44,10 @@ export class GrievanceListComponent implements OnInit {
     this.searchForm = this.fb.group({
       grivenceId_type_Id: new FormControl<string>(''),
     });
+  }
+  viewGrivenance(rowdata:any){
+    const griveanceId = rowdata.id
+    this.router.navigateByUrl(`main/master/grievance-form/${griveanceId}`);
   }
   getList() {
     // this.isLoader = true;

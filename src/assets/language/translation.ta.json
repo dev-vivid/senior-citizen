@@ -96,7 +96,12 @@
     "schemes":"திட்டங்கள்",
     "feedback":"பின்னூட்டம்",
     "totalAppInstall":"மொத்த ஆப்ஸ் நிறுவல்",
-    "mobileNumber":"தொலைபேசி எண்"
+    "mobileNumber":"தொலைபேசி எண்",
+    "password":"கடவுச்சொல்",
+    "age":"வயது",
+    "issue":"பிரச்சினை",
+    "issueType":"பிரச்சினை வகை",
+    "grievanceType":"புகார் வகை"
 
   }
   

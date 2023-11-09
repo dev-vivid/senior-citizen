@@ -14,7 +14,7 @@ export class AuthService {
 
   authenticate(data:any){
     //console.log("data", data)
-    return this.http.post(`${this.apiUrl}User/login`, data);
+    return this.http.post(`${this.apiUrl}Admin/login`, data);
   }
   //Reset
   changePassword(data: any) {
