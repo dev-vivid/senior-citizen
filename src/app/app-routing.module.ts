@@ -38,6 +38,10 @@ const routes: Routes = [
                 path: 'report', loadChildren: () => import('./pages/report/report.module').then(m => m.ReportModule),
                 canActivate: [AuthenticationGuard]
             },
+            { 
+                path: 'user', loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule),
+                canActivate: [AuthenticationGuard] 
+            },
             {
                 path: 'profile',
                 component: ProfileComponent

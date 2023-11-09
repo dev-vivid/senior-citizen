@@ -56,6 +56,7 @@ export class AppMenuComponent implements OnInit {
             },
             { label: 'Schemes', icon: 'pi pi-envelope', access: '1', routerLink: ['/main/scheme'] },
             { label: 'Feedback', icon: 'pi pi-check-square', access: '1', routerLink: ['/main/feedback'] },
+            { label: 'User', icon: 'pi pi-check-square', access: '1', routerLink: ['/main/user'] },
             {
                 label: 'Reports', icon: 'pi pi-qrcode', access: '1', routerLink: ['/main/report'],
                 items: [
@@ -118,6 +119,7 @@ export class AppMenuComponent implements OnInit {
             },
             { label: this.translatedLabels.schemes, icon: 'pi pi-envelope', access: '1', routerLink: ['/main/scheme'] },
             { label: this.translatedLabels.feedBack, icon: 'pi pi-check-square', access: '1', routerLink: ['/main/feedback'] },
+            { label: 'User', icon: 'pi pi-check-square', access: '1', routerLink: ['/main/user/user-form'] },
             {
                 label: this.translatedLabels.report, icon: 'pi pi-qrcode', access: '1', routerLink: ['/main/report'],
                 items: [

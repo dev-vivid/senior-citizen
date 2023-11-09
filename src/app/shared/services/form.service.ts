@@ -41,6 +41,9 @@ export class FormService {
   addAlrMedicalType(data: any) {
     return this.http.post(`${this.apiUrl}Admin/addAlrMedicalType`, data);
   }
+  addUser(data: any) {
+    return this.http.post(`${this.apiUrl}Admin/signup`, data);
+  }
   addAlrMedical(data: any) {
     return this.http.post(`${this.apiUrl}Admin/addAlrMedical`, data);
   }
