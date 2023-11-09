@@ -14,9 +14,6 @@
                     alt="freya-layout" /> 
                 eBeat -->
             </a>
-            <!-- <a tabindex="0" id="logo-link" class="layout-topbar-logo" (click)="appMain.onMenuButtonClick($event)">
-                <p>Field Policing Application</p> 
-            </a>  -->
         </div>
 
         <app-menu></app-menu>
@@ -24,14 +21,15 @@
         <div class="layout-topbar-right">
             <ul class="layout-topbar-actions">
                 <li>
-                    <h5 class="mb-0 capitalize text-overflow-ellipsis text-white">
-                        {{userName}}
-                    </h5>
+                    <button pbutton="" type="button" icon="pi pi-globe" class="p-element p-button-text p-button-secondary flex-shrink-0 p-button p-component p-button-icon-only"><span class="p-button-icon pi pi-cog" aria-hidden="true" style="font-size: 20px;color: #fff;"></span></button>
+                    <!-- <div class="flex align-items-center justify-content-center">
+                        <i class="pi pi-globe" style="font-size: 20px;"></i>
+                    </div> -->
                 </li>
                 <li #profile class="topbar-item user-profile"
                     [ngClass]="{'active-topmenuitem fadeInDown': appMain.activeTopbarItem === profile}">
                     <a href="#" (click)="appMain.onTopbarItemClick($event,profile)">
-                        <img src="../assets/images/main icon logo.jpeg" class="avatar img-50 rounded-circle" alt="Admin" />
+                        <img src="assets/images/mainLogo.jpeg" class="avatar img-50 rounded-circle" alt="Admin" />
                     </a>
                     <ul class="fadeInDown">
                         <li class="border-bottom-1 border-bluegray-200">
@@ -71,13 +69,12 @@
                         </li>
                     </ul>
                 </li>
+                <!-- <li>
+                    <h5 class="mb-0 capitalize text-overflow-ellipsis text-white">
+                        {{userName}}
+                    </h5>
+                </li> -->
             </ul>
-<!--             
-            <button (click)="changeLanguage('en')">English</button>
-            <button (click)="changeLanguage('ta')">Tamil</button> -->
-            <!-- <a  tabindex="0" class="layout-rightpanel-button" (click)="appMain.onRightPanelClick($event)">
-                <i class="pi pi-sign-out"></i>
-            </a> -->
         </div>
     </div>
 </div>

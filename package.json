@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "^14.2.12",
     "@angular/router": "^14.2.12",
     "@angular/service-worker": "^14.2.12",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "@types/tesseract.js": "^2.0.0",
     "@zxing/library": "^0.19.1",
     "angular-font-awesome": "^3.1.2",
