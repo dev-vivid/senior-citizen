@@ -20,12 +20,12 @@
 
         <div class="layout-topbar-right">
             <ul class="layout-topbar-actions">
-                <li>
+                <!-- <li>
                     <button pbutton="" type="button" icon="pi pi-globe" class="p-element p-button-text p-button-secondary flex-shrink-0 p-button p-component p-button-icon-only"><span class="p-button-icon pi pi-cog" aria-hidden="true" style="font-size: 20px;color: #fff;"></span></button>
-                    <!-- <div class="flex align-items-center justify-content-center">
+                    <div class="flex align-items-center justify-content-center">
                         <i class="pi pi-globe" style="font-size: 20px;"></i>
-                    </div> -->
-                </li>
+                    </div>
+                </li> -->
                 <li #profile class="topbar-item user-profile"
                     [ngClass]="{'active-topmenuitem fadeInDown': appMain.activeTopbarItem === profile}">
                     <a href="#" (click)="appMain.onTopbarItemClick($event,profile)">
@@ -45,7 +45,7 @@
                         </li>
                         <li (click)="toggleLanguage()">
                             <a>
-                                <span class="pi pi-user mr-3"></span>
+                                <span class="pi pi-globe mr-3"></span>
                                 <span class="flex flex-column">
                                     {{ getTranslation('language') | translate }}
                                 </span>

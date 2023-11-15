@@ -101,7 +101,8 @@
     "age":"வயது",
     "issue":"பிரச்சினை",
     "issueType":"பிரச்சினை வகை",
-    "grievanceType":"புகார் வகை"
+    "grievanceType":"புகார் வகை",
+    "user":"பயனர்"
 
   }
   

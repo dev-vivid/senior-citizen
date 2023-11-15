@@ -33,7 +33,7 @@ export class UserFormComponent implements OnInit {
     this.medicalTypeForm = this.fb.group({
       name:['', [Validators.required]],
       password:['', [Validators.required]],
-      email:['', [Validators.required]],
+      email:['', [Validators.required,Validators.email]],
       mobile:['', [Validators.required]],
     });
   }

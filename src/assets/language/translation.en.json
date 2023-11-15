@@ -25,9 +25,9 @@
   "hospitalInformation":"Hospital Information",
   "addHospital":"ADD HOSPITAL",
   "hospitalName":"Hospital Name",
-  "contactNo":"contact no",
-  "email":"email",
-  "address":"address",
+  "contactNo":"Contact no",
+  "email":"Email",
+  "address":"Address",
   "medical":"Medical",
   "medicalType":"Medical Type",
   "addAlternativeMedicalType":"ADD ALTERNATIVE MEDICAL TYPE",
@@ -101,7 +101,8 @@
   "age":"Age",
   "issue":"Issue",
   "issueType":"Issue Type",
-  "grievanceType":"Grievance Type"
+  "grievanceType":"Grievance Type",
+  "user":"User"
 
 
     
