@@ -53,6 +53,9 @@ export class FormService {
   addLegalAid(data: any) {
     return this.http.post(`${this.apiUrl}Admin/addLegalAid`, data);
   }
+  addGrievance(data: any) {
+    return this.http.post(`${this.apiUrl}Admin/GrievanceUpdate`, data);
+  }
 
   //edit data
   districtEdit(data: any) {

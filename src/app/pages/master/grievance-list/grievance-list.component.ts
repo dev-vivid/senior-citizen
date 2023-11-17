@@ -37,7 +37,7 @@ export class GrievanceListComponent implements OnInit {
   getGrivenceTypeList() {
     this.formService.getGrivenceTypeList().subscribe((resp: any) => {
       this.grivenceTypeList = resp.data;
-      this.grivenceTypeList.unshift({id: '', name: 'All'})
+      // this.grivenceTypeList.unshift({id: '', name: 'All'})
     });
   }
   initManufacturerForm(){
@@ -52,7 +52,7 @@ export class GrievanceListComponent implements OnInit {
   getList() {
     // this.isLoader = true;
     const reqData = {
-      "grievanceStatus": ''
+      "grievanceStatus": "1"
     }
     console.log(reqData);
     this.formService.getGrivanceList(reqData).subscribe((resp: any) => {
