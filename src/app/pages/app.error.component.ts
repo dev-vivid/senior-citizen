@@ -27,7 +27,9 @@ export class AppErrorComponent {
       // contact: ['',Validators.required],
       mobile: ['',Validators.required],
       address: ['', Validators.required],
-      districtId:['',Validators.required]
+      districtId:['',Validators.required],
+      issueType:[[]],
+      otherIssue:['']
     });
   }
 
@@ -44,23 +46,16 @@ export class AppErrorComponent {
     });
   }
 
-  // add more end
-
-  
-
-
   saveDetails() {
         this.formService.grivannceData(this.grievanceForm.value).subscribe((data: any) => {
           if (data) {
             setTimeout(() => {
-              // this.isNotLoader = true;
-              // this.isLoader = false;
               this.sharedService.showSuccess('Updated Successfully');
               this.grievanceForm.reset();
               console.log(this.grievanceForm.value)
             }, 600);}
           }
-          )
+     )
   }
 
 }
