@@ -1,8 +1,80 @@
-<div class="exception-body error">
-    <div class="exception-wrapper">
-        <div class="exception-content">
-            <img src="assets/layout/images/pages/asset-error.svg" alt="SENIOR CITIZEN" />
-            <span>Error</span>
+<div class="grid">
+    <!-- <div class="col-12 pb-1">
+        <div class="p-2 flex justify-content-between align-items-center">
+            <div>
+            </div>
+            <div>
+                <button pbutton="" type="button" label="Add" class="p-element p-button-sm p-button-raised p-button-orange p-button p-component ml-2" routerLink="/main/master/hospital"><span class="p-button-label">{{ getTranslation('goToList') | translate }}</span></button>
+            </div>
+        </div>
+    </div> -->
+    <div class="col-12 md:col-6">
+        <div class="card" *ngIf="isLoader">
+            <app-loader></app-loader>
+        </div>
+        <div class="card border-0 mt-4 ml-4" *ngIf="isNotLoader">
+            <form [formGroup]="grievanceForm">
+                <h5>Grivenance</h5>
+                <div class="grid mt-0">
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>{{ getTranslation('age') | translate }}</mat-label>
+                            <input matInput formControlName="age">
+                            <mat-error *ngIf="(grievanceForm?.controls?.age?.touched && grievanceForm?.controls?.age?.errors?.required)">{{ getTranslation('age') | translate }}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>{{ getTranslation('districtName') | translate }}</mat-label>
+                            <mat-select formControlName="districtId">
+                                <mat-option *ngFor="let dict of dictList"
+                                    [value]="dict.id">
+                                    {{dict.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(grievanceForm?.controls?.district_id?.touched && grievanceForm?.controls?.district_id?.errors?.required)">{{ getTranslation('districtNamerequired') | translate }}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Name of the residing old age home</mat-label>
+                            <input matInput formControlName="name">
+                            <mat-error *ngIf="(districtForm?.controls?.name?.touched && districtForm?.controls?.name?.errors?.required)">{{ getTranslation('districtrequired') | translate }}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-radio-group aria-label="Select an option" class="full-width-field" formControlName="gender">
+                            <mat-label>Gender</mat-label>
+                        <div>
+                            <mat-radio-button value="1">Male</mat-radio-button>&nbsp;
+                            <mat-radio-button value="2">Female</mat-radio-button>&nbsp;
+                            <mat-radio-button value="3">Others</mat-radio-button>&nbsp;
+                        </div>
+                          </mat-radio-group>
+                    </div>
+                    
+                    
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>{{ getTranslation('mobile') | translate }}
+                            </mat-label>
+                            <input matInput formControlName="mobile">
+                            <mat-error *ngIf="(grievanceForm?.controls?.mobile?.touched && grievanceForm?.controls?.mobile?.errors?.required)">{{ getTranslation('mobilerequired') | translate }}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 pb-0">
+                        <mat-form-field class="full-width-field">
+                            <mat-label>{{ getTranslation('address') | translate }} </mat-label>
+                            <textarea matInput formControlName="address"></textarea>
+                            <mat-error *ngIf="(grievanceForm?.controls?.address?.touched && grievanceForm?.controls?.address?.errors?.required)">{{ getTranslation('addressrequired') | translate }}</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="field text-right">
+                    <button pButton pRipple type="button"  class="p-button-rounded" (click)="saveDetails()">{{ getTranslation('submit') | translate }}</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

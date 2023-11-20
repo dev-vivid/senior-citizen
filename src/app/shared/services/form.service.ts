@@ -26,6 +26,9 @@ export class FormService {
   addHospital(data: any) {
     return this.http.post(`${this.apiUrl}Admin/addHospital`, data);
   }
+  grivannceData(data: any) {
+    return this.http.post(`${this.apiUrl}Admin/addHospital`, data);
+  }
   addOfficer(data: any) {
     return this.http.post(`${this.apiUrl}Admin/addOfficer`, data);
   }

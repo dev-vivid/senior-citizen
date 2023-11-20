@@ -48,7 +48,7 @@ const routes: Routes = [
             },
         ]
     },
-    { path: 'error', component: AppErrorComponent },
+    { path: 'grivence-form', component: AppErrorComponent },
     { path: 'access', component: AppAccessdeniedComponent },
     { path: 'notfound', component: AppNotfoundComponent },
     { path: '**', redirectTo: 'notfound' },
