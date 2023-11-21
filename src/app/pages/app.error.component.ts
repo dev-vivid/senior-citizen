@@ -17,17 +17,19 @@ export class AppErrorComponent {
   editForm: any;
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
+  issueTypeList:any
 
   constructor(private fb: FormBuilder, private formService: FormService, public translationService: TranslationService,
      private sharedService: SharedService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.grievanceForm = this.fb.group({
       age: ['', Validators.required],
       gender:['',Validators.required],
-      name: ['', Validators.required],
+      // name: ['', Validators.required],
       // contact: ['',Validators.required],
       mobile: ['',Validators.required],
       address: ['', Validators.required],
       districtId:['',Validators.required],
+      oahname:['',Validators.required],
       issueType:[[]],
       otherIssue:['']
     });
@@ -35,6 +37,7 @@ export class AppErrorComponent {
 
   ngOnInit(): void {
    this.getDistrictList()
+   this.getIssueType()
   }
   getTranslation(key: string): string {
     return this.translationService.getTranslation(key);
@@ -45,9 +48,17 @@ export class AppErrorComponent {
       this.dictList = resp.data;
     });
   }
+  getIssueType() {
+    let value={
+      issueId:"2"
+    }
+    this.formService.getIssueType(value).subscribe((resp: any) => {
+      this.issueTypeList = resp.data;
+    });
+  }
 
   saveDetails() {
-        this.formService.grivannceData(this.grievanceForm.value).subscribe((data: any) => {
+        this.formService.addUserdGrievance(this.grievanceForm.value).subscribe((data: any) => {
           if (data) {
             setTimeout(() => {
               this.sharedService.showSuccess('Updated Successfully');

@@ -23,6 +23,9 @@ export class FormService {
   addDistrict(data: any) {
     return this.http.post(`${this.apiUrl}Admin/addDistrict`, data);
   }
+  addUserdGrievance(data: any) {
+    return this.http.post(`${this.apiUrl}Admin/grievanceForm`, data);
+  }
   addHospital(data: any) {
     return this.http.post(`${this.apiUrl}Admin/addHospital`, data);
   }
@@ -243,6 +246,9 @@ export class FormService {
   // get dropdown
   getDistrictList() {
     return this.http.get(`${this.apiUrl}Admin/getDistrictList`);
+  }
+  getIssueType(data:any) {
+    return this.http.post(`${this.apiUrl}User/getIssueTypeDtl`,data);
   }
   getofficerTypeList() {
     return this.http.get(`${this.apiUrl}Admin/getofficerTypeList`);

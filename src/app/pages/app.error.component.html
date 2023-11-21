@@ -7,16 +7,48 @@
             <form [formGroup]="grievanceForm">
                 <h5>Grivenance</h5>
                 <div class="grid mt-0">
-                    <div class="col-12 md:col-12 pb-0">
+                    <!-- <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
-                            <mat-label>{{ getTranslation('age') | translate }}</mat-label>
+                            <mat-label class="font-bold">Name</mat-label>
+                            <input matInput formControlName="name">
+                            <mat-error *ngIf="(districtForm?.controls?.name?.touched && districtForm?.controls?.name?.errors?.required)"></mat-error>
+                        </mat-form-field>
+                    </div> -->
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-label class="font-bold">{{ getTranslation('age') | translate }}</mat-label>
+                        <mat-form-field class="full-width-field">
+                            <!-- <mat-label class="font-bold">{{ getTranslation('age') | translate }}</mat-label> -->
                             <input matInput formControlName="age">
                             <mat-error *ngIf="(grievanceForm?.controls?.age?.touched && grievanceForm?.controls?.age?.errors?.required)">{{ getTranslation('age') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
-                    <div class="col-12 md:col-12 pb-0">
+                    <div class="col-12 md:col-12 mb-3 pb-0">
+                        <mat-radio-group aria-label="Select an option" class="full-width-field" formControlName="gender">
+                            <mat-label class="font-bold">Gender</mat-label>
+                        <div>
+                            <mat-radio-button value="male">Male</mat-radio-button>&nbsp;
+                            <mat-radio-button value="female">Female</mat-radio-button>&nbsp;
+                            <mat-radio-button value="others">Others</mat-radio-button>&nbsp;
+                        </div>
+                          </mat-radio-group>
+                    </div>
+                    <div class="col-12 pb-0">
+                        <mat-label class="font-bold">Name of the residing Old Age Home</mat-label>
                         <mat-form-field class="full-width-field">
-                            <mat-label>{{ getTranslation('districtName') | translate }}</mat-label>
+                            <input matInput formControlName="oahname">
+                            <mat-error *ngIf="(districtForm?.controls?.oahname?.touched && districtForm?.controls?.oahname?.errors?.required)">Old Age Name Required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 pb-0">
+                        <mat-label class="font-bold">{{ getTranslation('address') | translate }} </mat-label>
+                        <mat-form-field class="full-width-field">
+                            <textarea matInput formControlName="address"></textarea>
+                            <mat-error *ngIf="(grievanceForm?.controls?.address?.touched && grievanceForm?.controls?.address?.errors?.required)">{{ getTranslation('addressrequired') | translate }}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 md:col-12 pb-0">
+                        <mat-label class="font-bold">{{ getTranslation('districtName') | translate }}</mat-label>
+                        <mat-form-field class="full-width-field">
                             <mat-select formControlName="districtId">
                                 <mat-option *ngFor="let dict of dictList"
                                     [value]="dict.id">
@@ -28,58 +60,33 @@
                         </mat-form-field>
                     </div>
                     <div class="col-12 md:col-12 pb-0">
+                        <mat-label class="font-bold">{{ getTranslation('mobile') | translate }}</mat-label>
                         <mat-form-field class="full-width-field">
-                            <mat-label>Name of the residing old age home</mat-label>
-                            <input matInput formControlName="name">
-                            <mat-error *ngIf="(districtForm?.controls?.name?.touched && districtForm?.controls?.name?.errors?.required)">{{ getTranslation('districtrequired') | translate }}</mat-error>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-12 md:col-12 pb-0">
-                        <mat-radio-group aria-label="Select an option" class="full-width-field" formControlName="gender">
-                            <mat-label>Gender</mat-label>
-                        <div>
-                            <mat-radio-button value="1">Male</mat-radio-button>&nbsp;
-                            <mat-radio-button value="2">Female</mat-radio-button>&nbsp;
-                            <mat-radio-button value="3">Others</mat-radio-button>&nbsp;
-                        </div>
-                          </mat-radio-group>
-                    </div>
-                    
-                    
-                    <div class="col-12 md:col-12 pb-0">
-                        <mat-form-field class="full-width-field">
-                            <mat-label>{{ getTranslation('mobile') | translate }}
-                            </mat-label>
                             <input matInput formControlName="mobile">
                             <mat-error *ngIf="(grievanceForm?.controls?.mobile?.touched && grievanceForm?.controls?.mobile?.errors?.required)">{{ getTranslation('mobilerequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
+                     
                     
                     <div class="col-12 pb-0">
+                        <mat-label class="font-bold">Issues</mat-label>
                         <mat-form-field class="full-width-field">
-                            <mat-label>Issues</mat-label>
                                 <mat-select formControlName="issueType" multiple>
-                                    <mat-option *ngFor="let dict of dictList"
-                                        [value]="dict.id">
-                                        {{dict.name}}
+                                    <mat-option *ngFor="let isTyList of issueTypeList"
+                                        [value]="isTyList.id">
+                                        {{isTyList.name}}
                                     </mat-option>
                                 </mat-select>
                           </mat-form-field>
                     </div>
                     <div class="col-12 md:col-12 pb-0">
+                        <mat-label class="font-bold">Other Issues</mat-label>
                         <mat-form-field class="full-width-field">
-                            <mat-label>Other Issues</mat-label>
                             <input matInput formControlName="otherIssue">
                             <mat-error *ngIf="(districtForm?.controls?.otherIssue?.touched && districtForm?.controls?.otherIssue?.errors?.required)">{{ getTranslation('districtrequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
-                    <div class="col-12 pb-0">
-                        <mat-form-field class="full-width-field">
-                            <mat-label>{{ getTranslation('address') | translate }} </mat-label>
-                            <textarea matInput formControlName="address"></textarea>
-                            <mat-error *ngIf="(grievanceForm?.controls?.address?.touched && grievanceForm?.controls?.address?.errors?.required)">{{ getTranslation('addressrequired') | translate }}</mat-error>
-                        </mat-form-field>
-                    </div>
+                    
                 </div>
                 <div class="field text-right">
                     <button pButton pRipple type="button"  class="p-button-rounded" (click)="saveDetails()">{{ getTranslation('submit') | translate }}</button>
