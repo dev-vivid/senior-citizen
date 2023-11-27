@@ -26,22 +26,22 @@ export class UserListComponent implements OnInit {
   } 
 
   getList() {
-    this.isLoader = true;
-    this.formService.getfeedbackList().subscribe((resp: any) => {
-      if (resp.status = 200) {
-        this.dynamaicTableData = resp.data;
-        console.log("Data-", this.dynamaicTableData)
-        this.isNotLoader = true;
-        this.isLoader = false;
-      }
-       else {
-          this.sharedService.showError('Error');
-        }
-      },
-      (error) => {
-        this.sharedService.showError('Error');
-      }
-    )
+    // this.isLoader = true;
+    // this.formService.getfeedbackList().subscribe((resp: any) => {
+    //   if (resp.status = 200) {
+    //     this.dynamaicTableData = resp.data;
+    //     console.log("Data-", this.dynamaicTableData)
+    //     this.isNotLoader = true;
+    //     this.isLoader = false;
+    //   }
+    //    else {
+    //       this.sharedService.showError('Error');
+    //     }
+    //   },
+    //   (error) => {
+    //     this.sharedService.showError('Error');
+    //   }
+    // )
   };
 
 }

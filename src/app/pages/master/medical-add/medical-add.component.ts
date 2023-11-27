@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -21,22 +22,32 @@ export class MedicalAddComponent implements OnInit {
   isLoader: boolean;
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
+  currentLanguage:any
 
-  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
+  constructor(public translationService: TranslationService,private languageService: LanguageService,
+    private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
     this.medicalForm = this.fb.group({
       medical_type_id: ['', Validators.required],
       district_id: ['', Validators.required],
       name: ['', Validators.required],
       contact: this.fb.array([]),
-      email: ['', Validators.required],
+      email: [''],
       address: ['', Validators.required],
+      lang:this.currentLanguage
     });
   }
 
   ngOnInit(): void {
+    this.editMasterId = this.activatedRoute.snapshot.params['editId'];
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
+      if (this.medicalForm) {
+        this.medicalForm.patchValue({ lang: this.currentLanguage });
+      }
     this.getAlrMedicalTypeList();
     this.getDistrictList();
-    this.editMasterId = this.activatedRoute.snapshot.params['editId'];
+    });
     // this.initManufacturerForm();
     if(this.editMasterId > 0){
       this.editMasterForm();
@@ -50,18 +61,18 @@ export class MedicalAddComponent implements OnInit {
   }
   // dd
   getDistrictList() {
-    this.formService.getDistrictList().subscribe((resp: any) => {
+    this.formService.getDistrictList(this.currentLanguage).subscribe((resp: any) => {
       this.dictList = resp.data;
     });
   }
   getAlrMedicalTypeList() {
-    this.formService.getAlrMedicalTypeList().subscribe((resp: any) => {
+    this.formService.getAlrMedicalTypeList(this.currentLanguage).subscribe((resp: any) => {
       this.medicalTypeList = resp.data;
     });
   }
 
   editMasterForm() {
-    const dataKey = { medicalId: this.editMasterId };
+    const dataKey = { medicalId: this.editMasterId,lang:this.medicalForm.value.lang };
     this.formService.AlrMedicalEdit(dataKey).subscribe((resp: any) => {
       this.editForm = resp.data;
       if (resp.statusCode == '200') {
@@ -111,7 +122,8 @@ export class MedicalAddComponent implements OnInit {
         const contact = this.medicalForm.value.contact;
         const email = this.medicalForm.value.email;
         const address = this.medicalForm.value.address;
-        const updateData = { medicalId, medical_type_id, district_id, name, contact, email, address }
+        const lang = this.medicalForm.value.lang
+        const updateData = { medicalId, medical_type_id, district_id, name, contact, email, address,lang }
         this.formService.AlrMedicalUpdate(updateData).subscribe((data: any) => {
           if (data) {
             this.isNotLoader = true;

@@ -6,6 +6,7 @@ import { APIResponse } from 'src/app/shared/models/api-response';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { TranslationService } from 'src/app/shared/services/translation.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-medical-list',
@@ -19,14 +20,22 @@ export class MedicalListComponent implements OnInit {
   medicalTypeList: any[];
   isLoader: boolean;
   isNotLoader: boolean = true;
+  currentLanguage:any
 
 
-  constructor(public translationService: TranslationService,private formService: FormService, private router: Router, 
+  constructor(public translationService: TranslationService,private formService: FormService, private router: Router, private languageService: LanguageService,
     private fb: NonNullableFormBuilder, private activatedRoute: ActivatedRoute, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.getList();
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
+      if (this.searchForm) {
+        this.searchForm.patchValue({ lang: this.currentLanguage });
+      }
     this.getAlrMedicalTypeList();
+    this.getList();
+    });
     this.initManufacturerForm();
   }
   getTranslation(key: string): string {
@@ -34,7 +43,7 @@ export class MedicalListComponent implements OnInit {
   }
 
   getAlrMedicalTypeList() {
-    this.formService.getAlrMedicalTypeList().subscribe((resp: any) => {
+    this.formService.getAlrMedicalTypeList(this.currentLanguage).subscribe((resp: any) => {
       this.medicalTypeList = resp.data;
       this.medicalTypeList.unshift({id: '', name: 'All'})
       console.log(resp.data)    
@@ -43,12 +52,14 @@ export class MedicalListComponent implements OnInit {
   initManufacturerForm(){
     this.searchForm = this.fb.group({
       medical_type_id: new FormControl<string>(''),
+      lang:this.currentLanguage
     });
   }
   getList() {
     // this.isLoader = true;
     const reqData = {
-      "medicalId": ''
+      medicalId: '',
+      lang:this.currentLanguage
     }
 
     this.formService.getAlrMedicalList(reqData).subscribe((resp: any) => {
@@ -72,7 +83,8 @@ export class MedicalListComponent implements OnInit {
     this.isNotLoader = false;
     console.log('MedicalId',this.searchForm.value.medical_type_id)
     const reqData = {
-      "medicalId": this.searchForm.value.medical_type_id
+      "medicalId": this.searchForm.value.medical_type_id,
+      'lang':this.searchForm.value.lang
     }
     this.formService.getAlrMedicalList(reqData).subscribe((resp: any) => {
         setTimeout(() => {
@@ -97,7 +109,7 @@ export class MedicalListComponent implements OnInit {
             })
         },
         reject: () => {
-            this.sharedService.showWarn('Cencelled');
+            this.sharedService.showWarn('Cancelled');
         }
     });
   }

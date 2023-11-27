@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -19,15 +20,24 @@ export class GrievanceListComponent implements OnInit {
   isLoader: boolean;
   isNotLoader: boolean = true;
   grivenceType:''
+  currentLanguage:any
 
-  constructor( private router: Router,private formService: FormService, private fb: NonNullableFormBuilder, private sharedService: SharedService,
+  constructor( private router: Router,private formService: FormService,private languageService: LanguageService,
+     private fb: NonNullableFormBuilder, private sharedService: SharedService,
     public translationService: TranslationService
     ) { }
 
   ngOnInit(): void {
     this.getGrivenceTypeList();
+    this.initManufacturerForm();
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
     this.getList();
-    this.initManufacturerForm()
+      console.log(this.currentLanguage)
+      if (this.searchForm) {
+        this.searchForm.patchValue({ lang: this.currentLanguage });
+      }
+    });
   }
   getTranslation(key: string): string {
     return this.translationService.getTranslation(key);
@@ -43,6 +53,7 @@ export class GrievanceListComponent implements OnInit {
   initManufacturerForm(){
     this.searchForm = this.fb.group({
       grivenceId_type_Id: new FormControl<string>(''),
+      lang:this.currentLanguage
     });
   }
   viewGrivenance(rowdata:any){
@@ -52,7 +63,8 @@ export class GrievanceListComponent implements OnInit {
   getList() {
     // this.isLoader = true;
     const reqData = {
-      "grievanceStatus": "1"
+      "grievanceStatus": "1",
+      lang:this.currentLanguage
     }
     console.log(reqData);
     this.formService.getGrivanceList(reqData).subscribe((resp: any) => {
@@ -74,7 +86,8 @@ export class GrievanceListComponent implements OnInit {
     this.isLoader = true;
     this.isNotLoader = false;
     const reqData = {
-      "grievanceStatus": this.searchForm.value.grivenceId_type_Id
+      "grievanceStatus": this.searchForm.value.grivenceId_type_Id,
+      "lang":this.currentLanguage
     }
     this.formService.getGrivanceList(reqData).subscribe((resp: any) => {
         setTimeout(() => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -20,26 +21,35 @@ export class LegalAidAddComponent implements OnInit {
   isLoader: boolean;
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
+  currentLanguage:any
 
   constructor(private fb: FormBuilder, private formService: FormService, private router: Router,public translationService: TranslationService,
-     private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
+     private sharedService: SharedService, private activatedRoute: ActivatedRoute,private languageService: LanguageService,) {
     this.legalAidForm = this.fb.group({
       district_id:  ['', Validators.required],
       name:  ['', Validators.required],
       contact: this.fb.array([]),
       email:  ['', Validators.required],
-      address:  ['', Validators.required]
+      address:  ['', Validators.required],
+      lang:this.currentLanguage
     });
   }
 
   ngOnInit(): void {
     this.editMasterId = this.activatedRoute.snapshot.params['editId'];
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
+      if (this.legalAidForm) {
+        this.legalAidForm.patchValue({ lang: this.currentLanguage });
+      }
+    this.getDistrictList();
+    });
     if(this.editMasterId > 0){
       this.editMasterForm();
     }else{
       this.addContact();
     }
-    this.getDistrictList();
   }
 
   getTranslation(key: string): string {
@@ -63,7 +73,7 @@ export class LegalAidAddComponent implements OnInit {
   // add more end
 
   editMasterForm() {
-    const dataKey = { LegalAidId: this.editMasterId };
+    const dataKey = { LegalAidId: this.editMasterId,lang:this.legalAidForm.value.lang };
     this.formService.LegalAidEdit(dataKey).subscribe((resp: any) => {
       this.editForm = resp.data;
       // console.log("this.editForm", this.editForm)
@@ -99,7 +109,8 @@ export class LegalAidAddComponent implements OnInit {
         const contact = this.legalAidForm.value.contact;
         const email = this.legalAidForm.value.email;
         const address = this.legalAidForm.value.address;
-        const updateData = { LegalAidId, district_id, name, contact, email, address }
+        const lang = this.legalAidForm.value.lang
+        const updateData = { LegalAidId, district_id, name, contact, email, address,lang }
         this.formService.LegalAidUpdate(updateData).subscribe((data: any) => {
           if (data) {
             this.isNotLoader = true;
@@ -125,7 +136,7 @@ export class LegalAidAddComponent implements OnInit {
   }
 
   getDistrictList() {
-    this.formService.getDistrictList().subscribe((resp: any) => {
+    this.formService.getDistrictList(this.currentLanguage).subscribe((resp: any) => {
       this.dictList = resp.data;
     });
   }

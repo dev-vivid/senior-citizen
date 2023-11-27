@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
 import { APIResponse } from 'src/app/shared/models/api-response';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -16,11 +17,16 @@ export class SchemeListComponent implements OnInit {
   submitted: boolean;
   isLoader: boolean;
   isNotLoader: boolean;
+  currentLanguage:any
 
-  constructor(public translationService: TranslationService,private formService: FormService, private router: Router, private activatedRoute: ActivatedRoute, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
+  constructor(public translationService: TranslationService,private languageService: LanguageService,private formService: FormService, private router: Router, private activatedRoute: ActivatedRoute, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
     this.getList();
+    });
   }
 
     getTranslation(key: string): string {
@@ -29,7 +35,7 @@ export class SchemeListComponent implements OnInit {
 
   getList() {
     this.isLoader = true;
-    this.formService.getSchemeList().subscribe((resp: any) => {
+    this.formService.getSchemeList(this.currentLanguage).subscribe((resp: any) => {
       if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         this.isNotLoader = true;
@@ -59,7 +65,7 @@ export class SchemeListComponent implements OnInit {
             })
         },
         reject: () => {
-            this.sharedService.showWarn('Cencelled');
+            this.sharedService.showWarn('Cancelled');
         }
     });
   }

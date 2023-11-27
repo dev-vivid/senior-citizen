@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -19,15 +20,24 @@ export class OldAgeTypeAddComponent implements OnInit {
   isLoader: boolean;
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
+  currentLanguage:any
 
-  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
+  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder,private languageService: LanguageService,
+     private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.initManufacturerForm();
     this.editMasterId = this.activatedRoute.snapshot.params['editId'];
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
+      if (this.oldageTypeForm) {
+        this.oldageTypeForm.patchValue({ lang: this.currentLanguage });
+      }
+    });
     if(this.editMasterId > 0){
       this.editMasterForm();
     }
-    this.initManufacturerForm();
   }
   
   getTranslation(key: string): string {
@@ -38,12 +48,13 @@ export class OldAgeTypeAddComponent implements OnInit {
     this.oldageTypeForm = this.fb.group({
       // dictId: new FormControl<number>(0, { nonNullable: true }),
       name: new FormControl<string>('', [Validators.required]),
+      lang:this.currentLanguage
       // is_active: new FormControl<boolean>(true, { nonNullable: true })
     });
   }
 
   editMasterForm() {
-    const dataKey = { oahTypeId: this.editMasterId };
+    const dataKey = { oahTypeId: this.editMasterId,lang:this.oldageTypeForm.value.lang };
     this.formService.oahTypeEdit(dataKey).subscribe((resp: any) => {
       this.editForm = resp.data;
       if (resp.statusCode == '200') {
@@ -61,7 +72,8 @@ export class OldAgeTypeAddComponent implements OnInit {
       if(this.editMasterId > 0){
         const name = this.oldageTypeForm.value.name;
         const oahTypeId = this.editMasterId;
-        const updateData = { oahTypeId, name }
+        const lang = this.oldageTypeForm.value.lang
+        const updateData = { oahTypeId, name,lang }
         this.formService.oahTypeUpdate(updateData).subscribe((data: any) => {
           if (data) {
             this.isNotLoader = true;

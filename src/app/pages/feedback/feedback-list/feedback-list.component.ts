@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -15,11 +16,16 @@ export class FeedbackListComponent implements OnInit {
   submitted: boolean;
   isLoader: boolean;
   isNotLoader: boolean;
-
-  constructor(public translationService: TranslationService,private formService: FormService, private router: Router,private sharedService: SharedService) { }
+  currentLanguage:any
+  constructor(public translationService: TranslationService,private formService: FormService,private languageService: LanguageService,
+     private router: Router,private sharedService: SharedService) { }
 
   ngOnInit(): void {
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
     this.getList();
+    });
   }
 
   getTranslation(key: string): string {
@@ -28,7 +34,7 @@ export class FeedbackListComponent implements OnInit {
 
   getList() {
     this.isLoader = true;
-    this.formService.getfeedbackList().subscribe((resp: any) => {
+    this.formService.getfeedbackList(this.currentLanguage).subscribe((resp: any) => {
       if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         console.log("Data-", this.dynamaicTableData)

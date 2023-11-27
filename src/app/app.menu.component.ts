@@ -86,7 +86,7 @@ export class AppMenuComponent implements OnInit {
             officerType: translations['officerType'],
             officer: translations['officer'],
             oldAgeType: translations['oldAgeType'],
-            oldAge: translations['oldAge'],
+            oldageHomes: translations['oldageHomes'],
             peoplePharmacy: translations['peoplePharmacy'],
             legalAid: translations['legalAid'],
             grievance: translations['grievance'],
@@ -102,9 +102,9 @@ export class AppMenuComponent implements OnInit {
 
     private updateMenuLabels() {
         this.model = [
-            { label:  this.translatedLabels.dashboard, icon: 'pi pi-desktop', access: '1,2', routerLink: ['/main'] },
+            { label:  this.translatedLabels.dashboard, icon: 'pi pi-desktop', access: '1,2,3', routerLink: ['/main'] },
             {
-                label: this.translatedLabels.service, icon: 'pi pi-microsoft', access: '1', routerLink: ['/main/master'],
+                label: this.translatedLabels.service, icon: 'pi pi-microsoft', access: '1,3', routerLink: ['/main/master'],
                 items: [
                     { label:this.translatedLabels.district, routerLink: ['/main/master/district'] }, 
                     { label: this.translatedLabels.hospital, routerLink: ['/main/master/hospital'] },
@@ -113,17 +113,17 @@ export class AppMenuComponent implements OnInit {
                     { label: this.translatedLabels.officerType, routerLink: ['/main/master/officer-type'] },
                     { label: this.translatedLabels.officer, routerLink: ['/main/master/officer'] },
                     { label: this.translatedLabels.oldAgeType, routerLink: ['/main/master/oldage-type'] },
-                    { label: this.translatedLabels.oldAge, routerLink: ['/main/master/oldage'] },
+                    { label: this.translatedLabels.oldageHomes, routerLink: ['/main/master/oldage'] },
                     { label: this.translatedLabels.peoplePharmacy, routerLink: ['/main/master/people-pharmacy'] },
                     { label: this.translatedLabels.legalAid, routerLink: ['/main/master/legal-aid'] },
                     { label: this.translatedLabels.grievance, routerLink: ['/main/master/grievance'] }
                 ]
             },
-            { label: this.translatedLabels.schemes, icon: 'pi pi-envelope', access: '1', routerLink: ['/main/scheme'] },
-            { label: this.translatedLabels.feedBack, icon: 'pi pi-check-square', access: '1', routerLink: ['/main/feedback'] },
-            { label: this.translatedLabels.user, icon: 'pi pi-user', access: '1', routerLink: ['/main/user/user-form'] },
+            { label: this.translatedLabels.schemes, icon: 'pi pi-envelope', access: '1,3', routerLink: ['/main/scheme'] },
+            { label: this.translatedLabels.feedBack, icon: 'pi pi-check-square', access: '1,3', routerLink: ['/main/feedback'] },
+            { label: this.translatedLabels.user, icon: 'pi pi-user', access: '1,3', routerLink: ['/main/user/user-form'] },
             {
-                label: this.translatedLabels.report, icon: 'pi pi-qrcode', access: '1', routerLink: ['/main/report'],
+                label: this.translatedLabels.report, icon: 'pi pi-qrcode', access: '1,3', routerLink: ['/main/report'],
                 items: [
                     { label: this.translatedLabels.seniorCitizen,  routerLink: ['/main/report/scDetails'] },
                     { label: this.translatedLabels.totalAppInstall,  routerLink: ['/main/report/mobileAppInstalled'] },

@@ -5,6 +5,7 @@ import { ConfirmationService } from 'primeng/api';
 import { APIResponse } from 'src/app/shared/models/api-response';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-old-age-type-list',
@@ -14,13 +15,19 @@ import { TranslationService } from 'src/app/shared/services/translation.service'
 export class OldAgeTypeListComponent implements OnInit {
   dynamaicTableData: any;
   submitted: boolean;
+  currentLanguage:any
   // isLoader: boolean;
   // isNotLoader: boolean;
 
-  constructor(public translationService: TranslationService,private formService: FormService, private router: Router, private activatedRoute: ActivatedRoute, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
+  constructor(public translationService: TranslationService,private formService: FormService, private router: Router, private activatedRoute: ActivatedRoute,
+    private languageService: LanguageService,private confirmationService: ConfirmationService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
     this.getList();
+    });
   }
   
   getTranslation(key: string): string {
@@ -29,7 +36,7 @@ export class OldAgeTypeListComponent implements OnInit {
 
   getList() {
     // this.isLoader = true;
-    this.formService.getOldAgeType().subscribe((resp: any) => {
+    this.formService.getOldAgeType(this.currentLanguage).subscribe((resp: any) => {
       if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         // this.isNotLoader = true;
@@ -58,7 +65,7 @@ export class OldAgeTypeListComponent implements OnInit {
             })
         },
         reject: () => {
-            this.sharedService.showWarn('Cencelled');
+            this.sharedService.showWarn('Cancelled');
         }
     });
   }

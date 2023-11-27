@@ -134,17 +134,17 @@ export class FormService {
   }
 
   // LIST 
-  getDistrict() {
-    return this.http.get(`${this.apiUrl}Admin/getDistrict`);
+  getDistrict(lang) {
+    return this.http.get(`${this.apiUrl}Admin/getDistrict?lang=${lang}`);
   }
-  getHospitalList() {
-    return this.http.get(`${this.apiUrl}Admin/getHospitalList`);
+  getHospitalList(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getHospitalList?lang=${lang}`);
   }
-  getOfficerType() {
-    return this.http.get(`${this.apiUrl}Admin/getOfficerType`);
+  getOfficerType(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getOfficerType?lang=${lang}`);
   }
-  getOldAgeType() {
-    return this.http.get(`${this.apiUrl}Admin/getOldAgeType`);
+  getOldAgeType(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getOldAgeType?lang=${lang}`);
   }
   getOfficerList(data: any) {
     return this.http.post(`${this.apiUrl}Admin/getOfficerList`, data); // "OfficerId":"2"
@@ -161,34 +161,34 @@ export class FormService {
   getGrivanceList(data: any) {
     return this.http.post(`${this.apiUrl}Admin/getGrievanceList`, data); //medicalId
   }
-  getPeoplePharmacyList() {
-    return this.http.get(`${this.apiUrl}Admin/getPeoplePharmacyList`);
+  getPeoplePharmacyList(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getPeoplePharmacyList?lang=${lang}`);
   }
-  getLegalAidList() {
-    return this.http.get(`${this.apiUrl}Admin/getLegalAidList`);
+  getLegalAidList(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getLegalAidList?lang=${lang}`);
   }
 
   // Admin
-  getAdminDashboard() {
-    return this.http.get(`${this.apiUrl}Admin/getAdminDashboard`)
+  getAdminDashboard(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getAdminDashboard?lang=${lang}`)
   }
-  getfeedbackList() {
-    return this.http.get(`${this.apiUrl}Admin/getfeedbackList`)
+  getfeedbackList(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getfeedbackList?lang=${lang}`)
   }
   getSchemeDetail() {
     return this.http.get(`${this.apiUrl}Admin/getSchemeDetail`)
   }
-  getSchemeList() {
-    return this.http.get(`${this.apiUrl}Admin/getSchemeList`)
+  getSchemeList(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getSchemeList?lang=${lang}`)
   }
   addScheme(data: FormData) {
     return this.http.post(`${this.apiUrl}Admin/addScheme`, data);
   }
-  getMobInstallList() {
-    return this.http.get(`${this.apiUrl}Admin/getMobInstallList`)
+  getMobInstallList(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getMobInstallList?lang=${lang}`)
   }
-  getAlrMedicalType() {
-    return this.http.get(`${this.apiUrl}Admin/getAlrMedicalType`)
+  getAlrMedicalType(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getAlrMedicalType?lang=${lang}`)
   }
   
   // Delete
@@ -244,20 +244,23 @@ export class FormService {
 
    
   // get dropdown
-  getDistrictList() {
-    return this.http.get(`${this.apiUrl}Admin/getDistrictList`);
+  getDistrictList(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getDistrictList?lang=${lang}`);
+  }
+  getDistrictListEng() {
+    return this.http.get(`${this.apiUrl}Admin/getDistrictList?`);
   }
   getIssueType(data:any) {
     return this.http.post(`${this.apiUrl}User/getIssueTypeDtl`,data);
   }
-  getofficerTypeList() {
-    return this.http.get(`${this.apiUrl}Admin/getofficerTypeList`);
+  getofficerTypeList(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getofficerTypeList?lang=${lang}`);
   }
-  getoahTypeList() {
-    return this.http.get(`${this.apiUrl}Admin/getoahTypeList`);
+  getoahTypeList(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getoahTypeList?lang=${lang}`);
   }
-  getAlrMedicalTypeList() {
-    return this.http.get(`${this.apiUrl}Admin/getAlrMedicalTypeList`);
+  getAlrMedicalTypeList(lang:any) {
+    return this.http.get(`${this.apiUrl}Admin/getAlrMedicalTypeList?lang=${lang}`);
   }
   getGrivenceTypeList() {
     return this.http.get(`${this.apiUrl}Admin/getGrievanceTypeList`);

@@ -16,8 +16,8 @@
             <app-loader></app-loader>
         </div>
         <div class="card border-0" *ngIf="isNotLoader">
-            <h5>{{ getTranslation('addAlternativeMedicalType') | translate }}</h5>
-            <form [formGroup]="medicalTypeForm">
+            <h5>{{ getTranslation('user') | translate }}</h5>
+            <form [formGroup]="userForm">
                 <div class="grid mt-0">
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
@@ -36,6 +36,17 @@
                             <mat-label>{{ getTranslation('password') | translate }}</mat-label>
                             <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                           </mat-form-field>
+                          <mat-form-field class="full-width-field">
+                        <mat-label class="font-bold">{{ getTranslation('districtName') | translate }}</mat-label>
+                            <mat-select formControlName="districtId">
+                                <mat-option *ngFor="let dict of dictList"
+                                    [value]="dict.id">
+                                    {{dict.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(grievanceForm?.controls?.districtId?.touched && grievanceForm?.controls?.districtId?.errors?.required)">{{ getTranslation('districtNamerequired') | translate }}</mat-error>
+                        </mat-form-field>
                     </div>
                 </div>
                 <div class="col-12 text-right">

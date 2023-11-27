@@ -3,6 +3,7 @@ import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } fro
 import { ActivatedRoute, Router } from '@angular/router';
 import { Interface } from 'readline';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -23,15 +24,23 @@ export class SchemeAddComponent implements OnInit {
   Toggleactive: boolean = true;
   editForm: any;
   imagePath: any;
+  currentLanguage:any
 
-  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
+  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder,private languageService: LanguageService, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.initManufacturerForm();
     this.editMasterId = this.activatedRoute.snapshot.params['editId'];
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
+      if (this.schemeForm) {
+        this.schemeForm.patchValue({ lang: this.currentLanguage });
+      }
+    });
     if(this.editMasterId > 0){
       this.editMasterForm();
     }
-    this.initManufacturerForm();
   }
   
   getTranslation(key: string): string {
@@ -45,12 +54,13 @@ export class SchemeAddComponent implements OnInit {
       scheme_objective: new FormControl<string>('', [Validators.required]),
       scheme_eligibility: new FormControl<string>('', [Validators.required]),
       fileUpload: new FormControl(''),
+      lang:this.currentLanguage
       // fileSource: new FormControl('')
     });
   }
 
   editMasterForm() {
-    const dataKey = { schemeId: this.editMasterId };
+    const dataKey = { schemeId: this.editMasterId,lang:this.schemeForm.value.lang };
     this.formService.schemeEdit(dataKey).subscribe((resp: any) => {
       this.editForm = resp.data;
       // console.log("Edit form", this.editForm);
@@ -91,6 +101,7 @@ export class SchemeAddComponent implements OnInit {
         formData.append('government', this.schemeForm.value.government);
         // formData.append('document', this.primaryImage.document);
         formData.append('schemeId', this.editMasterId);
+        formData.append('lang',this.schemeForm.value.lang)
         this.formService.schemeUpdate(formData).subscribe((resp: any) => {
           if (resp.statusCode == 200) {
             setTimeout(() => {

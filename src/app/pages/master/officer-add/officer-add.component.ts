@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -20,8 +21,10 @@ export class OfficerAddComponent implements OnInit {
   isLoader: boolean;
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
+  currentLanguage:any
 
-  constructor(public translationService: TranslationService,private fb: FormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
+  constructor(public translationService: TranslationService,private fb: FormBuilder,
+    private languageService: LanguageService, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
     this.officerForm = this.fb.group({
       officer_id: ['', Validators.required],
       district_id: ['', Validators.required],
@@ -30,18 +33,26 @@ export class OfficerAddComponent implements OnInit {
       fax: [''],
       email: ['', Validators.required],
       address: ['', Validators.required],
+      lang:this.currentLanguage
     });
   }
 
   ngOnInit(): void {
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
+      if (this.officerForm) {
+        this.officerForm.patchValue({ lang: this.currentLanguage });
+      }
+    this.getofficerTypeList();
+    this.getDistrictList();
+    });
     this.editMasterId = this.activatedRoute.snapshot.params['editId'];
     if(this.editMasterId > 0){
       this.editMasterForm();
     }else{
       this.addContact();
     }
-    this.getDistrictList();
-    this.getofficerTypeList();
   }
 
   
@@ -50,7 +61,8 @@ export class OfficerAddComponent implements OnInit {
   }
   
   editMasterForm() {
-    const dataKey = { officerId: this.editMasterId };
+    // const dataKey = { officerId: this.editMasterId,lang:"ta" };
+    const dataKey = "data"
     this.formService.officerEdit(dataKey).subscribe((resp: any) => {
       this.editForm = resp.data;
       if (resp.statusCode == '200') {
@@ -90,13 +102,13 @@ export class OfficerAddComponent implements OnInit {
   // add more end
 
   getDistrictList() {
-    this.formService.getDistrictList().subscribe((resp: any) => {
+    this.formService.getDistrictList(this.currentLanguage).subscribe((resp: any) => {
       this.dictList = resp.data;
     });
   }
 
   getofficerTypeList() {
-    this.formService.getofficerTypeList().subscribe((resp: any) => {
+    this.formService.getofficerTypeList(this.currentLanguage).subscribe((resp: any) => {
       this.offTypeList = resp.data;
     });
   }
@@ -114,7 +126,8 @@ export class OfficerAddComponent implements OnInit {
         const fax = this.officerForm.value.fax;
         const email = this.officerForm.value.email;
         const address = this.officerForm.value.address;
-        const updateData = { officerId, officer_id, district_id, name, contact, fax, email, address }
+        const lang = this.officerForm.value.lang
+        const updateData = { officerId, officer_id, district_id, name, contact, fax, email, address,lang }
         this.formService.officerUpdate(updateData).subscribe((data: any) => {
           if (data) {
             setTimeout(() => {

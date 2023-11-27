@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -17,14 +18,23 @@ export class MedicalTypeAddComponent implements OnInit {
   formData: any;
   editForm: any;
   isLoader: boolean;
+  currentLanguage:any
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
    selectedFile: File | null = null;
   selectedFilePreview: string | ArrayBuffer | null = null;
 
-  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
+  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder,
+    private languageService: LanguageService, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
+      if (this.medicalTypeForm) {
+        this.medicalTypeForm.patchValue({ lang: this.currentLanguage });
+      }
+    });
     this.editMasterId = this.activatedRoute.snapshot.params['editId'];
     this.initManufacturerForm();
     if(this.editMasterId > 0){
@@ -57,12 +67,13 @@ export class MedicalTypeAddComponent implements OnInit {
   initManufacturerForm(){
     this.medicalTypeForm = this.fb.group({
       name: new FormControl<string>('', [Validators.required]),
+      lang:this.currentLanguage
       // is_active: new FormControl<boolean>(true, { nonNullable: true })
     });
   }
 
   editMasterForm() {
-    const dataKey = { medicalTypeId: this.editMasterId };
+    const dataKey = { medicalTypeId: this.editMasterId,lang:this.medicalTypeForm.value.lang };
     this.formService.AlrMedicalTypeEdit(dataKey).subscribe((resp: any) => {
       this.editForm = resp.data;
       if (resp.statusCode == '200') {
@@ -80,7 +91,8 @@ export class MedicalTypeAddComponent implements OnInit {
       if(this.editMasterId > 0){
         const name = this.medicalTypeForm.value.name;
         const medicalTypeId = this.editMasterId;
-        const updateData = { medicalTypeId, name }
+        const lang = this.medicalTypeForm.value.lang
+        const updateData = { medicalTypeId, name, lang}
         this.formService.alrMedicalTypeUpdate(updateData).subscribe((data: any) => {
           if (data) {
             this.isNotLoader = true;

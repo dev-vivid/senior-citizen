@@ -34,8 +34,12 @@ export class AdminHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = JSON.parse(sessionStorage.getItem('userInfo'));
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      this.getAdminDashboard()
+    });
     this.getchart();
-    this.getAdminDashboard();
+    // this.getAdminDashboard();
     if (this.userData.data.roleId === 1) {
       this.isAdmin = true;
     } 
@@ -46,7 +50,7 @@ export class AdminHomeComponent implements OnInit {
   }
 
   getAdminDashboard() {
-    this.formService.getAdminDashboard().subscribe(
+    this.formService.getAdminDashboard(this.currentLanguage).subscribe(
       (resp: any) => {
         if (resp.status = 200) {
           this.dbCount = resp.data;

@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
           this.userRole = resp.data.roleId;
           this.roleName = resp.data.roleTypeName;
           // console.log("Session storage", resp);
-          if (this.userRole === 1) {
+          if (this.userRole === 1,3) {
             this.router.navigate(['/main'])
             setTimeout(() => {
               this.sharedService.showSuccess(this.roleName +' Login Successfully!');

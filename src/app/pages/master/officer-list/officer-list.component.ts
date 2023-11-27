@@ -6,6 +6,7 @@ import { APIResponse } from 'src/app/shared/models/api-response';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { TranslationService } from 'src/app/shared/services/translation.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-officer-list',
@@ -19,12 +20,22 @@ export class OfficerListComponent implements OnInit {
   offTypeList: any[];
   isLoader: boolean;
   isNotLoader: boolean = true;
+  currentLanguage:any
 
-  constructor(public translationService: TranslationService,private formService: FormService, private router: Router, private fb: NonNullableFormBuilder, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
+  constructor(public translationService: TranslationService,private languageService: LanguageService,
+    private formService: FormService, private router: Router, private fb: NonNullableFormBuilder, private confirmationService: ConfirmationService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.getInitList();
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
+      this.getInitList()
+      if (this.searchForm) {
+        this.searchForm.patchValue({ lang: this.currentLanguage });
+      }
     this.getofficerTypeList();
+    });
+    // this.getInitList();
     this.initManufacturerForm();
   }
   
@@ -35,10 +46,11 @@ export class OfficerListComponent implements OnInit {
   initManufacturerForm(){
     this.searchForm = this.fb.group({
       officer_id: new FormControl<string>(''),
+      lang:this.currentLanguage
     });
   }
   getofficerTypeList() {
-    this.formService.getofficerTypeList().subscribe((resp: any) => {
+    this.formService.getofficerTypeList(this.currentLanguage).subscribe((resp: any) => {
       this.offTypeList = resp.data;
       this.offTypeList.unshift({id: '', name: 'All'})
     });
@@ -47,7 +59,8 @@ export class OfficerListComponent implements OnInit {
   getInitList() {
     // this.isLoader = true;
     const reqData = {
-      "OfficerId": ''
+      "OfficerId": '',
+      lang:this.currentLanguage
     }
     this.formService.getOfficerList(reqData).subscribe((resp: any) => {
       if (resp.status = 200) {
@@ -68,7 +81,8 @@ export class OfficerListComponent implements OnInit {
     this.isLoader = true;
     this.isNotLoader = false;
     const reqData = {
-      "OfficerId": this.searchForm.value.officer_id
+      "OfficerId": this.searchForm.value.officer_id,
+      "lang":this.searchForm.value.lang
     }
     this.formService.getOfficerList(reqData).subscribe((resp: any) => {
       setTimeout(() => {
@@ -93,7 +107,7 @@ export class OfficerListComponent implements OnInit {
             })
         },
         reject: () => {
-            this.sharedService.showWarn('Cencelled');
+            this.sharedService.showWarn('Cancelled');
         }
     });
   }

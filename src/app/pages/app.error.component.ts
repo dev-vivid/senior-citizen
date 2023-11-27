@@ -44,7 +44,7 @@ export class AppErrorComponent {
   }
 
   getDistrictList() {
-    this.formService.getDistrictList().subscribe((resp: any) => {
+    this.formService.getDistrictListEng().subscribe((resp: any) => {
       this.dictList = resp.data;
     });
   }

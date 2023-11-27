@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -18,26 +19,36 @@ export class HospitalAddComponent implements OnInit {
   editForm: any;
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
+  currentLanguage:any
 
   constructor(private fb: FormBuilder, private formService: FormService, public translationService: TranslationService,
-     private sharedService: SharedService, private activatedRoute: ActivatedRoute, private router: Router) {
+     private sharedService: SharedService, private activatedRoute: ActivatedRoute, private router: Router,
+     private languageService: LanguageService,) {
     this.hospitalForm = this.fb.group({
       district_id: ['', Validators.required],
       name: ['', Validators.required],
       contact: this.fb.array([]),
-      email: [''],
-      address: ['', Validators.required]
+      email: ['',Validators.required],
+      address: ['', Validators.required],
+      lang:this.currentLanguage
     });
   }
 
   ngOnInit(): void {
     this.editMasterId = this.activatedRoute.snapshot.params['editId'];
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
+      if (this.hospitalForm) {
+        this.hospitalForm.patchValue({ lang: this.currentLanguage });
+      }
+    this.getDistrictList();
+    });
     if(this.editMasterId > 0){
       this.editMasterForm();
     }else{
       this.addContact();
     }
-    this.getDistrictList();
   }
   getTranslation(key: string): string {
     return this.translationService.getTranslation(key);
@@ -60,7 +71,7 @@ export class HospitalAddComponent implements OnInit {
   // add more end
 
   editMasterForm() {
-    const dataKey = { hospitalId: this.editMasterId };
+    const dataKey = { hospitalId: this.editMasterId,lang:this.hospitalForm.value.lang };
     this.formService.hospitalEdit(dataKey).subscribe((resp: any) => {
       this.editForm = resp.data;
       console.log("this.editForm", this.editForm)
@@ -87,7 +98,7 @@ export class HospitalAddComponent implements OnInit {
   }
 
   getDistrictList() {
-    this.formService.getDistrictList().subscribe((resp: any) => {
+    this.formService.getDistrictList(this.currentLanguage).subscribe((resp: any) => {
       this.dictList = resp.data;
     });
   }
@@ -103,7 +114,8 @@ export class HospitalAddComponent implements OnInit {
         const contact = this.hospitalForm.value.contact;
         const email = this.hospitalForm.value.email;
         const address = this.hospitalForm.value.address;
-        const updateData = { hospitalId, district_id, name, contact, email, address }
+        const lang = this.hospitalForm.value.lang 
+        const updateData = { hospitalId, district_id, name, contact, email, address,lang }
         this.formService.hospitalUpdate(updateData).subscribe((data: any) => {
           if (data) {
             this.isNotLoader = true;

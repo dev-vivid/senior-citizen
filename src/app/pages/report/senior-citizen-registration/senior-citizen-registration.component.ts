@@ -60,7 +60,7 @@ export class SeniorCitizenRegistrationComponent implements OnInit {
         this.sharedService.showError('Problem occurred, Please try again');
       })
     }else{
-      this.sharedService.showError('Serach valid date range');
+      this.sharedService.showError('Search valid date range');
     }
   }
 

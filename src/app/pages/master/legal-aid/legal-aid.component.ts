@@ -5,6 +5,7 @@ import { ConfirmationService } from 'primeng/api';
 import { APIResponse } from 'src/app/shared/models/api-response';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 
 @Component({
   selector: 'app-legal-aid',
@@ -14,14 +15,19 @@ import { TranslationService } from 'src/app/shared/services/translation.service'
 export class LegalAidComponent implements OnInit {
   dynamaicTableData: any;
   submitted: boolean;
+  currentLanguage:any
   // isLoader: boolean;
   // isNotLoader: boolean;
 
   constructor(private formService: FormService, private router: Router, private activatedRoute: ActivatedRoute, public translationService: TranslationService,
-     private confirmationService: ConfirmationService, private sharedService: SharedService) { }
+     private confirmationService: ConfirmationService, private sharedService: SharedService,private languageService: LanguageService,) { }
 
   ngOnInit(): void {
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
     this.getList();
+    });
   }
 
   getTranslation(key: string): string {
@@ -30,7 +36,7 @@ export class LegalAidComponent implements OnInit {
 
   getList() {
     // this.isLoader = true;
-    this.formService.getLegalAidList().subscribe((resp: any) => {
+    this.formService.getLegalAidList(this.currentLanguage).subscribe((resp: any) => {
       if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         // this.isNotLoader = true;
@@ -59,7 +65,7 @@ export class LegalAidComponent implements OnInit {
             })
         },
         reject: () => {
-            this.sharedService.showWarn('Cencelled');
+            this.sharedService.showWarn('Cancelled');
         }
     });
   }

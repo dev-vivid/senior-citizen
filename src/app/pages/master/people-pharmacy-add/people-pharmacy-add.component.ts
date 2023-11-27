@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from 'src/app/shared/services/form.service';
+import { LanguageService } from 'src/app/shared/services/language.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 
@@ -20,25 +21,35 @@ export class PeoplePharmacyAddComponent implements OnInit {
   isLoader: boolean;
   isNotLoader: boolean = true;
   Toggleactive: boolean = true;
+  currentLanguage:any
 
-  constructor(public translationService: TranslationService,private fb: FormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
+  constructor(public translationService: TranslationService,private fb: FormBuilder,private languageService: LanguageService,
+     private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) {
     this.ppharmacyForm = this.fb.group({
       district_id:  ['', Validators.required],
       name:  ['', Validators.required],
       contact: this.fb.array([]),
       email:  ['', Validators.required],
-      address:  ['', Validators.required]
+      address:  ['', Validators.required],
+      lang:this.currentLanguage
     });
   }
 
   ngOnInit(): void {
     this.editMasterId = this.activatedRoute.snapshot.params['editId'];
+    this.languageService.currentLanguage$.subscribe((language: string) => {
+      this.currentLanguage = language;
+      console.log(this.currentLanguage)
+      if (this.ppharmacyForm) {
+        this.ppharmacyForm.patchValue({ lang: this.currentLanguage });
+      }
+    this.getDistrictList();
+    });
     if(this.editMasterId > 0){
       this.editMasterForm();
     }else{
       this.addContact();
     }
-    this.getDistrictList();
   }
   
   getTranslation(key: string): string {
@@ -62,7 +73,7 @@ export class PeoplePharmacyAddComponent implements OnInit {
   // add more end
 
   editMasterForm() {
-    const dataKey = { peoplePharmacyId: this.editMasterId };
+    const dataKey = { peoplePharmacyId: this.editMasterId,lang:this.ppharmacyForm.value.lang };
     this.formService.PeoplePharmacyEdit(dataKey).subscribe((resp: any) => {
       this.editForm = resp.data;
       // console.log("this.editForm", this.editForm)
@@ -98,7 +109,8 @@ export class PeoplePharmacyAddComponent implements OnInit {
         const contact = this.ppharmacyForm.value.contact;
         const email = this.ppharmacyForm.value.email;
         const address = this.ppharmacyForm.value.address;
-        const updateData = { peoplePharmacyId, district_id, name, contact, email, address }
+        const lang = this.ppharmacyForm.value.lang
+        const updateData = { peoplePharmacyId, district_id, name, contact, email, address,lang }
         this.formService.PeoplePharmacyUpdate(updateData).subscribe((data: any) => {
           if (data) {
             this.isNotLoader = true;
@@ -124,7 +136,7 @@ export class PeoplePharmacyAddComponent implements OnInit {
   }
 
   getDistrictList() {
-    this.formService.getDistrictList().subscribe((resp: any) => {
+    this.formService.getDistrictList(this.currentLanguage).subscribe((resp: any) => {
       this.dictList = resp.data;
     });
   }
