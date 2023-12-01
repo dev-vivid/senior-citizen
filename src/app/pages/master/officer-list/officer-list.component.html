@@ -1,4 +1,4 @@
-<div class="grid">
+    <div class="grid">
     <div class="col-12 pb-1">
         <div class="flex justify-content-between">
             <div class="px-2 md:px-4 bg-white flex justify-content-between align-items-center">
@@ -12,7 +12,7 @@
             <div class="flex px-2">
                 <form [formGroup]="searchForm">
                     <mat-form-field class="mr-3" appearance="standard">
-                        <mat-label class="text-blue-700 font-bold">Officer Type</mat-label>
+                        <mat-label class="text-blue-700 font-bold">{{ getTranslation('officerTypes') | translate }}</mat-label>
                         <mat-select formControlName="officer_id" placeholder="Select Officer Type">
                             <mat-option *ngFor="let offType of offTypeList" (click)="searchDetails()"
                                 [value]="offType.id">

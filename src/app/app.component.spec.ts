@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
 import { AppConfigComponent } from './app.config.component';
 import { AppTopBarComponent } from './app.topbar.component';
-import { AppFooterComponent } from './app.footer.component';
+//import { AppFooterComponent } from './app.footer.component';
 import { AppMenuComponent } from './app.menu.component';
 
 describe('AppComponent', () => {
@@ -18,7 +18,7 @@ describe('AppComponent', () => {
                 AppConfigComponent,
                 AppTopBarComponent,
                 AppMenuComponent,
-                AppFooterComponent,
+                //AppFooterComponent,
             ]
         }).compileComponents();
     }));

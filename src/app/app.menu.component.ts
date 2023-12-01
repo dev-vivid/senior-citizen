@@ -95,8 +95,8 @@ export class AppMenuComponent implements OnInit {
             report: translations['reports'],
             seniorCitizen: translations['seniorcitizen'],
             totalAppInstall: translations['totalAppInstall'],
-            user: translations['user']
-
+            user: translations['user'],
+            userdetails:translations['userdetails']
         };
     }
 
@@ -127,6 +127,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: this.translatedLabels.seniorCitizen,  routerLink: ['/main/report/scDetails'] },
                     { label: this.translatedLabels.totalAppInstall,  routerLink: ['/main/report/mobileAppInstalled'] },
+                    { label: this.translatedLabels.userdetails,  routerLink: ['/main/report/userdetails'] },
                 ]
             }
         ];

@@ -13,7 +13,7 @@
   "hospital":"Hospital",
   "MobileappInstalled":"Mobile-app Installed",
   "totalhelpline":"Total Helpline calls",
-  "noofdownload":"No of Download",
+  "noofdownload":"Total No Of Scheme",
   "pendinggreviance":"Pending Greviance",
   "inprocessgrievance":"Inprocess Grievance",
   "completedgrievance":"Completed Grievance",
@@ -102,8 +102,8 @@
   "issue":"Issue",
   "issueType":"Issue Type",
   "grievanceType":"Grievance Type",
-  "user":"User"
-
-
-    
+  "user":"User",
+  "userdetails":"User Details",
+  "central":"Central",
+  "state" : "State"
 }

@@ -49,7 +49,7 @@ export class SchemeListComponent implements OnInit {
     this.sharedService.showError('Error');
   }
 )
-};
+};  
 
   deleteRecord(scheId:number){
     const dataKey = { schemeId: scheId };
@@ -62,7 +62,7 @@ export class SchemeListComponent implements OnInit {
                   this.getList();
                   this.sharedService.showSuccess('Record delete successfully');
                 }
-            })
+            })  
         },
         reject: () => {
             this.sharedService.showWarn('Cancelled');

@@ -265,5 +265,7 @@ export class FormService {
   getGrivenceTypeList() {
     return this.http.get(`${this.apiUrl}Admin/getGrievanceTypeList`);
   }
-
+  getuserDetails(lang:any){
+  return this.http.get(`${this.apiUrl}Admin/getBackendUserList?lang=${lang}`);
+}
 }

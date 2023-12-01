@@ -12,7 +12,7 @@
             <div class="flex px-2">
                 <form [formGroup]="searchForm">
                     <mat-form-field class="mr-3" appearance="standard">
-                        <mat-label class="text-blue-700 font-bold">Old-age Type</mat-label>
+                        <mat-label class="text-blue-700 font-bold"> {{ getTranslation('oldAgeType') | translate }}</mat-label>
                         <mat-select formControlName="oah_type" placeholder="Select old age type">
                             <mat-option *ngFor="let oType of oahType" (click)="searchDetails()"
                                 [value]="oType.id">

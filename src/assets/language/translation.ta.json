@@ -11,9 +11,9 @@
     "lastname":"கடைசி பெயர்",
     "userprofile":"பயனர் சுயவிவரம்",
     "hospital":"மருத்துவமனை",
-    "MobileappInstalled":"Mobileapp நிறுவப்பட்டது",
+    "MobileappInstalled":"மொபைல் ஆப் நிறுவப்பட்டது",
     "totalhelpline":"மொத்த ஹெல்ப்லைன் அழைப்புகள்",
-    "noofdownload":"பதிவிறக்கத் திட்டங்களின் எண்ணிக்கை",
+    "noofdownload":"திட்டத்தின் மொத்த எண்ணிக்கை",
     "pendinggreviance":"நிலுவையில் உள்ள புகார்",
     "inprocessgrievance":"முறைகேடு",
     "completedgrievance":"முடிந்த குறையை",
@@ -52,7 +52,7 @@
     "name":"பெயர்",
     "selectDistrict":"மாவட்டத்தை தேர்ந்தெடு",
     "district":"மாவட்டம்",
-    "oldAgeInformation":"பழைய வயது தகவல்",
+    "oldAgeInformation":"முதியோர் இல்லங்கள் பற்றிய தகவல்கள்",
     "addOldAgeHome":"முதியோர் இல்லத்தைச் சேர்",
     "schemeDetails":"திட்டத்தின் விவரங்கள்",
     "addScheme":"திட்டத்தைச் சேர்க்கவும்",
@@ -102,7 +102,9 @@
     "issue":"பிரச்சினை",
     "issueType":"பிரச்சினை வகை",
     "grievanceType":"புகார் வகை",
-    "user":"பயனர்"
-
+    "user":"பயனர்",
+    "userdetails":"பயனர் விவரங்கள்",
+    "central":"மத்திய",
+    "state":"மாநில"
   }
   

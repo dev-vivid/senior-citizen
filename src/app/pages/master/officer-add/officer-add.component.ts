@@ -48,9 +48,9 @@ export class OfficerAddComponent implements OnInit {
     this.getDistrictList();
     });
     this.editMasterId = this.activatedRoute.snapshot.params['editId'];
-    if(this.editMasterId > 0){
+    if (this.editMasterId > 0) {
       this.editMasterForm();
-    }else{
+    } else {
       this.addContact();
     }
   }
@@ -61,8 +61,8 @@ export class OfficerAddComponent implements OnInit {
   }
   
   editMasterForm() {
-    // const dataKey = { officerId: this.editMasterId,lang:"ta" };
-    const dataKey = "data"
+    const dataKey = { officerId: this.editMasterId,lang:"ta" };
+    // const dataKey = "data"
     this.formService.officerEdit(dataKey).subscribe((resp: any) => {
       this.editForm = resp.data;
       if (resp.statusCode == '200') {
@@ -151,7 +151,7 @@ export class OfficerAddComponent implements OnInit {
           }
         });
       }
-    } else {
+    } else {  
       this.officerForm.markAllAsTouched();
     }
   }
