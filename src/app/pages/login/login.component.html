@@ -20,8 +20,8 @@
                         <form [formGroup]="loginForm">
                             <div class="field">
                                 <mat-form-field class="full-width-field">
-                                    <mat-label>Username</mat-label>
-                                    <input matInput formControlName="username" placeholder="Username">
+                                    <mat-label>Username/Email</mat-label>
+                                    <input matInput formControlName="username" placeholder="Username/Email">
                                     <mat-error *ngIf="(loginForm?.controls?.username?.touched && loginForm?.controls?.username?.errors?.required)">Username is required</mat-error>
                                 </mat-form-field>
                             </div>

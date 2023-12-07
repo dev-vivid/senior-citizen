@@ -15,6 +15,7 @@
 </ng-template>
 <ng-template pTemplate="header" let-columns>
     <tr>
+        <th style="width: 8rem;" class="text-white">S.No</th> 
         <th *ngFor="let col of columns" [pSortableColumn]="col.field">
             <div class="flex justify-content-between align-items-center" *ngIf="col.field!=='id'">
                 {{col.header}}
@@ -26,6 +27,7 @@
 
 <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
+        <td>{{rowData.serialNumber}}</td> 
         <td *ngFor="let col of columns">
          <div *ngIf="col.field!=='id'">
             {{rowData[col.field]}}
