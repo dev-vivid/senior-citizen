@@ -22,7 +22,7 @@
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('name') | translate }}</mat-label>
-                            <input matInput formControlName="name">
+                            <input matInput  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' formControlName="name">
                             <mat-error *ngIf="(oldageTypeForm?.controls?.name?.touched && oldageTypeForm?.controls?.name?.errors?.required)">{{ getTranslation('namerequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
