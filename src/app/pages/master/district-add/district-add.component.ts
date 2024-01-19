@@ -82,7 +82,7 @@ export class DistrictAddComponent implements OnInit {
           }
         });
       }else{
-        
+
         this.formService.addDistrict(this.districtForm.value).subscribe((data: any) => {
           if (data) {
             this.isNotLoader = true;
@@ -97,7 +97,7 @@ export class DistrictAddComponent implements OnInit {
       this.districtForm.markAllAsTouched();
     }
   }
-  
+
   reset() {
     this.districtForm.reset();
     this.districtForm.patchValue(this.resetData);

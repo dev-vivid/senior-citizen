@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.loader = false;
     //console.log("Spinner", this.spinnerService.visibility)
     if (this.loginForm.valid) {
-      this.authService.authenticate(this.loginForm.value).subscribe((resp: any) => {
+      this.authService.authenticate(this.loginForm.value.username,this.loginForm.value.password).subscribe((resp: any) => {
         this.loader = true;
         if (resp.access_token) {
           sessionStorage.setItem('userInfo', JSON.stringify(resp));
