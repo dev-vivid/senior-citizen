@@ -5,10 +5,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href /senior-citizen/",
+    "build": "ng build --base-href /seniorCitizen/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "updateProject":"node updateProject.js"
   },
   "private": true,
   "dependencies": {
