@@ -50,27 +50,27 @@
             <h5>{{ getTranslation('grievance') | translate }}</h5>
             <mat-form-field class="full-width-field">
                 <mat-label>{{ getTranslation('name') | translate }}</mat-label>
-                <input matInput [readonly]="true"  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' formControlName="name">
+                <input matInput [readonly]="true"  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" formControlName="name">
             </mat-form-field>
             <mat-form-field class="full-width-field">
                 <mat-label>{{ getTranslation('email') | translate }}</mat-label>
-                <input matInput [readonly]="true"  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' formControlName="email">
+                <input matInput [readonly]="true"  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" formControlName="email">
             </mat-form-field>
             <mat-form-field class="full-width-field">
                 <mat-label>{{ getTranslation('issue') | translate }}</mat-label>
-                <input matInput [readonly]="true"  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' formControlName="issue">
+                <input matInput [readonly]="true"  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" formControlName="issue">
             </mat-form-field>
             <mat-form-field class="full-width-field">
                 <mat-label>{{ getTranslation('mobileNumber') | translate }}</mat-label>
-                <input matInput [readonly]="true"  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' formControlName="mobile">
+                <input matInput [readonly]="true"  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" formControlName="mobile">
             </mat-form-field>
             <mat-form-field class="full-width-field">
                 <mat-label>{{ getTranslation('age') | translate }}</mat-label>
-                <input matInput [readonly]="true"  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' formControlName="age">
+                <input matInput [readonly]="true"  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" formControlName="age">
             </mat-form-field>
             <mat-form-field class="full-width-field">
                 <mat-label>{{ getTranslation('issueType') | translate }}</mat-label>
-                <input matInput [readonly]="true"  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' formControlName="issue_type">
+                <input matInput [readonly]="true"  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" formControlName="issue_type">
             </mat-form-field>
             <mat-form-field class="full-width-field">
                 <mat-label>{{ getTranslation('address') | translate }} </mat-label>
