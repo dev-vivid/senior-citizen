@@ -26,7 +26,7 @@
                         </mat-form-field>
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('email') | translate }}</mat-label>
-                            <input matInput  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" formControlName="email">
+                            <input matInput formControlName="email">
                         </mat-form-field>
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('mobileNumber') | translate }}</mat-label>

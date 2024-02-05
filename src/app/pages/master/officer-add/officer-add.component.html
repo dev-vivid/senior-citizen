@@ -86,7 +86,7 @@
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('email') | translate }}</mat-label>
-                            <input  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" matInput formControlName="email">
+                            <input matInput formControlName="email">
                             <mat-error *ngIf="(officerForm?.controls?.email?.touched && officerForm?.controls?.email?.errors?.required)">{{ getTranslation('emailrequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
