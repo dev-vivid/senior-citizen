@@ -18,7 +18,8 @@ export class SeniorCitizenRegistrationComponent implements OnInit {
   ksLoader: boolean = false;
   searchForm: boolean = true;
   isNotLoader:boolean = false;
-
+  minToDate: Date;
+  
   constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
@@ -35,7 +36,9 @@ export class SeniorCitizenRegistrationComponent implements OnInit {
       // isActive: new FormControl<boolean>(true, { nonNullable: true })
     });
   }
-
+  updateToDateMinDate(event: Date) {
+    this.minToDate = event;
+  }
   saveDetails() {
     const startDate = this.pipe.transform(this.searchReportForm.value.fromDate, 'dd-MM-yyyy');
     const endDate = this.pipe.transform(this.searchReportForm.value.toDate, 'dd-MM-yyyy');

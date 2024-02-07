@@ -7,11 +7,11 @@
                 <div class="p-fluid grid formgrid">
                     <div class="field col-12 md:col-10">
                         <label for="from">{{ getTranslation('fromDate') | translate }}</label>
-                        <p-calendar [showIcon]="true" inputId="from" formControlName="fromDate" dateFormat="dd-mm-yy"></p-calendar>
+                        <p-calendar [showIcon]="true" inputId="from" formControlName="fromDate" dateFormat="dd-mm-yy" (ngModelChange)="updateToDateMinDate($event)"></p-calendar>
                     </div>
                     <div class="field col-12 md:col-10">
                         <label for="to">{{ getTranslation('toDate') | translate }}</label>
-                        <p-calendar [showIcon]="true" inputId="to" formControlName="toDate" dateFormat="dd-mm-yy"></p-calendar>
+                        <p-calendar [showIcon]="true" inputId="to" formControlName="toDate" dateFormat="dd-mm-yy" [minDate]="minToDate"></p-calendar>
                     </div>
                     <div class="field col-3 md:col-4 text-center">
                         <button pButton type="button" label="{{ getTranslation('submit') | translate }}" (click)="saveDetails()" class="p-button-sm"></button>
