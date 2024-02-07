@@ -24,7 +24,7 @@ export class TranslationService {
 
   private loadTranslations(language: string) {
     const url = `assets/language/translation.${language}.json`;
-    console.log('Loading translations from:', url);
+    // console.log('Loading translations from:', url);
     return this.http.get<any>(url);
   }
 

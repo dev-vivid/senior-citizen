@@ -12,6 +12,7 @@ export class DynamicReportTableComponent implements OnInit {
   tableData:any[]=[];
   searchHeader: any[] = ['uid','uname','government'];
   loading: boolean;
+  serialNumberCounter: number = 1;
   @Input() dynamaicTableData = {
     cols:[],
     values:[]
@@ -23,7 +24,7 @@ export class DynamicReportTableComponent implements OnInit {
     if(changes.dynamaicTableData.currentValue){
       this.cols = this.dynamaicTableData.cols.filter(f=>f.field!=='id');
       this.tableData = this.dynamaicTableData.values;
-
+      this.updateSerialNumbers();
       this.loading = false;
     }
   }
@@ -42,6 +43,12 @@ export class DynamicReportTableComponent implements OnInit {
   
   clear(table: Table) {
       table.clear();
+  }
+  updateSerialNumbers() {
+    this.serialNumberCounter = 1;
+    this.tableData.forEach(record => {
+      record.serialNumber = this.serialNumberCounter++;
+    });
   }
 
 }

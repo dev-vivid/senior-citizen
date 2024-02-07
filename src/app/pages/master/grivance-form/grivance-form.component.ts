@@ -31,7 +31,7 @@ export class GrivanceFormComponent implements OnInit {
         mobile: this.grivenceIndividualData.mobile,
         age: this.grivenceIndividualData.age,
         email: this.grivenceIndividualData.email,
-        issue: this.grivenceIndividualData.name,
+        issue: this.grivenceIndividualData.issue,
         issue_type: this.grivenceIndividualData.issue_type,
       });
     });

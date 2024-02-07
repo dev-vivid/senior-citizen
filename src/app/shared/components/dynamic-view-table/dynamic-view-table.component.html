@@ -60,26 +60,20 @@
           </span>
         </div>
       </td>
-      <td classStyle="width:30%;">
-        <button pbutton="" type="button"
-          class="p-element p-button-sm p-button-raised p-button-primary p-button p-component font-bold mr-1"
-          title="Edit" (click)="editRecord(rowData)"><i class="pi pi-user-edit"></i></button>
-        <button pbutton="" type="button"
-          class="p-element p-button-sm p-button-raised p-button-danger p-button p-component font-bold" title="Delete"
-          (click)="deleteRecord(rowData)"><i class="pi pi-trash"></i></button>
-      </td>
-    </tr>
-  </ng-template>
-
-  <ng-template pTemplate="emptymessage">
-    <tr>
-      <td colspan="8">No Data found.</td>
-    </tr>
-  </ng-template>
-
-  <ng-template pTemplate="loadingbody">
-    <tr>
-      <td colspan="8">Loading data. Please wait.</td>
-    </tr>
-  </ng-template>
+            <td classStyle="width:30%;">
+                <i class="pi pi-arrow-right" (click)="viewTable(rowData)"></i>
+            </td>
+          
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="8">No Data found.</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody">
+        <tr>
+            <td colspan="8">Loading data. Please wait.</td>
+        </tr>
+    </ng-template>
 </p-table>

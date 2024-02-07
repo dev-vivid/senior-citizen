@@ -45,7 +45,9 @@ export class SeniorCitizenRegistrationComponent implements OnInit {
       this.searchForm = false;
       this.ksLoader = true;
       this.formService.postSeniorCitizenReport(data).subscribe((resp: any) => {
-        this.dynamaicTableData = resp.data;
+        this.dynamaicTableData = resp.fileUrl;
+        this.downloadFile();
+        // console.log("Report data", this.dynamaicTableData)
         if (resp.statusCode == 200) {
           setTimeout(() => {
             this.ksLoader = false;
@@ -62,6 +64,16 @@ export class SeniorCitizenRegistrationComponent implements OnInit {
     }else{
       this.sharedService.showError('Search valid date range');
     }
+  }
+
+  downloadFile() {
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', this.dynamaicTableData);
+    link.setAttribute('download', 'report.xlsx');
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   }
 
 }

@@ -2,26 +2,22 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, In
 import { Table } from 'primeng/table';
 
 @Component({
-  selector: 'app-dynamic-table',
-  templateUrl: './dynamic-table.component.html',
-  styleUrls: ['./dynamic-table.component.scss'],
-  encapsulation:ViewEncapsulation.None,
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-dynamic-view-table',
+  templateUrl: './dynamic-view-table.component.html',
+  styleUrls: ['./dynamic-view-table.component.scss']
 })
-export class DynamicTableComponent implements OnInit,OnChanges {
+export class DynamicViewTableComponent implements OnInit {
   cols: any[];
   tableData:any[]=[];
   loading: boolean;
-  searchHeader: any[] = ['district_id','gpfCpsNo','scheme_name','government'];
+  searchHeader: any[] = ['district_id','gpfCpsNo','name','scheme_name','government'];
   serialNumberCounter: number = 1;
   @Input() dynamaicTableData = {
     cols:[],
     values:[]
   }
-  @Output() edit  = new EventEmitter();
-  @Output() delete  = new EventEmitter();
+  @Output() view  = new EventEmitter();
 
-  //serialNumber: number = 1;
 
   constructor(private cdr: ChangeDetectorRef) { }
   
@@ -39,19 +35,14 @@ export class DynamicTableComponent implements OnInit,OnChanges {
   }
 
   ngOnInit(): void {
-   
-  }
-  deleteRecord(data:any){ 
-    this.delete.emit(data.id)
-    this.updateSerialNumbers();
   }
 
-  editRecord(data:any){ 
-    this.edit.emit(data.id)
-  }
   
   clear(table: Table) {
       table.clear();
+  }
+  viewTable(data:any){ 
+    this.view.emit(data)
   }
   updateSerialNumbers() {
     this.serialNumberCounter = 1;
