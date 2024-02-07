@@ -13,16 +13,16 @@
                         <label for="to">{{ getTranslation('toDate') | translate }}</label>
                         <p-calendar [showIcon]="true" inputId="to" formControlName="toDate" dateFormat="dd-mm-yy"></p-calendar>
                     </div>
-                    <div  class="field col-3 md:col-4 text-center">
-                        <button pButton pRipple type="button"  class="p-button-rounded" (click)="saveDetails()">{{ getTranslation('submit') | translate }}</button>
-                        <!-- <button (click)="reset()" type="button" class="btn btn-secondary btn-raised btn-round ml-12" >Reset</button> -->
+                    <div class="field col-3 md:col-4 text-center">
+                        <button pButton type="button" label="{{ getTranslation('submit') | translate }}" (click)="saveDetails()" class="p-button-sm"></button>
+                        <!-- <button type="button"  class="p-button-rounded" (click)="saveDetails()">{{ getTranslation('submit') | translate }}</button> -->
                     </div>
                 </div>
             </form>
         </div>
     </div>
     <div class="col-12 md:col-7" *ngIf="isNotLoader">
-        <app-dynamic-report-table [dynamaicTableData]="dynamaicTableData"></app-dynamic-report-table>
+        <!-- <app-dynamic-report-table [dynamaicTableData]="dynamaicTableData"></app-dynamic-report-table> -->
     </div>
     <div class="col-12" *ngIf="ksLoader">
         <app-loader></app-loader>
