@@ -28,7 +28,7 @@
                     </div>
                     <mat-form-field class="full-width-field">
                         <mat-label>{{ getTranslation('schemeName') | translate }}</mat-label>
-                        <input matInput  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' formControlName="scheme_name">
+                        <input matInput  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" formControlName="scheme_name">
                         <mat-error *ngIf="(schemeForm?.controls?.scheme_name?.touched && schemeForm?.controls?.scheme_name?.errors?.required)">{{ getTranslation('SchemeNamerequired') | translate }}</mat-error>
                     </mat-form-field>
                     <mat-form-field class="full-width-field">
@@ -49,7 +49,7 @@
                                     <label for="file-input" class="drop-container" (change)="onFileChange($event)">
                                         <span class="drop-title">{{ getTranslation('dropfile') | translate }}</span>
                                         or
-                                        <input type="fi  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31'le" id="file-input" formControlName="fileUpload">
+                                        <input type="fi  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)"le" id="file-input" formControlName="fileUpload">
                                     </label>
                                     <!-- <mat-error *ngIf="(schemeForm?.controls?.fileUpload?.touched && schemeForm?.controls?.fileUpload?.errors?.required)">File is required</mat-error> -->
                                 </div>

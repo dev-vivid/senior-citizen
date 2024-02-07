@@ -48,7 +48,7 @@
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('officerName') | translate }}</mat-label>
-                            <input  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' matInput formControlName="name">
+                            <input  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" matInput formControlName="name">
                             <mat-error *ngIf="(officerForm?.controls?.name?.touched && officerForm?.controls?.name?.errors?.required)">{{ getTranslation('officerNamerequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
@@ -59,7 +59,7 @@
                                 <div class="col-10 pb-0">
                                     <mat-form-field class="full-width-field">
                                         <mat-label>{{ getTranslation('contactNo') | translate }}</mat-label>
-                                        <input  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' matInput formControlName="contact">
+                                        <input  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" matInput formControlName="contact">
                                         <!-- <mat-error *ngIf="(officerForm?.controls?.contact?.touched && officerForm?.controls?.contact?.errors?.required)">Contact is required</mat-error> -->
                                     </mat-form-field>
                                 </div>
@@ -80,13 +80,13 @@
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('fax') | translate }}</mat-label>
-                            <input  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' matInput formControlName="fax">
+                            <input  matInput onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 32 || event.charCode <= 31)" matInput formControlName="fax">
                         </mat-form-field>
                     </div>
                     <div class="col-12 md:col-12 pb-0">
                         <mat-form-field class="full-width-field">
                             <mat-label>{{ getTranslation('email') | translate }}</mat-label>
-                            <input  onkeypress='return (event.charCode > 96 && event.charCode < 123) || (event.charCode > 64 && event.charCode < 91) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode <= 31' matInput formControlName="email">
+                            <input matInput formControlName="email">
                             <mat-error *ngIf="(officerForm?.controls?.email?.touched && officerForm?.controls?.email?.errors?.required)">{{ getTranslation('emailrequired') | translate }}</mat-error>
                         </mat-form-field>
                     </div>
