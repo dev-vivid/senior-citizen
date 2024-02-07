@@ -32,34 +32,43 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
     isUser: any;
     userId: any;
     currentLanguage: string;
-    constructor(public app: AppComponent, private formBuilder: FormBuilder,private translationService: TranslationService,
+    constructor(public app: AppComponent, private formBuilder: FormBuilder, private translationService: TranslationService,
         private languageService: LanguageService, private formService: FormService,
-         public appMain: AppMainComponent, private router: Router, private authService: AuthService, private sharedService: SharedService) 
-         { 
-            this.languageService.currentLanguage$.subscribe(language => {
-                this.currentLanguage = language;
-              });
-              
-        }
-      
-  toggleLanguage(): void {
-    const newLanguage = this.currentLanguage === 'en' ? 'ta' : 'en';
-    this.languageService.setLanguage(newLanguage);
-    let value ={
-        lang:this.currentLanguage
-    }
-    this.formService.getLanguage(value).subscribe((data: any) => {
+        public appMain: AppMainComponent, private router: Router, private authService: AuthService, private sharedService: SharedService) {
+        this.languageService.currentLanguage$.subscribe(language => {
+            this.currentLanguage = language;
+        });
 
-    });
-  }
-          getTranslation(key: string): string {
-            return this.translationService.getTranslation(key);
-          }
+    }
+
+    toggleLanguage(): void {
+        const newLanguage = this.currentLanguage === 'en' ? 'ta' : 'en';
+        localStorage.setItem('selectedLanguage', newLanguage);
+        this.languageService.setLanguage(newLanguage);
+        let value = {
+            lang: newLanguage
+        };
+
+        this.formService.getLanguage(value).subscribe((data: any) => {
+        });
+    }
+    initializeLanguage(): void {
+        const selectedLanguage = localStorage.getItem('selectedLanguage');
+        if (selectedLanguage) {
+            this.languageService.setLanguage(selectedLanguage);
+        } else {
+            this.languageService.setLanguage('en');
+        }
+    }
+    getTranslation(key: string): string {
+        return this.translationService.getTranslation(key);
+    }
     ngOnInit(): void {
+        this.initializeLanguage();
         this.userData = JSON.parse(sessionStorage.getItem('userInfo'));
         if (this.userData.data.roleId === 1) {
             this.isAdmin = true;
-        } else if(this.userData.data.roleId === 2) {
+        } else if (this.userData.data.roleId === 2) {
             this.isTNeb = true;
         } else {
             this.isUser = true;
@@ -104,7 +113,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
             const currentPassword = this.resetPasswordForm.value.currentPassword;
             const newPassword = this.resetPasswordForm.value.newPassword;
             const confirmPassword = this.resetPasswordForm.value.confirmPassword;
-            const dataForm = {userId, currentPassword, newPassword, confirmPassword};
+            const dataForm = { userId, currentPassword, newPassword, confirmPassword };
             //console.log("data", dataForm);
             this.authService.changePassword(dataForm).subscribe((resp: any) => {
                 if (resp.statusCode == 200) {
@@ -119,7 +128,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
                 this.sharedService.showError('Problem occurred, Please try again');
             });
         } else {
-          this.resetPasswordForm.markAllAsTouched();
+            this.resetPasswordForm.markAllAsTouched();
         }
     }
 }

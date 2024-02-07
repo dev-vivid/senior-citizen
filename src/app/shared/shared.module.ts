@@ -14,9 +14,10 @@ import { DynamicDelTableComponent } from './components/dynamic-del-table/dynamic
 import { DynamicTableEditComponent } from './components/dynamic-table-edit/dynamic-table-edit.component';
 import { TranslationService } from './services/translation.service';
 import { TranslationPipe } from './services/translation.pipe';
+import { DynamicViewTableComponent } from './components/dynamic-view-table/dynamic-view-table.component';
 
 @NgModule({
-  declarations: [  TranslationPipe, DynamicTableComponent, FooterComponent, DynamicReportTableComponent, DynamicCsvComponent, LoaderComponent, DynamicDelTableComponent, DynamicTableEditComponent],
+  declarations: [  TranslationPipe, DynamicTableComponent, FooterComponent, DynamicReportTableComponent, DynamicCsvComponent, LoaderComponent, DynamicDelTableComponent, DynamicTableEditComponent, DynamicViewTableComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -30,7 +31,7 @@ import { TranslationPipe } from './services/translation.pipe';
     }),
   ], 
   providers:[AuthguardServiceService,TranslationService],
-  exports: [ TranslationPipe,DynamicTableComponent,DynamicTableEditComponent,FooterComponent,DynamicReportTableComponent,DynamicCsvComponent,LoaderComponent,DynamicDelTableComponent]
+  exports: [ TranslationPipe,DynamicTableComponent,DynamicTableEditComponent,FooterComponent,DynamicReportTableComponent,DynamicCsvComponent,LoaderComponent,DynamicDelTableComponent,DynamicViewTableComponent]
 })
 export class SharedModule { }
  

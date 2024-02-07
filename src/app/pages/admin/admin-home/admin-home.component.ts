@@ -93,15 +93,25 @@ export class AdminHomeComponent implements OnInit {
           this.chartData = {
             labels: this.Datapie.labels,
             datasets: [
+              // {
+              //   label: 'Senior Citizen',
+              //   backgroundColor: '#2a9235',
+              //   data: this.Datapie.userMonthwise,
+              // },
+              // {
+              //   label: 'Helpline Calls',
+              //   backgroundColor: '#FFC107',
+              //   data: this.Datapie.helplineMonthwise,
+              // },
               {
-                label: 'Senior Citizen',
-                backgroundColor: '#2a9235',
-                data: this.Datapie.userMonthwise,
+                label: 'Pending Greviance',
+                backgroundColor: '#3d33ff',
+                data: this.Datapie.grievancependingMonthwise,
               },
               {
-                label: 'Helpline Calls',
-                backgroundColor: '#FFC107',
-                data: this.Datapie.helplineMonthwise,
+                label: 'Completed Grievance',
+                backgroundColor: '#BC6FF1',
+                data: this.Datapie.grievancecompleteMonthwise,
               },
             ],
           };

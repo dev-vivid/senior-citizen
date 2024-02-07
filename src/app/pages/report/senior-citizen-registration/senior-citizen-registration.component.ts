@@ -18,7 +18,8 @@ export class SeniorCitizenRegistrationComponent implements OnInit {
   ksLoader: boolean = false;
   searchForm: boolean = true;
   isNotLoader:boolean = false;
-
+  minToDate: Date;
+  
   constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
@@ -35,7 +36,9 @@ export class SeniorCitizenRegistrationComponent implements OnInit {
       // isActive: new FormControl<boolean>(true, { nonNullable: true })
     });
   }
-
+  updateToDateMinDate(event: Date) {
+    this.minToDate = event;
+  }
   saveDetails() {
     const startDate = this.pipe.transform(this.searchReportForm.value.fromDate, 'dd-MM-yyyy');
     const endDate = this.pipe.transform(this.searchReportForm.value.toDate, 'dd-MM-yyyy');
@@ -45,7 +48,9 @@ export class SeniorCitizenRegistrationComponent implements OnInit {
       this.searchForm = false;
       this.ksLoader = true;
       this.formService.postSeniorCitizenReport(data).subscribe((resp: any) => {
-        this.dynamaicTableData = resp.data;
+        this.dynamaicTableData = resp.fileUrl;
+        this.downloadFile();
+        // console.log("Report data", this.dynamaicTableData)
         if (resp.statusCode == 200) {
           setTimeout(() => {
             this.ksLoader = false;
@@ -62,6 +67,16 @@ export class SeniorCitizenRegistrationComponent implements OnInit {
     }else{
       this.sharedService.showError('Search valid date range');
     }
+  }
+
+  downloadFile() {
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', this.dynamaicTableData);
+    link.setAttribute('download', 'report.xlsx');
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   }
 
 }

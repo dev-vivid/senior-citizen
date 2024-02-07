@@ -13,7 +13,7 @@ import { TranslationService } from 'src/app/shared/services/translation.service'
 })
 export class GrievanceListComponent implements OnInit {
   searchForm!:UntypedFormGroup;
-  searchHeader: any[] = ['name'];
+  searchHeader: any[] = ['district'];
   loading: boolean;
   dynamaicTableData: any;
   grivenceTypeList:any
