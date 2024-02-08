@@ -22,6 +22,16 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}Admin/login`, {}, { headers });
   }
   //Reset
+  ForgetPassword(data: any) {
+    return this.http.post(`${this.apiUrl}Admin/ForgetPassword`, data);
+  }
+  verifyOTP(data: any) {
+    return this.http.post(`${this.apiUrl}Admin/verifyOTP`, data);
+  }
+  resetPassword(data: any) {
+    return this.http.post(`${this.apiUrl}Admin/resetPassword`, data);
+  }
+  // Update pwd
   changePassword(data: any) {
     return this.http.post(`${this.apiUrl}User/changePassword`, data);
   }
