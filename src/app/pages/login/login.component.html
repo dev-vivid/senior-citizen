@@ -13,7 +13,7 @@
                     </div>
                     <div class="text-center">
                         <div class="text-xl font-bold mb-2 md:mb-3">
-                            <span class="cText">SENIOR CITIZEN ADMIN</span> 
+                            <span class="cText">SENIOR CITIZEN ADMIN</span>
                         </div>
                     </div>
                     <div>
@@ -35,13 +35,13 @@
                             </div>
                             <!-- <div class="field">
                                 <label for="username" class="block">Username</label>
-                                <input pInputText type="text" id="username" formControlName="username" class="p-inputtext p-component p-element w-full mb-1" 
+                                <input pInputText type="text" id="username" formControlName="username" class="p-inputtext p-component p-element w-full mb-1"
                                     [ngClass]="(loginForm?.controls?.username?.touched && loginForm?.controls?.username?.invalid)?'ng-dirty ng-invalid ng-touched':''" aria-describedby="username-help">
                                 <small id="username-help" class="block text-danger" *ngIf="(loginForm?.controls?.username?.touched && loginForm?.controls?.username?.errors?.required)">Username is required</small>
-                            </div> 
+                            </div>
                             <div class="field">
                                 <label for="password1" class="block">Password</label>
-                                <input pInputText type="password" id="password1" formControlName="password" class="p-inputtext p-component p-element w-full mb-1" 
+                                <input pInputText type="password" id="password1" formControlName="password" class="p-inputtext p-component p-element w-full mb-1"
                                 [ngClass]="(loginForm?.controls?.password?.touched && loginForm?.controls?.password?.invalid)?'ng-dirty ng-invalid ng-touched':''" aria-describedby="password1-help">
                                 <small id="password1-help" class="block text-danger" *ngIf="(loginForm?.controls?.password?.touched && loginForm?.controls?.password?.errors?.required)">Password is required</small>
                             </div> -->
@@ -101,7 +101,7 @@
         </div>
     </div>
 </div>
-    
+
 <p-dialog header="Forgot Password" [(visible)]="display" modal="modal"
 showEffect="fade" [style]="{width: '40vw'}"
 [breakpoints]="{'960px': '90vw'}">
@@ -109,10 +109,17 @@ showEffect="fade" [style]="{width: '40vw'}"
         <label for="email1" class="block text-900 font-medium mb-2">Email</label>
         <input id="email1" type="text" pInputText [formControl]="emailId"
             class="p-inputtext p-component p-element w-full mb-3">
+            <!-- <mat-error *ngIf="emailId.hasError('required')">
+                Email is required
+              </mat-error> -->
+
+              <mat-error *ngIf="emailId.hasError('email')">
+                Invalid email format
+              </mat-error>
     </div>
     <span class="submit">
-        <button pButton pRipple label="Submit" class="mr-2 mb-2" (click)="submitFP()"></button>                                            
-        <button pButton pRipple label="Cancel" class="mr-2 mb-2" (click)="cancel()"></button> 
+        <button pButton pRipple label="Submit" class="mr-2 mb-2" (click)="submitFP()"></button>
+        <button pButton pRipple label="Cancel" class="mr-2 mb-2" (click)="cancel()"></button>
     </span>
 </p-dialog>
 
@@ -121,7 +128,7 @@ showEffect="fade" [style]="{width: '40vw'}"
           [breakpoints]="{'960px': '90vw'}">
   <div>
     <label for="verificationCode" class="block text-900 font-medium mb-2">Verification Code</label>
-    <input id="verificationCode" type="text" pInputText [formControl]="verificationCode"
+    <input id="verificationCode" type="text" pInputText [formControl]="verificationCode"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="6"
            class="p-inputtext p-component p-element w-full mb-3">
   </div>
   <span class="submit">
@@ -141,6 +148,9 @@ showEffect="fade" [style]="{width: '40vw'}"
     <input id="confirmPassword" type="password" pInputText [formControl]="confirmPassword"
            class="p-inputtext p-component p-element w-full mb-3">
   </div>
+  <mat-error *ngIf="passwordForm.hasError('passwordMismatch')">
+    New Password and Confirm Password doesn't Match
+  </mat-error>
   <span class="submit">
     <button pButton pRipple label="Change Password" class="mr-2 mb-2" (click)="changePassword()"></button>
     <button pButton pRipple label="Cancel" class="mr-2 mb-2" (click)="cancelPasswordChange()"></button>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
@@ -12,6 +12,7 @@ import { SpinnrService } from 'src/app/shared/services/spinnr.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  passwordForm: FormGroup;
   loginError: string = '';
   // emailId = new FormControl('', Validators.required);
   check:boolean;
@@ -27,7 +28,12 @@ export class LoginComponent implements OnInit {
   newPassword: FormControl = new FormControl('', Validators.required);
   confirmPassword: FormControl = new FormControl('', Validators.required);
 
-  constructor(private authService: AuthService, private router: Router, private sharedService: SharedService, public spinnerService: SpinnrService) { }
+  constructor(private fb: FormBuilder,private authService: AuthService, private router: Router, private sharedService: SharedService, public spinnerService: SpinnrService) {
+    this.passwordForm = this.fb.group({
+        newPassword: this.newPassword,
+        confirmPassword: this.confirmPassword
+      }, { validators: this.passwordMatchValidator });
+  }
 
   ngOnInit(): void {
     this.initLoginForm();
@@ -39,6 +45,13 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', Validators.required)
     })
   }
+  passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const newPassword = control.get('newPassword').value;
+    const confirmPassword = control.get('confirmPassword').value;
+
+    return newPassword === confirmPassword ? null : { 'passwordMismatch': true };
+  }
+
 
   login() {
     this.loader = false;
