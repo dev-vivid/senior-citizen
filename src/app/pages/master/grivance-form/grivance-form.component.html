@@ -114,7 +114,7 @@
                     <button mat-raised-button color="primary" (click)="triggerFileInput()">
                         Upload File
                     </button>
-                    <span *ngIf="fileName">{{ fileName }}</span>
+                    <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
                 </div>
                 <div class="col-12 text-right">
                     <button pButton pRipple type="button" class="p-button-rounded" (click)="addGrivence()">{{
