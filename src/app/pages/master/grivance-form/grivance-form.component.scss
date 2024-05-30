@@ -6,3 +6,49 @@
     font-weight: 600;
     font-size: 15px;
 }
+#fileInput {
+    display: none;
+  }
+  
+  button {
+    margin-right: 10px;
+  }
+  
+  span {
+    vertical-align: middle;
+    font-size: 14px;
+  }
+
+.document-view {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+.document-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.document-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.document-action {
+    display: flex;
+    align-items: center;
+}
+
+.document-action img {
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+  

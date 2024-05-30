@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NonNullableFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { log } from 'console';
 import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
-
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-grivance-form',
   templateUrl: './grivance-form.component.html',
@@ -15,7 +16,13 @@ export class GrivanceFormComponent implements OnInit {
   editMasterId:any
   grivenceIndividualData:any
   grivenceTypeList:any
-  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute) { }
+  selectedgrivenceType:any;
+  selectedValue:any;
+  filename: any;
+  statusFormControl = new FormControl();
+  selectedFile: any;
+  constructor(public translationService: TranslationService,private fb: NonNullableFormBuilder, private formService: FormService, private router: Router, private sharedService: SharedService, private activatedRoute: ActivatedRoute
+    ,private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.initManufacturerForm()
@@ -33,6 +40,7 @@ export class GrivanceFormComponent implements OnInit {
         email: this.grivenceIndividualData.email,
         issue: this.grivenceIndividualData.issue,
         issue_type: this.grivenceIndividualData.issue_type,
+        file: this.grivenceIndividualData.file,
       });
     });
     this.getGrivenceTypeList()
@@ -46,8 +54,28 @@ export class GrivanceFormComponent implements OnInit {
       email: [''],
       issue: [''],
       issue_type: [''],
-      status:['']
+      status:[''],
+      file:['']
     });
+  }
+  triggerFileInput() {
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    fileInput.click();
+  }
+  onFileSelected(event: any) {
+    const fileInput = event.target;
+        this.selectedFile = fileInput.files?.[0];
+        console.log("file", this.selectedFile)
+        if (this.selectedFile) {
+          // Extract filename and show it in the output
+          this.filename = this.selectedFile.name;
+      }
+    }
+
+
+  onSelectChange(event:any): void {
+    this.selectedValue = event.value ;
+    console.log('Selected Value: ', this.selectedValue);
   }
 
   getTranslation(key: string): string {
@@ -59,13 +87,15 @@ export class GrivanceFormComponent implements OnInit {
     });
   }
   addGrivence(){
-    let value ={
-      grievanceId:this.editMasterId,
-      status:this.grivanceForm.value.status
-    }
-    this.formService.addGrievance(value).subscribe((resp: any) => {
+    const formData: FormData = new FormData();
+    formData.append('grievanceId', this.editMasterId.toString());
+    formData.append('status', this.grivanceForm.value.status);
+    formData.append('document', this.selectedFile);
+    this.formService.addGrievance(formData).subscribe((resp: any) => {
       this.sharedService.showSuccess('Grievance Updated successfully!');
       this.grivanceForm.reset();
+      console.log("upload grivence",this.sharedService);
+      
       this.router.navigateByUrl(`main/master/grievance`);
     });
   }
