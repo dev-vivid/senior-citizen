@@ -65,9 +65,7 @@ export class GrivanceFormComponent implements OnInit {
   onFileSelected(event: any) {
     const fileInput = event.target;
         this.selectedFile = fileInput.files?.[0];
-        console.log("file", this.selectedFile)
         if (this.selectedFile) {
-          // Extract filename and show it in the output
           this.filename = this.selectedFile.name;
       }
     }
@@ -75,7 +73,6 @@ export class GrivanceFormComponent implements OnInit {
 
   onSelectChange(event:any): void {
     this.selectedValue = event.value ;
-    console.log('Selected Value: ', this.selectedValue);
   }
 
   getTranslation(key: string): string {
@@ -86,17 +83,21 @@ export class GrivanceFormComponent implements OnInit {
       this.grivenceTypeList = resp.data;
     });
   }
-  addGrivence(){
-    const formData: FormData = new FormData();
-    formData.append('grievanceId', this.editMasterId.toString());
-    formData.append('status', this.grivanceForm.value.status);
-    formData.append('document', this.selectedFile);
-    this.formService.addGrievance(formData).subscribe((resp: any) => {
-      this.sharedService.showSuccess('Grievance Updated successfully!');
-      this.grivanceForm.reset();
-      console.log("upload grivence",this.sharedService);
-      
-      this.router.navigateByUrl(`main/master/grievance`);
-    });
-  }
+    addGrivence() {
+      let value = {
+        grievanceId: this.editMasterId,
+        status: this.grivanceForm.value.status
+      };
+      let formData = new FormData();
+      formData.append('grievanceId', value.grievanceId);
+      formData.append('status', value.status);
+      if(this.selectedFile){
+      formData.append('document', this.selectedFile);
+      }
+      this.formService.addGrievance(formData).subscribe((resp: any) => {
+        this.sharedService.showSuccess('Grievance Updated successfully!');
+        this.grivanceForm.reset();
+        this.router.navigateByUrl(`main/master/grievance`);
+      });
+    }
 }
