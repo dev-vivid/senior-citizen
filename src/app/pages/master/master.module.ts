@@ -27,6 +27,10 @@ import { PeoplePharmacyAddComponent } from './people-pharmacy-add/people-pharmac
 import { LegalAidAddComponent } from './legal-aid-add/legal-aid-add.component';
 import { GrievanceListComponent } from './grievance-list/grievance-list.component';
 import { GrivanceFormComponent } from './grivance-form/grivance-form.component';
+import { FileUploadModule } from 'primeng/fileupload';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     DistrictListComponent,
@@ -59,7 +63,11 @@ import { GrivanceFormComponent } from './grivance-form/grivance-form.component';
     PrimeModule,
     MaterialModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileUploadModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class MasterModule { }
