@@ -42,7 +42,16 @@ export class SchemeAddComponent implements OnInit {
       this.editMasterForm();
     }
   }
-  
+  validateKeyPress(event: KeyboardEvent): boolean {
+    const charCode = event.charCode;
+    if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || 
+        (charCode >= 48 && charCode <= 57) || charCode === 32 || charCode <= 31) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
   getTranslation(key: string): string {
     return this.translationService.getTranslation(key);
   } 

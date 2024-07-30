@@ -86,11 +86,10 @@ export class GrivanceFormComponent implements OnInit {
     addGrivence() {
       let value = {
         grievanceId: this.editMasterId,
-        status: this.grivanceForm.value.status
       };
       let formData = new FormData();
-      formData.append('grievanceId', value.grievanceId);
-      formData.append('status', value.status);
+      formData.append('grievanceId',value.grievanceId);
+      formData.append('status',this.grivanceForm.value.status);
       if(this.selectedFile){
       formData.append('document', this.selectedFile);
       }
