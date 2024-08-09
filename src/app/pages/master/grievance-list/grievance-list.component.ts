@@ -32,8 +32,8 @@ export class GrievanceListComponent implements OnInit {
     this.initManufacturerForm();
     this.languageService.currentLanguage$.subscribe((language: string) => {
       this.currentLanguage = language;
-    this.getList();
-      console.log(this.currentLanguage)
+      this.getList();
+      // console.log(this.currentLanguage)
       if (this.searchForm) {
         this.searchForm.patchValue({ lang: this.currentLanguage });
       }
