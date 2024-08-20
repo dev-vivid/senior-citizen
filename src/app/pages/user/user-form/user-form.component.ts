@@ -45,7 +45,7 @@ export class UserFormComponent implements OnInit {
       name:['', [Validators.required]],
       password:['', [Validators.required]],
       email:['', [Validators.required,Validators.email]],
-      mobile:['', [Validators.required]],
+      mobile:[''],
       districtId:['',Validators.required],
       lang:this.currentLanguage
     });
@@ -59,6 +59,7 @@ export class UserFormComponent implements OnInit {
         this.userForm.reset();
         // this.router.navigateByUrl(`main/user/user-List`);
       }
+      
     });
   }
   getDistrictList() {
