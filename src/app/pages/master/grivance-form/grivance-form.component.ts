@@ -81,22 +81,23 @@ export class GrivanceFormComponent implements OnInit {
   getGrivenceTypeList() {
     this.formService.getGrivenceTypeList().subscribe((resp: any) => {
       this.grivenceTypeList = resp.data;
+      // console.log("Grvnce list", this.grivenceTypeList);
     });
   }
-    addGrivence() {
-      let value = {
-        grievanceId: this.editMasterId,
-      };
-      let formData = new FormData();
-      formData.append('grievanceId',value.grievanceId);
-      formData.append('status',this.grivanceForm.value.status);
-      if(this.selectedFile){
+  addGrivence() {
+    let value = {
+      grievanceId: this.editMasterId,
+    };
+    let formData = new FormData();
+    formData.append('grievanceId',value.grievanceId);
+    formData.append('status',this.grivanceForm.value.status);
+    if(this.selectedFile){
       formData.append('document', this.selectedFile);
-      }
-      this.formService.addGrievance(formData).subscribe((resp: any) => {
-        this.sharedService.showSuccess('Grievance Updated successfully!');
-        this.grivanceForm.reset();
-        this.router.navigateByUrl(`main/master/grievance`);
-      });
     }
+    this.formService.addGrievance(formData).subscribe((resp: any) => {
+      this.sharedService.showSuccess('Grievance Updated successfully!');
+      this.grivanceForm.reset();
+      this.router.navigateByUrl(`main/master/grievance`);
+    });
+  }
 }
