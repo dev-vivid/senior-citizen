@@ -45,22 +45,33 @@ export class UserFormComponent implements OnInit {
       name:['', [Validators.required]],
       password:['', [Validators.required]],
       email:['', [Validators.required,Validators.email]],
-      mobile:['', [Validators.required]],
+      mobile:[''],
       districtId:['',Validators.required],
       lang:this.currentLanguage
     });
   }
-  saveUser(){
-    this.formService.addUser(this.userForm.value).subscribe((data: any) => {
-      if (data) {
+  saveUser() {
+    this.formService.addUser(this.userForm.value).subscribe({
+      next: (data: any) => {
+        if (data) {
+          this.isNotLoader = true;
+          this.isLoader = false;
+          this.sharedService.showSuccess('Added successfully!');
+          this.userForm.reset();
+        }
+      },
+      error: (error: any) => {
+        if (error.status === 409) { 
+          this.sharedService.showError('User already exists!');
+        } else {
+          this.sharedService.showError('An error occurred. Please try again.');
+        }
         this.isNotLoader = true;
         this.isLoader = false;
-        this.sharedService.showSuccess('Added successfully!');
-        this.userForm.reset();
-        // this.router.navigateByUrl(`main/user/user-List`);
       }
     });
   }
+  
   getDistrictList() {
     this.formService.getDistrictList(this.currentLanguage).subscribe((resp: any) => {
       this.dictList = resp.data;

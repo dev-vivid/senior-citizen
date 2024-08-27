@@ -39,8 +39,7 @@ export class SchemeListComponent implements OnInit {
       if (resp.status = 200) {
         this.dynamaicTableData = resp.data;
         this.isNotLoader = true;
-        this.isLoader = false;
-        
+        this.isLoader = false; 
     } else {
       this.sharedService.showError('Error');
     }

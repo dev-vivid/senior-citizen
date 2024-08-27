@@ -7,14 +7,17 @@
                 <div class="p-fluid grid formgrid">
                     <div class="field col-12 md:col-10">
                         <label for="from">{{ getTranslation('fromDate') | translate }}</label>
-                        <p-calendar [showIcon]="true" inputId="from" formControlName="fromDate" dateFormat="dd-mm-yy" (ngModelChange)="updateToDateMinDate($event)"></p-calendar>
+                        <p-calendar [showIcon]="true" inputId="from" formControlName="fromDate" dateFormat="dd-mm-yy"
+                            (ngModelChange)="updateToDateMinDate($event)"></p-calendar>
                     </div>
                     <div class="field col-12 md:col-10">
                         <label for="to">{{ getTranslation('toDate') | translate }}</label>
-                        <p-calendar [showIcon]="true" inputId="to" formControlName="toDate" dateFormat="dd-mm-yy" [minDate]="minToDate"></p-calendar>
+                        <p-calendar [showIcon]="true" inputId="to" formControlName="toDate" dateFormat="dd-mm-yy"
+                            [minDate]="minToDate"></p-calendar>
                     </div>
                     <div class="field col-3 md:col-4 text-center">
-                        <button pButton type="button" label="{{ getTranslation('submit') | translate }}" (click)="saveDetails()" class="p-button-sm"></button>
+                        <button pButton type="button" label="{{ getTranslation('submit') | translate }}"
+                            (click)="saveDetails()" class="p-button-sm"></button>
                         <!-- <button type="button"  class="p-button-rounded" (click)="saveDetails()">{{ getTranslation('submit') | translate }}</button> -->
                     </div>
                 </div>
@@ -27,4 +30,32 @@
     <div class="col-12" *ngIf="ksLoader">
         <app-loader></app-loader>
     </div>
+
+</div>
+
+<div class="card" *ngIf="isNotLoader">
+    <div class="p-mb-2">
+        <input pInputText type="text" placeholder="Search..." (input)="applyGlobalFilter($event)">
+    </div>
+    <div style="display: flex;justify-content: end;">
+        <button pButton type="button" label="Export to CSV" icon="pi pi-download" (click)="exportExcel(dt)"
+            class="p-mr-2"></button>
+
+    </div>
+
+    <!-- dynamic-table.component.html -->
+    <p-table #dt [value]="data" [paginator]="true" [rows]="10"
+        [globalFilterFields]="['name', 'email', 'age', 'gender', 'district']" [responsive]="true"
+        [exportFilename]="'data'" [globalFilterFields]="globalFilterFields">
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col of columns">{{ col.header }}</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+            <tr>
+                <td *ngFor="let col of columns">{{ rowData[col.field] || 'N/A' }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
 </div>
