@@ -5,7 +5,8 @@
                 <!-- <p-progressBar mode="indeterminate" [style]="{'height':'7px','border-radius':'0px'}" *ngIf="spinnerService.visibility | async" ></p-progressBar> -->
                 <div class="loginPage md:p-6 p-3">
                     <div class="flex justify-content-center">
-                        <div class="border-circle w-7rem h-8rem pb-2 bg-4 flex align-items-center justify-content-center">
+                        <div
+                            class="border-circle w-7rem h-8rem pb-2 bg-4 flex align-items-center justify-content-center">
                             <a [routerLink]="['/']" class="logo">
                                 <img src="assets/images/mainLogo.jpeg" alt="SENIOR CITIZEN">
                             </a>
@@ -22,14 +23,25 @@
                                 <mat-form-field class="full-width-field">
                                     <mat-label>Username/Email</mat-label>
                                     <input matInput formControlName="username" placeholder="Username/Email">
-                                    <mat-error *ngIf="(loginForm?.controls?.username?.touched && loginForm?.controls?.username?.errors?.required)">Username is required</mat-error>
+                                    <mat-error
+                                        *ngIf="(loginForm?.controls?.username?.touched && loginForm?.controls?.username?.errors?.required)">Username
+                                        is required</mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="field">
                                 <mat-form-field class="full-width-field">
                                     <mat-label>Password</mat-label>
-                                    <input matInput type="password" placeholder="Password" formControlName="password" class="mb-1" [ngClass]="(loginForm?.controls?.password?.touched && loginForm?.controls?.password?.invalid)?'ng-dirty ng-invalid ng-touched':''" aria-describedby="password1-help">
-                                    <mat-error id="password1-help" class="block text-danger" *ngIf="(loginForm?.controls?.password?.touched && loginForm?.controls?.password?.errors?.required)">Password is required</mat-error>
+                                    <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Password"
+                                        formControlName="password" class="mb-1"
+                                        [ngClass]="(loginForm?.controls?.password?.touched && loginForm?.controls?.password?.invalid) ? 'ng-dirty ng-invalid ng-touched' : ''"
+                                        aria-describedby="password1-help">
+                                    <i class="pi" [ngClass]="hidePassword ? 'pi-eye-slash' : 'pi-eye'"
+                                        (click)="hidePassword = !hidePassword"
+                                        style="cursor: pointer; position: absolute; right: 10px; top: 15px;">
+                                    </i>
+                                    <mat-error id="password1-help" class="block text-danger"
+                                        *ngIf="(loginForm?.controls?.password?.touched && loginForm?.controls?.password?.errors?.required)">Password
+                                        is required</mat-error>
                                 </mat-form-field>
                                 <p style="font-size: 12px;color: #e20000;">{{loginError}}</p>
                             </div>
@@ -50,15 +62,13 @@
                                     <mat-checkbox class="Remember">Remember me!</mat-checkbox>
                                 </div>
                                 <div class="col-12 md:col-6 md:text-right">
-                                    <a class="no-underline text-right cursor-pointer"
-                                    (click)="forgotPassword()">Forgot
-                                    password?</a>
+                                    <a class="no-underline text-right cursor-pointer" (click)="forgotPassword()">Forgot
+                                        password?</a>
                                 </div>
                                 <div class="col-12">
                                     <button pbutton="" (click)="login()" pripple="" label="Sign In"
                                         class="p-element w-full p-button p-component p-button-custom">
-                                        <span class="p-button-icon p-button-icon-left"
-                                            aria-hidden="true"></span>
+                                        <span class="p-button-icon p-button-icon-left" aria-hidden="true"></span>
                                         <span class="p-button-label">Login to account</span><span class="p-ink"></span>
                                     </button>
                                 </div>
@@ -102,20 +112,19 @@
     </div>
 </div>
 
-<p-dialog header="Forgot Password" [(visible)]="display" modal="modal"
-showEffect="fade" [style]="{width: '40vw'}"
-[breakpoints]="{'960px': '90vw'}">
+<p-dialog header="Forgot Password" [(visible)]="display" modal="modal" showEffect="fade" [style]="{width: '40vw'}"
+    [breakpoints]="{'960px': '90vw'}">
     <div>
         <label for="email1" class="block text-900 font-medium mb-2">Email</label>
         <input id="email1" type="text" pInputText [formControl]="emailId"
             class="p-inputtext p-component p-element w-full mb-3">
-            <!-- <mat-error *ngIf="emailId.hasError('required')">
+        <!-- <mat-error *ngIf="emailId.hasError('required')">
                 Email is required
               </mat-error> -->
 
-              <mat-error *ngIf="emailId.hasError('email')">
-                Invalid email format
-              </mat-error>
+        <mat-error *ngIf="emailId.hasError('email')">
+            Invalid email format
+        </mat-error>
     </div>
     <span class="submit">
         <button pButton pRipple label="Submit" class="mr-2 mb-2" (click)="submitFP()"></button>
@@ -123,36 +132,35 @@ showEffect="fade" [style]="{width: '40vw'}"
     </span>
 </p-dialog>
 
-<p-dialog header="Email Verification" [(visible)]="verificationDisplay" modal="modal"
-          showEffect="fade" [style]="{width: '40vw'}"
-          [breakpoints]="{'960px': '90vw'}">
-  <div>
-    <label for="verificationCode" class="block text-900 font-medium mb-2">Verification Code</label>
-    <input id="verificationCode" type="text" pInputText [formControl]="verificationCode"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="6"
-           class="p-inputtext p-component p-element w-full mb-3">
-  </div>
-  <span class="submit">
-    <button pButton pRipple label="Verify" class="mr-2 mb-2" (click)="verifyEmail()"></button>
-    <button pButton pRipple label="Cancel" class="mr-2 mb-2" (click)="cancelVerification()"></button>
-  </span>
+<p-dialog header="Email Verification" [(visible)]="verificationDisplay" modal="modal" showEffect="fade"
+    [style]="{width: '40vw'}" [breakpoints]="{'960px': '90vw'}">
+    <div>
+        <label for="verificationCode" class="block text-900 font-medium mb-2">Verification Code</label>
+        <input id="verificationCode" type="text" pInputText [formControl]="verificationCode"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="6"
+            class="p-inputtext p-component p-element w-full mb-3">
+    </div>
+    <span class="submit">
+        <button pButton pRipple label="Verify" class="mr-2 mb-2" (click)="verifyEmail()"></button>
+        <button pButton pRipple label="Cancel" class="mr-2 mb-2" (click)="cancelVerification()"></button>
+    </span>
 </p-dialog>
 
-<p-dialog header="Change Password" [(visible)]="changePasswordDisplay" modal="modal"
-          showEffect="fade" [style]="{width: '40vw'}"
-          [breakpoints]="{'960px': '90vw'}">
-  <div>
-    <label for="newPassword" class="block text-900 font-medium mb-2">New Password</label>
-    <input id="newPassword" type="password" pInputText [formControl]="newPassword"
-           class="p-inputtext p-component p-element w-full mb-3">
-    <label for="confirmPassword" class="block text-900 font-medium mb-2">Confirm Password</label>
-    <input id="confirmPassword" type="password" pInputText [formControl]="confirmPassword"
-           class="p-inputtext p-component p-element w-full mb-3">
-  </div>
-  <mat-error *ngIf="passwordForm.hasError('passwordMismatch')">
-    New Password and Confirm Password doesn't Match
-  </mat-error>
-  <span class="submit">
-    <button pButton pRipple label="Change Password" class="mr-2 mb-2" (click)="changePassword()"></button>
-    <button pButton pRipple label="Cancel" class="mr-2 mb-2" (click)="cancelPasswordChange()"></button>
-  </span>
+<p-dialog header="Change Password" [(visible)]="changePasswordDisplay" modal="modal" showEffect="fade"
+    [style]="{width: '40vw'}" [breakpoints]="{'960px': '90vw'}">
+    <div>
+        <label for="newPassword" class="block text-900 font-medium mb-2">New Password</label>
+        <input id="newPassword" type="password" pInputText [formControl]="newPassword"
+            class="p-inputtext p-component p-element w-full mb-3">
+        <label for="confirmPassword" class="block text-900 font-medium mb-2">Confirm Password</label>
+        <input id="confirmPassword" type="password" pInputText [formControl]="confirmPassword"
+            class="p-inputtext p-component p-element w-full mb-3">
+    </div>
+    <mat-error *ngIf="passwordForm.hasError('passwordMismatch')">
+        New Password and Confirm Password doesn't Match
+    </mat-error>
+    <span class="submit">
+        <button pButton pRipple label="Change Password" class="mr-2 mb-2" (click)="changePassword()"></button>
+        <button pButton pRipple label="Cancel" class="mr-2 mb-2" (click)="cancelPasswordChange()"></button>
+    </span>
 </p-dialog>

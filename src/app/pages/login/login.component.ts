@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   verificationCode: FormControl = new FormControl('', Validators.required);
   newPassword: FormControl = new FormControl('', Validators.required);
   confirmPassword: FormControl = new FormControl('', Validators.required);
+  hidePassword = true;
 
   constructor(private fb: FormBuilder,private authService: AuthService, private router: Router, private sharedService: SharedService, public spinnerService: SpinnrService) {
     this.passwordForm = this.fb.group({
