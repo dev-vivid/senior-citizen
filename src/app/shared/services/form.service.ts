@@ -268,4 +268,7 @@ export class FormService {
   getuserDetails(lang:any){
   return this.http.get(`${this.apiUrl}Admin/getBackendUserList?lang=${lang}`);
 }
+deleteUser(data:any){
+  return this.http.post(`${this.apiUrl}Admin/deleteUser`,data);
+}
 }
