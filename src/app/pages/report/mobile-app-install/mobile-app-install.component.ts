@@ -29,7 +29,6 @@ export class MobileAppInstallComponent implements OnInit {
     this.getList();
     });
   }
-
    getTranslation(key: string): string {
     return this.translationService.getTranslation(key);
   } 
