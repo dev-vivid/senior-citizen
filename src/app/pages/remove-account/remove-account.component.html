@@ -1,39 +1,61 @@
-<!-- <p-dialog [(visible)]="displayEmailPopup" [modal]="true" header="Delete Account">
-    <div class="p-fluid">
-        <div class="p-field">
-            <label for="email">Enter your email to delete account:</label>
-            <input id="email" type="email" pInputText [(ngModel)]="email" />
+<div class="top-bar">
+    <div class="top-bar-content">
+        <a [routerLink]="['/']" class="logo">
+            <img src="assets/images/mainLogo.jpeg" alt="Logo" height="50px">
+        </a>
+        <h1>Help Center</h1>
+    </div>
+</div>
+
+<div class="content-container">
+    <!-- Page Title -->
+    <h2>How to Delete Your Account</h2>
+
+    <!-- General explanation -->
+    <p>If you no longer wish to use your account, you can delete it permanently. Follow the steps below depending on
+        whether you're using the mobile app or this webpage.</p>
+
+    <!-- Collapsible Section: Delete from Mobile App -->
+    <div class="faq-section">
+        <h3 (click)="togglePanel(1)" class="faq-header">
+            <i [ngClass]="isPanelOpen(1) ? 'chevron-down' : 'chevron-right'"></i>
+            How to delete your account from the mobile app
+        </h3>
+        <div *ngIf="isPanelOpen(1)" class="faq-content">
+            <p>Follow the steps below to delete your account from the mobile app:</p>
+            <ol>
+                <li>Open the <a (click)="openApp()" class="app-link">Senior Citizen Tamilnadu App </a> on your device.
+                </li>
+                <li>Login with your credentials.</li>
+                <li>Go to the "Settings" section.</li>
+                <li>Select the "Delete Account" option.</li>
+                <li>Confirm your action by tapping Continue(Feedback is optional).</li>
+            </ol>
         </div>
     </div>
-    <p-footer>
-        <button pButton type="button" label="Cancel" icon="pi pi-times" (click)="displayEmailPopup = false"></button>
-        <button pButton type="button" label="Submit" icon="pi pi-check" (click)="submitDeleteAccount()"></button>
-    </p-footer>
-</p-dialog> -->
-<div class="remove-account-container">
-    <h2>Remove Account</h2>
-    <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-  
-    <form (ngSubmit)="sendOtp()" *ngIf="!otpSent">
-      <label for="email">Enter your email to receive an OTP:</label>
-      <input style="margin-top: 2rem;" type="email" id="email" [(ngModel)]="email" name="email" required placeholder="Enter your email" />
-  
-      <button type="submit" class="btn-primary">
-        Send OTP
-      </button>
-    </form>
-  
-    <div *ngIf="otpSent">
-      <label for="otp">Enter OTP:</label>
-      <input style="margin-top: 2rem;" type="text" id="otp" [(ngModel)]="otp" name="otp" required placeholder="Enter the OTP" />
-      <button (click)="submitDeleteAccount()" class="btn-danger">
-        Remove Account
-      </button>
+
+    <!-- Collapsible Section: Delete from Web (This Page) -->
+    <div class="faq-section">
+        <h3 (click)="togglePanel(2)" class="faq-header">
+            <i [ngClass]="isPanelOpen(2) ? 'chevron-down' : 'chevron-right'"></i>
+            How to delete your account from this page
+        </h3>
+        <div *ngIf="isPanelOpen(2)" class="faq-content">
+            <p>Follow the steps below to delete your account from this page:</p>
+            <form (ngSubmit)="sendOtp()" *ngIf="!otpSent">
+                <label for="email">Enter your email to receive an OTP:</label>
+                <input type="email" id="email" [(ngModel)]="email" name="email" required
+                       placeholder="Enter your email"/>
+                <button type="submit" class="btn-primary">Send OTP</button>
+            </form>
+
+            <div *ngIf="otpSent">
+                <label for="otp">Enter OTP:</label>
+                <input type="text" id="otp" [(ngModel)]="otp" name="otp" required placeholder="Enter the OTP"/>
+                <button (click)="submitDeleteAccount()" class="btn-danger">Delete Account</button>
+            </div>
+
+            <p *ngIf="isDeleted" class="success-message">Your account has been successfully removed.</p>
+        </div>
     </div>
-  
-    <p *ngIf="isDeleted" class="success-message">
-      Your account has been successfully removed.
-    </p>
-  </div>
-  
-  
+</div>
