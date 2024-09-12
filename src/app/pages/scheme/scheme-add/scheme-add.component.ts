@@ -112,6 +112,7 @@ export class SchemeAddComponent implements OnInit {
         formData.append('schemeId', this.editMasterId);
         formData.append('lang',this.schemeForm.value.lang)
         this.formService.schemeUpdate(formData).subscribe((resp: any) => {
+          console.log("cahdvgajdadcahd",formData);
           if (resp.statusCode == 200) {
             setTimeout(() => {
               this.isNotLoader = true;
@@ -129,7 +130,7 @@ export class SchemeAddComponent implements OnInit {
         const formData = new FormData();
         formData.append('name', this.schemeForm.value.scheme_name);
         formData.append('objectiveScheme', this.schemeForm.value.scheme_objective);
-        formData.append('eligiblePersons', this.schemeForm.value.scheme_eligibility);
+        formData.append('+', this.schemeForm.value.scheme_eligibility);
         formData.append('government', this.schemeForm.value.government);
         formData.append('document', this.primaryImage.document);
         this.formService.addScheme(formData).subscribe((resp: any) => {
