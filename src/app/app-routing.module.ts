@@ -52,7 +52,7 @@ const routes: Routes = [
     { path: 'grivence-form', component: AppErrorComponent },
     { path: 'access', component: AppAccessdeniedComponent },
     { path: 'notfound', component: AppNotfoundComponent },
-    { path: 'deative-account', component: RemoveAccountComponent },
+    { path: 'deactive-account', component: RemoveAccountComponent },
     { path: '**', redirectTo: 'notfound' },
 ]
 
