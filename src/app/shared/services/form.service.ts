@@ -275,4 +275,7 @@ export class FormService {
   removeUser(email: any) {
     return this.http.post(`${this.apiUrl}Admin/disableAccount`, email);
   }
+  sendEmail(email:any){
+    return this.http.post(`${this.apiUrl}Admin/sendMail`, email);
+  }
 }

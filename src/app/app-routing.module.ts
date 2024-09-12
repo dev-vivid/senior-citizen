@@ -7,6 +7,7 @@ import { AppAccessdeniedComponent } from './pages/app.accessdenied.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthenticationGuard } from './authentication.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { RemoveAccountComponent } from './pages/remove-account/remove-account.component';
 
 const routes: Routes = [
     { path: '', redirectTo:"login", pathMatch:'full' },
@@ -51,6 +52,7 @@ const routes: Routes = [
     { path: 'grivence-form', component: AppErrorComponent },
     { path: 'access', component: AppAccessdeniedComponent },
     { path: 'notfound', component: AppNotfoundComponent },
+    { path: 'deative-account', component: RemoveAccountComponent },
     { path: '**', redirectTo: 'notfound' },
 ]
 
