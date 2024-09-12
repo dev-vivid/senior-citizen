@@ -36,15 +36,27 @@ export class RemoveAccountComponent implements OnInit {
     }
 
     openApp() {
-        const deepLink = 'intent://#Intent;scheme=myapp;package=com.senior_citizen;end';
-        const playStoreLink = 'https://play.google.com/store/apps/details?id=com.senior_citizen';
+        const deepLink = 'intent://#Intent;scheme=senior_citizen_tn;package=com.senior_citizen;end';
+        const playStoreLink = 'https://play.google.com/store/apps/details?id=senior_citizen';
+
+        let appOpened = false;
+
+        // Try opening the deep link
         window.location.href = deepLink;
 
-        // Fallback to Play Store after a delay if the app is not installed
-        setTimeout(() => {
-            window.location.href = playStoreLink;
-        }, 2000);
+        // If the app opens, this prevents the fallback
+        const start = Date.now();
+        const checkAppOpened = setInterval(() => {
+            if (Date.now() - start > 1500) {
+                clearInterval(checkAppOpened);
+                if (!appOpened) {
+                    // Redirect to Play Store if the app is not opened after 1.5 seconds
+                    window.location.href = playStoreLink;
+                }
+            }
+        }, 500);
     }
+
 
 
     confirmDeleteAccount() {
