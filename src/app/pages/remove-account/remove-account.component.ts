@@ -36,8 +36,8 @@ export class RemoveAccountComponent implements OnInit {
     }
 
     openApp() {
-        const deepLink = 'intent://#Intent;scheme=senior_citizen_tn;package=com.senior_citizen;end';
-        const playStoreLink = 'https://play.google.com/store/apps/details?id=senior_citizen';
+        const deepLink = 'app://com.senior_citizen';
+        const playStoreLink = 'https://play.google.com/store/apps/details?id=com.senior_citizen';
 
         let appOpened = false;
 
@@ -47,7 +47,7 @@ export class RemoveAccountComponent implements OnInit {
         // If the app opens, this prevents the fallback
         const start = Date.now();
         const checkAppOpened = setInterval(() => {
-            if (Date.now() - start > 1500) {
+            if (Date.now() - start > 2500) {
                 clearInterval(checkAppOpened);
                 if (!appOpened) {
                     // Redirect to Play Store if the app is not opened after 1.5 seconds
