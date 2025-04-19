@@ -54,7 +54,7 @@
             <div class="card border-0">
                 <h5>{{ getTranslation('grievance') | translate }}</h5>
                 <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
-                    <button pButton type="button">
+                    <button pButton type="button" (click)="exportToExcel()">
                         <img src="assets/images/excel.png" alt="Export" width="16" height="16" style="margin-right: 8px;">
                         Export
                       </button>

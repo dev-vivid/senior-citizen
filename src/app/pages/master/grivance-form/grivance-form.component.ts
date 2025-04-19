@@ -74,7 +74,7 @@ export class GrivanceFormComponent implements OnInit {
     }
 
     exportToExcel(): void {
-      const data = [this.grivanceForm.value]; // single object in array
+      const data = [this.grivanceForm.value]; 
       const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
       const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
       const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
