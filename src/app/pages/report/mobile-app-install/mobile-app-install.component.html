@@ -17,6 +17,7 @@
         <div class="p-mb-2">
             <input pInputText type="text" placeholder="Search..." (input)="applyGlobalFilter($event)">
         </div>
+        <button pButton type="button" icon="pi pi-file-excel" class="p-button-success p-mb-2" (click)="exportToExcel()" label="Export CSV"></button>
         <p-table #dt [value]="dynamaicTableData" [paginator]="true" [rows]="10"
         [globalFilterFields]="['name', 'email', 'age', 'gender', 'district']" [responsive]="true"
         [exportFilename]="'data'" [globalFilterFields]="globalFilterFields">
