@@ -13,7 +13,35 @@
     <div *ngIf="isLoader">
         <app-loader></app-loader>
     </div>
-    <div class="col-12 pt-0" *ngIf="isNotLoader">
+    <div class="col-12 pt-0"  *ngIf="isNotLoader">
+        <div class="p-mb-2">
+            <input pInputText type="text" placeholder="Search..." (input)="applyGlobalFilter($event)">
+        </div>
+        <button pButton type="button" icon="pi pi-file-excel" class="p-button-success p-mb-2" (click)="exportToExcel()" label="Export CSV"></button>
+        <p-table #dt [value]="dynamaicTableData" [paginator]="true" [rows]="10"
+        [globalFilterFields]="['name', 'email', 'age', 'gender', 'district']" [responsive]="true"
+        [exportFilename]="'data'" [globalFilterFields]="globalFilterFields">
+        <ng-template pTemplate="header">
+            <tr>
+                <th *ngFor="let col of cols">{{ col.header }}</th>
+                <th>Actions</th>
+            </tr>
+         
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+            <tr>
+                <td *ngFor="let col of cols">{{ rowData[col.field] || 'N/A' }}</td>
+                <td>
+                    <button pbutton="" type="button" class="p-element p-button-sm p-button-raised p-button-danger p-button p-component font-bold" title="Delete" (click)="onDelete(rowData.userId)"><i class="pi pi-trash"></i></button>
+                    <!-- <p-button icon="pi pi-trash" class="p-button-danger custom-red-button" (click)="onDelete(rowData.id)" tooltip="Delete"></p-button> -->
+                  </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>  
+    <!-- <div class="col-12 pt-0" *ngIf="isNotLoader">
         <app-dynamic-report-table [dynamaicTableData]="dynamaicTableData"></app-dynamic-report-table>
-    </div>
+    </div> -->
+
+
 </div>

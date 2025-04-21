@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  endPoint: 'https://vividtranstech.com/seniorcitizenApi/index.php/api/'
+  production: false,
+  endPoint: 'https://seniorcitizen.tnsocialwelfare.tn.gov.in/api/index.php/api/'
 };

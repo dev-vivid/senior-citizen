@@ -33,12 +33,10 @@ export class DynamicDelTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
   }
   deleteRecord(data:any){ 
     this.delete.emit(data.id)
   }
-
   // editRecord(data:any){ 
   //   this.edit.emit(data.id)
   // }

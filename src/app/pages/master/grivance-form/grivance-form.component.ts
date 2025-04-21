@@ -6,6 +6,9 @@ import { FormService } from 'src/app/shared/services/form.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 import { TranslationService } from 'src/app/shared/services/translation.service';
 import { MessageService } from 'primeng/api';
+import * as XLSX from 'xlsx';
+import * as FileSaver from 'file-saver';
+
 @Component({
   selector: 'app-grivance-form',
   templateUrl: './grivance-form.component.html',
@@ -70,7 +73,30 @@ export class GrivanceFormComponent implements OnInit {
       }
     }
 
-
+    exportToExcel(): void {
+      const data = [this.grivanceForm.value]; 
+      const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+      const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+      const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+      FileSaver.saveAs(blob, 'GrievanceData.xlsx');
+    }
+    printData(): void {
+      const printContents = `
+        <h3>Grievance Details</h3>
+        <p><strong>Name:</strong> ${this.grivanceForm.value.name}</p>
+        <p><strong>Address:</strong> ${this.grivanceForm.value.address}</p>
+        <p><strong>Mobile:</strong> ${this.grivanceForm.value.mobile}</p>
+        <p><strong>Age:</strong> ${this.grivanceForm.value.age}</p>
+        <p><strong>Email:</strong> ${this.grivanceForm.value.email}</p>
+        <p><strong>Issue:</strong> ${this.grivanceForm.value.issue}</p>
+        <p><strong>Issue Type:</strong> ${this.grivanceForm.value.issue_type}</p>
+      `;
+      const win = window.open('', '_blank');
+      win?.document.write(`<html><head><title>Print</title></head><body>${printContents}</body></html>`);
+      win?.document.close();
+      win?.print();
+    }
   onSelectChange(event:any): void {
     this.selectedValue = event.value ;
   }
@@ -81,23 +107,23 @@ export class GrivanceFormComponent implements OnInit {
   getGrivenceTypeList() {
     this.formService.getGrivenceTypeList().subscribe((resp: any) => {
       this.grivenceTypeList = resp.data;
+      // console.log("Grvnce list", this.grivenceTypeList);
     });
   }
-    addGrivence() {
-      let value = {
-        grievanceId: this.editMasterId,
-        status: this.grivanceForm.value.status
-      };
-      let formData = new FormData();
-      formData.append('grievanceId', value.grievanceId);
-      formData.append('status', value.status);
-      if(this.selectedFile){
+  addGrivence() {
+    let value = {
+      grievanceId: this.editMasterId,
+    };
+    let formData = new FormData();
+    formData.append('grievanceId',value.grievanceId);
+    formData.append('status',this.grivanceForm.value.status);
+    if(this.selectedFile){
       formData.append('document', this.selectedFile);
-      }
-      this.formService.addGrievance(formData).subscribe((resp: any) => {
-        this.sharedService.showSuccess('Grievance Updated successfully!');
-        this.grivanceForm.reset();
-        this.router.navigateByUrl(`main/master/grievance`);
-      });
     }
+    this.formService.addGrievance(formData).subscribe((resp: any) => {
+      this.sharedService.showSuccess('Grievance Updated successfully!');
+      this.grivanceForm.reset();
+      this.router.navigateByUrl(`main/master/grievance`);
+    });
+  }
 }

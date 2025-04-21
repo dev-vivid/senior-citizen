@@ -47,10 +47,24 @@
             </div>
         </div>
     </div>
+
     <form [formGroup]="grivanceForm">
+          
         <div class="col-12 md:col-6">
             <div class="card border-0">
                 <h5>{{ getTranslation('grievance') | translate }}</h5>
+                <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+                    <button pButton type="button" (click)="exportToExcel()">
+                        <img src="assets/images/excel.png" alt="Export" width="16" height="16" style="margin-right: 8px;">
+                        Export
+                      </button>
+                      
+                      <button pButton type="button" (click)="printData()" class="p-button-info">
+                        <img src="assets/images/printing.png" alt="Print" width="16" height="16" style="margin-right: 8px;">
+                        Print
+                      </button>
+                  </div>
+             <div class="mt-4">
                 <mat-form-field class="full-width-field">
                     <mat-label>{{ getTranslation('name') | translate }}</mat-label>
                     <input matInput [readonly]="true" matInput
@@ -97,7 +111,8 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-                <div *ngIf="selectedValue == 3">
+            </div>
+                <!-- <div *ngIf="selectedValue == 3">
                     <div class="document-view">
                         <div class="document-header">
                             <span class="document-title">View Grievance Document</span>
@@ -108,8 +123,9 @@
                             </div>
                         </div>
                     </div>
-                </div>                 
-                <div *ngIf="selectedValue == 2">
+                </div>                  -->
+         
+                <div *ngIf="selectedValue == 3">
                     <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
                     <button mat-raised-button color="primary" (click)="triggerFileInput()">
                         Upload File

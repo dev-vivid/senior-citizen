@@ -29,6 +29,7 @@ import { environment } from '../environments/environment';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SharedModule } from './shared/shared.module';
+import { RemoveAccountComponent } from './pages/remove-account/remove-account.component';
 
 @NgModule({
     imports: [
@@ -62,6 +63,7 @@ import { SharedModule } from './shared/shared.module';
         AppAccessdeniedComponent,
         LoginComponent,
         ProfileComponent,
+        RemoveAccountComponent,
     ],
     providers: [
         { provide: LOCALE_ID, useValue: "en-IN" },

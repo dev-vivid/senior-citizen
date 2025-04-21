@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Observable } from 'rxjs';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,7 @@ export class SharedService {
   CloneObject(obj: any): any {
     return JSON.parse(JSON.stringify(obj));
   }
+  
 
   // Clone/assign array without reference
   CloneArray(arr: any): any {

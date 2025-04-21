@@ -2,7 +2,7 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppMainComponent } from './app.main.component';
 import { Subscription } from 'rxjs';
-import { MenuItem } from 'primeng/api';
+import { ConfirmationService, MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from './utilities/passwordvalidation';
@@ -32,7 +32,9 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
     isUser: any;
     userId: any;
     currentLanguage: string;
-    constructor(public app: AppComponent, private formBuilder: FormBuilder, private translationService: TranslationService,
+    displayEmailPopup: boolean = false;
+    email: string = '';
+    constructor(public app: AppComponent,private confirmationService: ConfirmationService, private formBuilder: FormBuilder, private translationService: TranslationService,
         private languageService: LanguageService, private formService: FormService,
         public appMain: AppMainComponent, private router: Router, private authService: AuthService, private sharedService: SharedService) {
         this.languageService.currentLanguage$.subscribe(language => {
@@ -131,4 +133,33 @@ export class AppTopBarComponent implements OnInit, OnDestroy {
             this.resetPasswordForm.markAllAsTouched();
         }
     }
+    confirmDeleteAccount() {
+        this.confirmationService.confirm({
+          message: 'Are you sure you want to delete your account?',
+          header: 'Delete Confirmation',
+          icon: 'pi pi-exclamation-triangle',
+          accept: () => {
+            this.displayEmailPopup = true;
+          }
+        });
+      }
+      submitDeleteAccount() {
+        if (this.email) {
+            const payload = {
+                email:this.email
+            }
+            this.formService.removeUser(payload).subscribe((resp:any)=>{
+                if(resp.statusCode == 200){
+                    this.sharedService.showSuccess(resp.message);
+                    this.displayEmailPopup = false; 
+                    this.email=null;
+                    this.router.navigate(['/']);
+                }
+            });
+        } else {
+       this.sharedService.showError("Please enter your email");
+        }
+      }
 }
+
+
